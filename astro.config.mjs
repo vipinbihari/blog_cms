@@ -8,7 +8,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   // Replace this with your GitHub username and repository name
   // Format: https://<username>.github.io/<repository-name>
-  site: 'https://YOUR_GITHUB_USERNAME.github.io/YOUR_REPOSITORY_NAME',
+  site: 'https://vipinbihari.github.io/blog_cms',
   // If you plan to deploy to a subfolder, add base with the subfolder path
   // base: '/YOUR_REPOSITORY_NAME',
   integrations: [
