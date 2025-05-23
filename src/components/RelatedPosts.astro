@@ -1,0 +1,64 @@
+---
+/**
+ * RelatedPosts component
+ * Displays a list of posts related to the current post
+ */
+
+import FormattedDate from './FormattedDate.astro';
+
+interface PostFrontmatter {
+  title: string;
+  slug: string;
+  date: Date;
+  excerpt: string;
+  tags: string[];
+  category: string;
+  author: string;
+  heroImage: string;
+}
+
+type Post = {
+  id: string;
+  slug: string;
+  body: string;
+  collection: 'posts';
+  data: PostFrontmatter;
+};
+
+interface Props {
+  posts: Post[];
+  title?: string;
+}
+
+const { 
+  posts, 
+  title = 'Related Articles' 
+} = Astro.props as Props;
+---
+
+{posts.length > 0 && (
+  <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
+    <h2 class="text-2xl font-bold mb-6">{title}</h2>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {posts.map(post => {
+        const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
+        const displayImage = post.data.heroImage || placeholderImageUrl;
+        return (
+        <a href={`/posts/${post.slug}/`} class="group">
+          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
+            <img 
+              src={displayImage} 
+              alt={post.data.title}
+              class="w-full h-40 object-cover group-hover:opacity-90 transition-opacity"
+            />
+            <div class="p-4 flex-grow">
+              <h3 class="text-md font-semibold mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400">{post.data.title}</h3>
+              <FormattedDate date={post.data.date} class="text-xs text-gray-500 dark:text-gray-400" />
+            </div>
+          </article>
+        </a>
+      )})}
+    </div>
+  </div>
+)}

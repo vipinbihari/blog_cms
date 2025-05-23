@@ -1,0 +1,116 @@
+backend:
+  name: github
+  repo: vipinbihari/blog_cms  # Replace with your actual repo owner/name
+  branch: main
+
+# Enable local backend for development
+local_backend: true
+
+# Enable editorial workflow (draft, review, publish)
+publish_mode: editorial_workflow
+
+media_folder: public/images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: "posts"
+    label: "Posts"
+    folder: "src/content/posts"
+    create: true
+    format: "frontmatter"
+    extension: "mdx"
+    slug: "{{slug}}"
+    summary: "{{title}} - {{year}}/{{month}}/{{day}}"
+    fields:
+      - { label: "Title", name: "title", widget: "string", hint: "The title of the post" }
+      - { 
+          label: "Slug", 
+          name: "slug", 
+          widget: "string", 
+          pattern: ["^[a-z0-9-]+$", "Slug must contain only lowercase letters, numbers, and hyphens"],
+          hint: "URL-friendly version of the title (lowercase, hyphens instead of spaces)"
+        }
+      - { 
+          label: "Publish Date", 
+          name: "date", 
+          widget: "datetime", 
+          date_format: "YYYY-MM-DD",
+          time_format: "HH:mm",
+          hint: "When to publish this post"
+        }
+      - { 
+          label: "Excerpt", 
+          name: "excerpt", 
+          widget: "text", 
+          hint: "A brief summary of the post (appears in listings and SEO)" 
+        }
+      - { 
+          label: "Tags", 
+          name: "tags", 
+          widget: "select", 
+          multiple: true,
+          hint: "Select all relevant tags for this post",
+          options: [
+            "fundamental-analysis", 
+            "technical-analysis", "crypto", "etf", "dividend", "retirement", 
+            "beginners", "advanced", "portfolio", "risk-management", "economy",
+            "inflation", "bonds", "commodities", "forex", "financial-planning"
+          ]
+        }
+      - { 
+          label: "Category", 
+          name: "category", 
+          widget: "select", 
+          hint: "The primary category for this post",
+          options: [
+            { label: "Technical Analysis", value: "technical-analysis" },
+            { label: "Fundamental Analysis", value: "fundamental-analysis" },
+            { label: "Market News", value: "market-news" }
+          ]
+        }
+      - { 
+          label: "Author", 
+          name: "author", 
+          widget: "select",
+          hint: "Who wrote this post",
+          options: [
+            "Vipin Bihari", "Praveen"
+          ]
+        }
+      - { 
+          label: "Hero Image", 
+          name: "heroImage", 
+          widget: "image", 
+          hint: "Main image for the post (appears as the banner and in listings)" 
+        }
+      - label: "Quiz"
+        name: "quiz"
+        widget: "list"
+        required: false
+        collapsed: true
+        summary: "Quiz: {{fields.q}}"
+        hint: "Optional quiz questions to test reader knowledge"
+        fields:
+          - { label: "Question", name: "q", widget: "string" }
+          - { label: "Options", name: "options", widget: "list", hint: "List of possible answers" }
+          - { label: "Correct Option #", name: "answer", widget: "number", value_type: "int", min: 0, hint: "Index of the correct answer (starting from 0)" }
+      - { 
+          label: "Body", 
+          name: "body", 
+          widget: "markdown",
+          hint: "The main content of the post. Supports Markdown and MDX for interactive content."
+        }
+
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "general"
+        label: "General Settings"
+        file: "src/data/site.json"
+        description: "General site settings"
+        fields:
+          - { label: "Site Title", name: "title", widget: "string", hint: "Main title of the website" }
+          - { label: "Site Description", name: "description", widget: "text", hint: "Brief description for SEO" }
+          - { label: "Site Logo", name: "logo", widget: "image", hint: "Main site logo" }
+          - { label: "Favicon", name: "favicon", widget: "image", hint: "Small icon for browser tabs" }
+          - { label: "Default OG Image", name: "ogImage", widget: "image", hint: "Default social sharing image" }

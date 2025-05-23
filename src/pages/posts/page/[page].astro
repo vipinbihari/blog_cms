@@ -1,0 +1,73 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import PageNavigation from '../../../components/PageNavigation.astro';
+import { SEO } from 'astro-seo';
+
+export async function getStaticPaths({ paginate }) {
+  // Get all blog posts sorted by date
+  const allPosts = await getCollection('posts');
+  const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  
+  // Generate pages for all posts with pagination (12 posts per page)
+  return paginate(sortedPosts, { pageSize: 12 });
+}
+
+const { page } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<BaseLayout>
+  <SEO
+  slot="seo"
+  title={`Blog Archive - Page ${(page && page.currentPage) ? page.currentPage : 1} | StockSage`}
+  description={`Browse all articles - Page ${(page && page.currentPage) ? page.currentPage : 1} of our investment and stock market blog`}
+  canonical={canonicalURL}
+  openGraph={{
+    basic: {
+      title: "Blog Archive - StockSage",
+      type: "website",
+      image: "https://placehold.co/1200x630?text=StockSage+Blog+Archive"
+    }
+  }}
+/>
+
+  <div class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h1 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">
+        Blog Archive
+      </h1>
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {page.data.map(post => (
+          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <a href={`/posts/${post.slug}/`}>
+              <img 
+                src={post.data.heroImage} 
+                alt={post.data.title}
+                class="w-full h-48 object-cover"
+              />
+              <div class="p-6">
+                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2 flex flex-wrap items-center">
+                  <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full px-2 py-1 mr-2">
+                    {post.data.category}
+                  </span>
+                  <FormattedDate date={post.data.date} />
+                </div>
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{post.data.title}</h2>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{post.data.excerpt}</p>
+                <div class="flex justify-between items-center">
+                  <span class="text-sm text-primary-600 dark:text-primary-400">Read more u2192</span>
+                </div>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+      
+      <!-- Pagination Controls -->
+      <PageNavigation page={page} />
+    </div>
+  </div>
+</BaseLayout>

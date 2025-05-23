@@ -1,0 +1,120 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Quiz from '../components/Quiz';
+import ShareButtons from '../components/ShareButtons';
+import AuthorBio from '../components/AuthorBio.astro';
+import TableOfContents from '../components/TableOfContents';
+import ReadingProgress from '../components/ReadingProgress';
+import ResponsiveImage from '../components/ResponsiveImage.astro';
+import NewsletterSignup from '../components/NewsletterSignup.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+
+type Props = {
+  post: CollectionEntry<'posts'>;
+  content: any;
+  relatedPosts?: any[];
+};
+
+const { post, content, relatedPosts } = Astro.props;
+const { title, date, excerpt, tags, category, author, heroImage, quiz } = post.data;
+
+// Define current URL for share buttons
+const currentUrl = new URL(Astro.url.pathname, Astro.site).toString();
+
+// Define a placeholder image URL
+const placeholderImageUrl = `https://placehold.co/1200x600?text=${encodeURIComponent(title.replace(/\s+/g, '+'))}`;
+const displayImage = heroImage || placeholderImageUrl;
+
+// SEO metadata for the base layout
+const ogPlaceholderImageUrl = `https://placehold.co/1200x630?text=${encodeURIComponent(title.replace(/\s+/g, '+'))}`;
+const ogImage = heroImage || ogPlaceholderImageUrl; // Use placeholder if heroImage is missing
+
+---
+
+<BaseLayout
+  title={title}
+  description={excerpt}
+  image={ogImage}
+>
+  <!-- Reading progress indicator -->
+  <ReadingProgress client:only="react" />
+  <!-- Current URL for share buttons -->
+  <div class="w-full max-w-6xl mx-auto px-4 py-8">
+    <div class="flex flex-col md:flex-row gap-8">
+      <!-- Sidebar with TOC - Placed first in DOM but positioned to the right using flex -->
+      <div class="hidden md:block md:w-1/4 order-2">
+        <div class="sticky top-24">
+          <TableOfContents client:only="react" />
+        </div>
+      </div>
+      
+      <div class="md:w-3/4 order-1">
+        <article class="prose dark:prose-invert lg:prose-lg max-w-none">
+      <header class="mb-8">
+        <div class="flex flex-wrap items-center text-sm text-gray-600 dark:text-gray-400 gap-4 mb-2">
+          <span>{category}</span>
+          <span>•</span>
+          <FormattedDate date={date} />
+          <span>•</span>
+          <span>By {author}</span>
+        </div>
+        
+        <h1 class="text-3xl md:text-4xl font-bold mb-4">{title}</h1>
+        
+        <p class="text-lg text-gray-700 dark:text-gray-300 mb-6">{excerpt}</p>
+        
+        <div class="flex flex-wrap gap-2 mb-6">
+          {tags.map((tag) => (
+            <a 
+              href={`/tags/${tag}`}
+              class="text-xs bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-100 px-2 py-1 rounded-full"
+            >
+              #{tag}
+            </a>
+          ))}
+        </div>
+        
+        {true && ( // Always render an image, using placeholder if heroImage is missing
+          <ResponsiveImage
+            src={displayImage}
+            alt={title}
+            class="w-full h-auto rounded-lg shadow-lg mb-8"
+            loading="eager"
+          />
+        )}
+      </header>
+
+      <div class="content">
+        <!-- This is where the MDX content is rendered -->
+        <slot />
+      </div>
+      
+      <!-- Quiz section -->
+      {quiz && quiz.length > 0 && (
+        <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <h2 class="text-2xl font-bold mb-6">Test Your Knowledge</h2>
+          <Quiz client:only="react" quiz={quiz} />
+        </div>
+      )}
+      
+      <!-- Share buttons -->
+      <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <ShareButtons client:only="react" title={title} url={currentUrl} description={excerpt} tags={tags} />
+      </div>
+      
+      <!-- Author Bio -->
+      <AuthorBio name={author} />
+      
+      <!-- Related Posts -->
+      {relatedPosts && relatedPosts.length > 0 && (
+        <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+          <RelatedPosts posts={relatedPosts} />
+        </div>
+      )}
+        </article>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

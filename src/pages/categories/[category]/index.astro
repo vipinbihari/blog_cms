@@ -1,0 +1,24 @@
+---
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  // Get all unique categories from posts
+  const allPosts = await getCollection('posts');
+  const uniqueCategories = [...new Set(allPosts.map(post => post.data.category))];
+  return uniqueCategories.map(category => ({ params: { category } }));
+}
+
+const { category } = Astro.params;
+const redirectUrl = `/categories/${category}/page/1`;
+---
+<html>
+  <head>
+    <meta http-equiv="refresh" content={'0; url=' + redirectUrl} />
+    <script>window.location.replace("" + redirectUrl);</script>
+  </head>
+  <body>
+    <p>Redirecting to <a href={redirectUrl}>{redirectUrl}</a>...</p>
+  </body>
+</html>
+
+---
