@@ -1,17 +1,14 @@
 /**
  * Prebuild script that runs before the main Astro build process.
- * Currently handles:
- * - Generating the search index
+ * This file previously handled search index generation, but that functionality has been removed.
+ * Keeping this file as a placeholder for any future prebuild tasks.
  */
-
-import { generateSearchIndex } from './generate-search-index.js';
 
 async function prebuild() {
   try {
     console.log('Running prebuild tasks...');
     
-    // Generate search index
-    await generateSearchIndex();
+    // Add any future prebuild tasks here
     
     console.log('Prebuild tasks completed successfully!');
   } catch (error) {

@@ -5,3 +5,4 @@ node_modules/
 .windsurf/
 prd.md
 checkstatus.md
+dist/
