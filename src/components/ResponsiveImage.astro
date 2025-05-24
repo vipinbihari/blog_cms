@@ -2,7 +2,7 @@
 /**
  * ResponsiveImage component
  * Optimizes images for different screen sizes and improves loading performance
- * Uses proper image optimization techniques for deployed sites
+ * Uses pre-optimized images created during the build process
  */
 
 interface Props {
@@ -30,8 +30,42 @@ const {
 // Determine if image is external (from a URL) or local
 const isExternal = src.startsWith('http');
 
-// For local images, determine if they're from the uploads directory
-const isFromUploads = !isExternal && src.startsWith('/images/uploads/');
+// Determine which size of responsive image to use as a default
+const getOptimalImageSize = (targetWidth) => {
+  const breakpoints = [320, 640, 960, 1280, 1920];
+  // Find the smallest breakpoint that's larger than our target width
+  for (const bp of breakpoints) {
+    if (bp >= targetWidth) return bp;
+  }
+  // If none found, use the largest breakpoint
+  return breakpoints[breakpoints.length - 1];
+};
+
+// Get paths for optimized images
+let originalPath = src;
+let optimizedPath = src;
+let webpPath = src;
+
+// For local images from uploads directory, use optimized versions
+if (!isExternal && src.startsWith('/images/uploads/')) {
+  try {
+    const optimalSize = getOptimalImageSize(width);
+    const pathParts = src.split('/');
+    const filename = pathParts.pop().split('.')[0]; // Get filename without extension
+    const ext = src.split('.').pop().toLowerCase(); // Get extension
+    const basePath = '/images/optimized/' + pathParts.slice(pathParts.indexOf('uploads') + 1).join('/');
+    
+    // Path to optimized image with specified width
+    optimizedPath = `${basePath}/${filename}-${optimalSize}.${ext}`;
+    // Path to WebP version for modern browsers
+    webpPath = `${basePath}/${filename}-${optimalSize}.webp`;
+  } catch (error) {
+    console.error(`Error generating optimized image paths: ${src}`, error);
+    // Fallback to original path if anything fails
+    optimizedPath = src;
+    webpPath = src;
+  }
+}
 
 
 // Calculate aspect ratio and height if width is provided but height is missing
@@ -52,15 +86,25 @@ const calculatedHeight = width && !height && aspectRatio ? Math.round(width / as
     onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
   />
 ) : (
-  // For local images, use an optimized img tag with width and height for proper rendering
-  <img 
-    src={src} 
-    alt={alt}
-    class={`${className} object-cover`}
-    loading={loading}
-    width={width}
-    height={calculatedHeight}
-    style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
-    onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
-  />
+  // For local images, use picture element with multiple sources for responsive images
+  <picture>
+    {/* WebP format for modern browsers */}
+    <source
+      srcset={webpPath}
+      type="image/webp"
+      sizes={sizes}
+    />
+    
+    {/* Original format as fallback */}
+    <img 
+      src={optimizedPath}
+      alt={alt}
+      class={`${className} object-cover`}
+      loading={loading}
+      width={width}
+      height={calculatedHeight}
+      style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
+      onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
+    />
+  </picture>
 )}

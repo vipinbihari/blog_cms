@@ -6,10 +6,11 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node src/scripts/prebuild.js && astro build",
+    "build": "node src/scripts/prebuild.js && node src/scripts/optimizeImages.js && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:search": "node src/scripts/test-search.js"
+    "test:search": "node src/scripts/test-search.js",
+    "optimize-images": "node src/scripts/optimizeImages.js"
   },
   "dependencies": {
     "@astrojs/mdx": "^1.1.0",

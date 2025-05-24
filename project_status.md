@@ -129,7 +129,8 @@ For consistency, all implemented functions should be documented using the follow
 
 **Implementation Status**: Completed
 
-- `prebuild.js`: Script that runs before the main Astro build process
+- `prebuild.js`: Script that runs before the main Astro build process to prepare the build environment
+- `optimizeImages.js`: Script that optimizes images from the uploads directory, creating responsive versions and WebP alternatives
 
 ### Utils
 
@@ -139,6 +140,83 @@ For consistency, all implemented functions should be documented using the follow
 - `seoUtils.ts`: Functions for generating SEO metadata, OpenGraph tags, and Twitter cards
 - `dateUtils.ts`: Functions for formatting and manipulating dates
 - `contentUtils.ts`: Functions for content organization and filtering
+
+### Image Optimization
+
+**Implementation Status**: Completed
+
+- Comprehensive image optimization pipeline for both local and external images
+- Images placed in `/public/images/uploads/` are automatically processed during build
+- Optimized versions are generated in `/public/images/optimized/` in multiple sizes and formats
+- Implementation uses file timestamps to avoid reprocessing images on subsequent builds
+- Compatible with GitHub Pages deployment workflow - only processes new or modified images
+
+#### optimizeImages.js Functions
+
+##### optimizeImages(): Promise<void>
+
+**Description**: Main function that orchestrates the image optimization process
+
+**Returns**: Promise that resolves when optimization is complete
+
+**Dependencies**: Sharp library, file system operations
+
+**Implementation Status**: Completed
+
+##### processDirectory(dirPath: string, relativePath: string): Promise<number>
+
+**Description**: Recursively processes images in a directory, optimizing new or modified images based on timestamp comparison
+
+**Arguments**:
+- `dirPath` (string): Absolute path to the directory containing images
+- `relativePath` (string): Relative path within the uploads directory
+
+**Returns**: Promise resolving to the number of newly processed images
+
+**Implementation Status**: Completed
+
+##### doesImageNeedProcessing(sourceFilePath: string, fileName: string, ext: string, targetDir: string): boolean
+
+**Description**: Determines if an image needs optimization by comparing timestamps between source and optimized versions
+
+**Arguments**:
+- `sourceFilePath` (string): Path to the source image file
+- `fileName` (string): Base name of the file without extension
+- `ext` (string): File extension including the dot
+- `targetDir` (string): Directory where optimized versions would be stored
+
+**Returns**: Boolean indicating whether the image needs processing
+
+**Implementation Status**: Completed
+
+##### optimizeImage(filePath: string, relativePath: string): Promise<object[]>
+
+**Description**: Optimizes a single image, creating multiple sizes and formats with both original and WebP versions
+
+**Arguments**:
+- `filePath` (string): Absolute path to the image file
+- `relativePath` (string): Relative path within the uploads directory
+
+**Returns**: Array of information about optimized versions created
+
+**Implementation Status**: Completed
+
+##### loadProcessedImageTracker(): object
+
+**Description**: Loads the record of previously processed images
+
+**Returns**: Object mapping image IDs to metadata
+
+**Implementation Status**: Completed
+
+##### saveProcessedImageTracker(processedImages: object): void
+
+**Description**: Saves the updated record of processed images
+
+**Arguments**:
+- `processedImages` (object): Map of processed image IDs to metadata
+
+**Implementation Status**: Completed
 
 ### General UI/UX Enhancements
 
