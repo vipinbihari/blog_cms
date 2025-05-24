@@ -2,7 +2,10 @@
 /**
  * ResponsiveImage component
  * Optimizes images for different screen sizes and improves loading performance
+ * Uses Astro's built-in image optimization
  */
+
+import { Image } from 'astro:assets';
 
 interface Props {
   src: string;
@@ -10,9 +13,9 @@ interface Props {
   class?: string;
   sizes?: string;
   loading?: 'eager' | 'lazy';
-  decoding?: 'sync' | 'async' | 'auto';
   width?: number;
   height?: number;
+  quality?: number;
 }
 
 const {
@@ -21,52 +24,41 @@ const {
   class: className = '',
   sizes = '(min-width: 1280px) 1280px, 100vw',
   loading = 'lazy',
-  decoding = 'async',
-  width,
-  height
+  width = 800, // Default width if not specified
+  height,
+  quality = 80
 } = Astro.props;
 
-// Determine image type and handle external images
+// Determine if image is external (from a URL) or local
 const isExternal = src.startsWith('http');
-const fileExtension = src.split('.').pop()?.toLowerCase();
-const imageType = ['jpg', 'jpeg', 'png', 'webp', 'avif', 'gif'].includes(fileExtension || '') 
-  ? fileExtension 
-  : 'jpeg';
 
-// NOTE: We're disabling responsive image sizes since we don't have a build pipeline generating them
-// In a production environment, you would want to generate these image sizes
-// or use Astro's built-in image optimization
-
-// Disabling srcset generation - using original images only to prevent 404 errors
-const srcset = undefined; // Don't use any srcset until image processing is set up
+// Calculate aspect ratio and height if width is provided but height is missing
+const aspectRatio = width && height ? width / height : undefined;
+const calculatedHeight = width && !height && aspectRatio ? Math.round(width / aspectRatio) : height || Math.round(width / 1.5); // Default aspect ratio of 1.5 if no height specified
 ---
 
 {isExternal ? (
+  // For external images, we use a standard img tag with error handling
   <img 
     src={src} 
     alt={alt}
-    class={className}
+    class={`${className} object-cover`}
     loading={loading}
-    decoding={decoding}
     width={width}
-    height={height}
+    height={calculatedHeight}
+    style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
+    onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
   />
 ) : (
-  <picture>
-    {/* We're only using the original format since WebP versions aren't automatically generated */}
-    {/* If you want to use WebP in the future, you'll need to add image processing to your build pipeline */}
-    
-    {/* Original format */}
-    <img 
-      src={src} 
-      srcset={srcset}
-      sizes={sizes} 
-      alt={alt}
-      class={className}
-      loading={loading}
-      decoding={decoding}
-      width={width}
-      height={height}
-    />
-  </picture>
+  // For local images, use Astro's built-in Image component for optimization
+  <Image
+    src={src}
+    alt={alt}
+    width={width}
+    height={calculatedHeight}
+    quality={quality}
+    class={`${className} object-cover`}
+    loading={loading}
+    onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
+  />
 )}

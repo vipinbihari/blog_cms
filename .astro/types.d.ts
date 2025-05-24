@@ -185,100 +185,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"algo-trading-tradetron-guide.mdx": {
-	id: "algo-trading-tradetron-guide.mdx";
-  slug: "algo-trading-tradetron-guide";
+"basics-of-stock-market-part-1.mdx": {
+	id: "basics-of-stock-market-part-1.mdx";
+  slug: "basics-of-stock-market-part-1";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
-"basics-of-stock-market.mdx": {
-	id: "basics-of-stock-market.mdx";
-  slug: "basics-of-stock-market";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"cryptocurrency-investing-101-india.mdx": {
-	id: "cryptocurrency-investing-101-india.mdx";
-  slug: "cryptocurrency-investing-101-india";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"green-energy-basket-top-renewable-bets-beyond-adani-green-india.mdx": {
-	id: "green-energy-basket-top-renewable-bets-beyond-adani-green-india.mdx";
-  slug: "green-energy-basket-top-renewable-bets-beyond-adani-green-india";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"mutual-funds-india-comprehensive-guide-2024.mdx": {
-	id: "mutual-funds-india-comprehensive-guide-2024.mdx";
-  slug: "mutual-funds-india-comprehensive-guide-2024";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"national-green-hydrogen-mission-stocks-india-analysis.mdx": {
-	id: "national-green-hydrogen-mission-stocks-india-analysis.mdx";
-  slug: "national-green-hydrogen-mission-stocks-india-analysis";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"navigating-choppy-waters-indian-stock-market-may-2025.mdx": {
-	id: "navigating-choppy-waters-indian-stock-market-may-2025.mdx";
-  slug: "navigating-choppy-waters-indian-stock-market-may-2025";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"option-writing-monthly-income-beginners-blueprint.mdx": {
-	id: "option-writing-monthly-income-beginners-blueprint.mdx";
-  slug: "option-writing-monthly-income-beginners-blueprint";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"options-trading-india-beginners-guide-upstox.mdx": {
-	id: "options-trading-india-beginners-guide-upstox.mdx";
-  slug: "options-trading-india-beginners-guide-upstox";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"rbi-april-rate-cut-mid-cap-rotation.mdx": {
-	id: "rbi-april-rate-cut-mid-cap-rotation.mdx";
-  slug: "rbi-april-rate-cut-mid-cap-rotation";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"sebi-2025-algo-trading-framework-winners-losers.mdx": {
-	id: "sebi-2025-algo-trading-framework-winners-losers.mdx";
-  slug: "sebi-2025-algo-trading-framework-winners-losers";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"sensex-at-80k-deciphering-2025-bull-run.mdx": {
-	id: "sensex-at-80k-deciphering-2025-bull-run.mdx";
-  slug: "sensex-at-80k-deciphering-2025-bull-run";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"top-5-discount-brokers-india-2024-comparison.mdx": {
-	id: "top-5-discount-brokers-india-2024-comparison.mdx";
-  slug: "top-5-discount-brokers-india-comparison-2024-2025";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"understanding-pe-ratio.mdx": {
-	id: "understanding-pe-ratio.mdx";
-  slug: "understanding-pe-ratio";
+"pre-ipo-esop-liquidity-exit-or-hold.mdx": {
+	id: "pre-ipo-esop-liquidity-exit-or-hold.mdx";
+  slug: "pre-ipo-esop-liquidity-exit-or-hold";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
