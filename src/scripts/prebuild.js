@@ -27,6 +27,13 @@ async function prebuild() {
     ensureDirectoryExists(path.resolve(rootDir, 'src/assets'));
     ensureDirectoryExists(path.resolve(rootDir, 'src/assets/images'));
     
+    // Copy images from public/images/uploads to src/assets/images for optimization
+    const uploadsDir = path.resolve(rootDir, 'public/images/uploads');
+    if (fs.existsSync(uploadsDir)) {
+      console.log('Processing images for optimization...');
+      copyImagesToAssets(uploadsDir, path.resolve(rootDir, 'src/assets/images'));
+    }
+    
     console.log('Prebuild tasks completed successfully!');
   } catch (error) {
     console.error('Error during prebuild:', error);
@@ -52,6 +59,44 @@ function createNojekyllFile() {
   if (!fs.existsSync(nojekyllPath)) {
     console.log('Creating .nojekyll file for GitHub Pages');
     fs.writeFileSync(nojekyllPath, '');
+  }
+}
+
+/**
+ * Recursively copies images from source directory to the assets directory for optimization
+ * @param {string} sourceDir - Source directory containing images
+ * @param {string} targetDir - Target directory for images in assets
+ */
+function copyImagesToAssets(sourceDir, targetDir) {
+  try {
+    // Get all files in the source directory
+    const files = fs.readdirSync(sourceDir, { withFileTypes: true });
+    
+    // Process each file/directory
+    for (const file of files) {
+      const sourcePath = path.join(sourceDir, file.name);
+      const targetPath = path.join(targetDir, file.name);
+      
+      if (file.isDirectory()) {
+        // Create the directory in the target location
+        ensureDirectoryExists(targetPath);
+        // Recursively process subdirectories
+        copyImagesToAssets(sourcePath, targetPath);
+      } else {
+        // Check if it's an image file
+        const ext = path.extname(file.name).toLowerCase();
+        if (['.jpg', '.jpeg', '.png', '.webp', '.gif', '.svg', '.avif'].includes(ext)) {
+          // Create target directory if it doesn't exist
+          ensureDirectoryExists(path.dirname(targetPath));
+          
+          // Copy the file
+          fs.copyFileSync(sourcePath, targetPath);
+          console.log(`Copied ${sourcePath} to ${targetPath} for optimization`);
+        }
+      }
+    }
+  } catch (error) {
+    console.error(`Error copying images: ${error.message}`);
   }
 }
 

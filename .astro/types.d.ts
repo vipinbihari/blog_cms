@@ -185,16 +185,16 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"basics-of-stock-market-part-1.mdx": {
-	id: "basics-of-stock-market-part-1.mdx";
-  slug: "basics-of-stock-market-part-1";
+"navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors.mdx": {
+	id: "navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors.mdx";
+  slug: "navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
-"pre-ipo-esop-liquidity-exit-or-hold.mdx": {
-	id: "pre-ipo-esop-liquidity-exit-or-hold.mdx";
-  slug: "pre-ipo-esop-liquidity-exit-or-hold";
+"understanding-pe-forward-pe-peg-india.mdx": {
+	id: "understanding-pe-forward-pe-peg-india.mdx";
+  slug: "understanding-pe-forward-pe-peg-india";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

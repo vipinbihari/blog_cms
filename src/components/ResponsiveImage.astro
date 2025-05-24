@@ -32,6 +32,21 @@ const {
 // Determine if image is external (from a URL) or local
 const isExternal = src.startsWith('http');
 
+// For local images, check if they're in the uploads directory and adjust path for assets
+let imgSrc = src;
+let isOptimizable = false;
+
+if (!isExternal) {
+  // Check if the image path includes /images/uploads/
+  if (src.startsWith('/images/uploads/')) {
+    // Extract the part after /images/uploads/
+    const relativePath = src.substring('/images/uploads/'.length);
+    // This will be imported from src/assets/images instead
+    imgSrc = `/src/assets/images/${relativePath}`;
+    isOptimizable = true;
+  }
+}
+
 // Calculate aspect ratio and height if width is provided but height is missing
 const aspectRatio = width && height ? width / height : undefined;
 const calculatedHeight = width && !height && aspectRatio ? Math.round(width / aspectRatio) : height || Math.round(width / 1.5); // Default aspect ratio of 1.5 if no height specified
@@ -49,16 +64,28 @@ const calculatedHeight = width && !height && aspectRatio ? Math.round(width / as
     style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
     onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
   />
-) : (
-  // For local images, use Astro's built-in Image component for optimization
+) : isOptimizable ? (
+  // For optimizable local images, use Astro's built-in Image component
   <Image
-    src={src}
+    src={imgSrc}
     alt={alt}
     width={width}
     height={calculatedHeight}
     quality={quality}
     class={`${className} object-cover`}
     loading={loading}
+    onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
+  />
+) : (
+  // For other local images, use standard img tag
+  <img 
+    src={src} 
+    alt={alt}
+    class={`${className} object-cover`}
+    loading={loading}
+    width={width}
+    height={calculatedHeight}
+    style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
     onerror="this.onerror=null; this.src='https://placehold.co/' + (this.width || 800) + 'x' + (this.height || 600) + '/CCCCCC/FFFFFF?text=Image+Not+Found'"
   />
 )}
