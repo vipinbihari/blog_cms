@@ -185,6 +185,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"tradetron-algo-trading-guide-india.mdx": {
+	id: "tradetron-algo-trading-guide-india.mdx";
+  slug: "tradetron-algo-trading-guide-india";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 };
 
 	};
