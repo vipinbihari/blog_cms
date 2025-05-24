@@ -4,6 +4,7 @@ import PostLayout from '../../layouts/PostLayout.astro';
 import RelatedPosts from '../../components/RelatedPosts.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { getRelatedPosts } from '../../utils/getRelatedPosts';
+import ResponsiveImage from '../../components/ResponsiveImage.astro';
 
 // Generate static paths for all blog posts
 export async function getStaticPaths() {
@@ -25,5 +26,5 @@ const { Content } = await entry.render();
 ---
 
 <PostLayout post={entry} content={Content} relatedPosts={relatedPosts}>
-  <Content />
+  <Content components={{ img: ResponsiveImage }} />
 </PostLayout>

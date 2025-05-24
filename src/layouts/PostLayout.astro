@@ -31,6 +31,11 @@ const displayImage = heroImage || placeholderImageUrl;
 const ogPlaceholderImageUrl = `https://placehold.co/1200x630?text=${encodeURIComponent(title.replace(/\s+/g, '+'))}`;
 const ogImage = heroImage || ogPlaceholderImageUrl; // Use placeholder if heroImage is missing
 
+// MDX Component overrides to use ResponsiveImage for all images
+const components = {
+  img: ResponsiveImage,
+};
+
 ---
 
 <BaseLayout

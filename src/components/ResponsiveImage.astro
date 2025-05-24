@@ -35,10 +35,13 @@ const getOptimalImageSize = (targetWidth) => {
   const breakpoints = [320, 640, 960, 1280, 1920];
   // Find the smallest breakpoint that's larger than our target width
   for (const bp of breakpoints) {
-    if (bp >= targetWidth) return bp;
+    if (bp >= targetWidth) {
+      return bp;
+    }
   }
   // If none found, use the largest breakpoint
-  return breakpoints[breakpoints.length - 1];
+  const largestBp = breakpoints[breakpoints.length - 1];
+  return largestBp;
 };
 
 // Get paths for optimized images
@@ -47,30 +50,51 @@ let optimizedPath = src;
 let webpPath = src;
 
 // For local images from uploads directory, use optimized versions
-if (!isExternal && src.startsWith('/images/uploads/')) {
+if (!isExternal && src && src.startsWith('/images/uploads/')) {
   try {
     const optimalSize = getOptimalImageSize(width);
+
     const pathParts = src.split('/');
-    const filename = pathParts.pop().split('.')[0]; // Get filename without extension
-    const ext = src.split('.').pop().toLowerCase(); // Get extension
-    const basePath = '/images/optimized/' + pathParts.slice(pathParts.indexOf('uploads') + 1).join('/');
+
+    const filenameWithExt = pathParts.pop(); // e.g., 'image.jpg'
+
+    if (!filenameWithExt || !filenameWithExt.includes('.')) {
+      throw new Error('Filename with extension is invalid or missing extension.');
+    }
+
+    const filename = filenameWithExt.substring(0, filenameWithExt.lastIndexOf('.'));
+
+    const ext = filenameWithExt.substring(filenameWithExt.lastIndexOf('.')).toLowerCase(); // e.g., '.jpg'
+
+    const relativeSubPath = pathParts.slice(pathParts.indexOf('uploads') + 1).join('/');
+
+    const basePath = ('/images/optimized/' + (relativeSubPath ? relativeSubPath + '/' : '')).replace(/\/\/$/, '/'); // Ensure single trailing slash if subpath exists, or no slash if no subpath
     
     // Path to optimized image with specified width
-    optimizedPath = `${basePath}/${filename}-${optimalSize}.${ext}`;
+    optimizedPath = `${basePath}${filename}-${optimalSize}${ext}`;
+
     // Path to WebP version for modern browsers
-    webpPath = `${basePath}/${filename}-${optimalSize}.webp`;
+    webpPath = `${basePath}${filename}-${optimalSize}.webp`;
+
   } catch (error) {
-    console.error(`Error generating optimized image paths: ${src}`, error);
+    console.error(`Error generating optimized image paths for: ${src}`, error);
     // Fallback to original path if anything fails
     optimizedPath = src;
     webpPath = src;
   }
+} else {
 }
 
 
 // Calculate aspect ratio and height if width is provided but height is missing
 const aspectRatio = width && height ? width / height : undefined;
 const calculatedHeight = width && !height && aspectRatio ? Math.round(width / aspectRatio) : height || Math.round(width / 1.5); // Default aspect ratio of 1.5 if no height specified
+
+// Calculate aspect ratio and height if width is provided but height is missing
+const aspectRatio = width && height ? width / height : undefined;
+const calculatedHeight = width && !height && aspectRatio ? Math.round(width / aspectRatio) : height || Math.round(width / 1.5); // Default aspect ratio of 1.5 if no height specified
+console.log(`[ResponsiveImage Debug] Final paths: optimizedPath=${optimizedPath}, webpPath=${webpPath}`);
+console.log(`[ResponsiveImage Debug] ====================================`);
 ---
 
 {isExternal ? (

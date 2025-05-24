@@ -185,20 +185,6 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
-"navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors.mdx": {
-	id: "navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors.mdx";
-  slug: "navigating-the-world-of-ipos-a-comprehensive-guide-for-indian-investors";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
-"understanding-pe-forward-pe-peg-india.mdx": {
-	id: "understanding-pe-forward-pe-peg-india.mdx";
-  slug: "understanding-pe-forward-pe-peg-india";
-  body: string;
-  collection: "posts";
-  data: InferEntrySchema<"posts">
-} & { render(): Render[".mdx"] };
 };
 
 	};
