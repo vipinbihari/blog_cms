@@ -1,9 +1,27 @@
 ---
 // Import components
 import ThemeToggle from './ThemeToggle';
+
+// Client-side script for mobile menu toggle functionality
 ---
 
 <header class="bg-white dark:bg-gray-900 shadow-sm sticky top-0 z-10">
+  <script>
+    // Mobile menu toggle functionality
+    document.addEventListener('DOMContentLoaded', () => {
+      const mobileMenuButton = document.getElementById('mobile-menu-button');
+      const mobileMenu = document.getElementById('mobile-menu');
+      
+      if (mobileMenuButton && mobileMenu) {
+        mobileMenuButton.addEventListener('click', () => {
+          // Toggle the mobile menu visibility
+          const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+          mobileMenuButton.setAttribute('aria-expanded', !expanded);
+          mobileMenu.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex justify-between items-center h-16">
       <!-- Logo -->  
@@ -48,15 +66,48 @@ import ThemeToggle from './ThemeToggle';
         
         <!-- Mobile menu button -->  
         <button 
+          id="mobile-menu-button"
           type="button" 
           class="md:hidden p-2 text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400"
           aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
       </div>
+    </div>
+  </div>
+  
+  <!-- Mobile menu, initially hidden -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white dark:bg-gray-900 pb-4 px-4 shadow-lg">
+    <div class="flex flex-col space-y-2">
+      <a 
+        href="/" 
+        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 border-b border-gray-200 dark:border-gray-700"
+      >
+        Home
+      </a>
+      <a 
+        href="/categories/technical-analysis" 
+        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 border-b border-gray-200 dark:border-gray-700"
+      >
+        Technical Analysis
+      </a>
+      <a 
+        href="/categories/fundamental-analysis" 
+        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 border-b border-gray-200 dark:border-gray-700"
+      >
+        Fundamental Analysis
+      </a>
+      <a 
+        href="/categories/market-news" 
+        class="text-gray-600 dark:text-gray-300 hover:text-primary-600 dark:hover:text-primary-400 px-3 py-2 border-b border-gray-200 dark:border-gray-700"
+      >
+        Market News
+      </a>
     </div>
   </div>
 </header>
