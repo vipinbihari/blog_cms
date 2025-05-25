@@ -185,6 +185,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"indian-stock-market-structure-participants-day-2.mdx": {
+	id: "indian-stock-market-structure-participants-day-2.mdx";
+  slug: "indian-stock-market-structure-participants-day-2";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"stock-market-101-investing-journey-day-1.mdx": {
+	id: "stock-market-101-investing-journey-day-1.mdx";
+  slug: "stock-market-101-investing-journey-day-1";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "tradetron-algo-trading-guide-india.mdx": {
 	id: "tradetron-algo-trading-guide-india.mdx";
   slug: "tradetron-algo-trading-guide-india";

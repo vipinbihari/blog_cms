@@ -5,6 +5,7 @@
  */
 
 import FormattedDate from './FormattedDate.astro';
+import ResponsiveImage from './ResponsiveImage.astro';
 
 interface PostFrontmatter {
   title: string;
@@ -38,23 +39,31 @@ const {
 
 {posts.length > 0 && (
   <div class="mt-12 pt-8 border-t border-gray-200 dark:border-gray-700">
-    <h2 class="text-2xl font-bold mb-6">{title}</h2>
+    <h2 class="text-2xl font-bold mb-8 text-center md:text-left">{title}</h2>
     
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
       {posts.map(post => {
         const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
         const displayImage = post.data.heroImage || placeholderImageUrl;
         return (
-        <a href={`/posts/${post.slug}/`} class="group">
-          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow h-full flex flex-col">
-            <img 
-              src={displayImage} 
-              alt={post.data.title}
-              class="w-full h-40 object-cover group-hover:opacity-90 transition-opacity"
-            />
-            <div class="p-4 flex-grow">
-              <h3 class="text-md font-semibold mb-1 group-hover:text-primary-600 dark:group-hover:text-primary-400">{post.data.title}</h3>
-              <FormattedDate date={post.data.date} class="text-xs text-gray-500 dark:text-gray-400" />
+        <a href={`/posts/${post.slug}/`} class="group no-underline">
+          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col transform hover:translate-y-[-5px]">
+            {/* Force 320px resolution by explicitly setting sizes and passing specific width */}
+            <div class="overflow-hidden rounded-t-xl">
+              <ResponsiveImage 
+                src={displayImage} 
+                alt={post.data.title}
+                class="w-full h-44 object-cover transition-transform duration-300 group-hover:scale-105"
+                width={320}
+                height={180}
+                sizes="320px"
+              />
+            </div>
+            <div class="p-5 flex-grow">
+              <span class="text-xs font-medium text-primary-600 dark:text-primary-400 mb-2 block">
+                <FormattedDate date={post.data.date} />
+              </span>
+              <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{post.data.title}</h3>
             </div>
           </article>
         </a>

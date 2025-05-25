@@ -66,39 +66,41 @@ try {
   <!-- Featured posts section -->
   <section id="featured" class="py-12 mb-16">
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8">Featured Articles</h2>
+      <h2 class="text-3xl font-bold text-gray-900 dark:text-white mb-8 text-center md:text-left">Featured Articles</h2>
       
       <div class="grid md:grid-cols-3 gap-8">
         {featuredPosts.map((post) => {
           const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
           const displayImage = post.data.heroImage || placeholderImageUrl;
           return (
-          <article class="bg-white dark:bg-gray-800 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300">
-            {true && ( // Always render an image, using placeholder if heroImage is missing
-              <a href={`/posts/${post.slug}/`}>
+          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-5px] overflow-hidden">
+            {/* Always render an image, using placeholder if heroImage is missing */}
+            <div class="overflow-hidden">
+              <a href={`/posts/${post.slug}/`} class="no-underline block">
                 <ResponsiveImage
                   src={displayImage}
                   alt={post.data.title}
-                  class="w-full h-48"
-                  width={600}
-                  height={300}
+                  class="w-full h-52 object-cover transition-transform duration-300 hover:scale-105"
+                  width={320}
+                  height={180}
+                  sizes="320px"
                   loading="lazy"
                 />
               </a>
-            )}
+            </div>
             
             <div class="p-6">
               <a 
                 href={`/categories/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`}
-                class="text-xs inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-100 px-2 py-1 rounded-full mb-3"
+                class="text-xs font-medium inline-block bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-100 px-3 py-1 rounded-full mb-4 no-underline hover:bg-primary-200 dark:hover:bg-primary-900 transition-colors"
               >
                 {post.data.category}
               </a>
               
-              <h3 class="text-xl font-bold mb-2">
+              <h3 class="text-xl font-bold mb-3">
                 <a 
                   href={`/posts/${post.slug}/`}
-                  class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400"
+                  class="text-gray-900 dark:text-white hover:text-primary-600 dark:hover:text-primary-400 transition-colors no-underline"
                 >
                   {post.data.title}
                 </a>
@@ -108,9 +110,11 @@ try {
                 {post.data.excerpt}
               </p>
               
-              <div class="flex items-center justify-between text-sm text-gray-500 dark:text-gray-400">
-                <span>By {post.data.author}</span>
-                <FormattedDate date={post.data.date} />
+              <div class="flex items-center justify-between mt-auto pt-3 text-sm border-t border-gray-100 dark:border-gray-700">
+                <span class="font-medium text-gray-700 dark:text-gray-300">By {post.data.author}</span>
+                <span class="text-primary-600 dark:text-primary-400">
+                  <FormattedDate date={post.data.date} />
+                </span>
               </div>
             </div>
           </article>
