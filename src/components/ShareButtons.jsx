@@ -3,26 +3,34 @@
  * Provides social media sharing functionality for blog posts
  */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const ShareButtons = ({ title, url, description, tags = [] }) => {
+const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
   const [copySuccess, setCopySuccess] = useState(false);
+  const [currentUrl, setCurrentUrl] = useState(propsUrl);
+  
+  // Use the browser's current URL if available
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setCurrentUrl(window.location.href);
+    }
+  }, []);
   
   // Generate hashtags for Twitter from post tags
   const hashtags = tags.map(tag => tag.replace(/-/g, '')).join(',');
   
-  // Social media share URLs
+  // Social media share URLs - using the dynamic currentUrl instead of props url
   const socialLinks = {
-    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(url)}&hashtags=${encodeURIComponent(hashtags)}`,
-    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`,
-    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
-    reddit: `https://www.reddit.com/submit?url=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}`
+    twitter: `https://twitter.com/intent/tweet?text=${encodeURIComponent(title)}&url=${encodeURIComponent(currentUrl)}&hashtags=${encodeURIComponent(hashtags)}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(currentUrl)}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(currentUrl)}`,
+    reddit: `https://www.reddit.com/submit?url=${encodeURIComponent(currentUrl)}&title=${encodeURIComponent(title)}`
   };
   
   // Handle copy to clipboard
   const copyToClipboard = async () => {
     try {
-      await navigator.clipboard.writeText(url);
+      await navigator.clipboard.writeText(currentUrl);
       setCopySuccess(true);
       setTimeout(() => setCopySuccess(false), 3000);
     } catch (err) {

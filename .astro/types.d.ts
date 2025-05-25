@@ -185,6 +185,20 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"fundamental-analysis-financial-statements-day-4.mdx": {
+	id: "fundamental-analysis-financial-statements-day-4.mdx";
+  slug: "fundamental-analysis-financial-statements-day-4";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"fundamental-analysis-ratios-valuations-day-5.mdx": {
+	id: "fundamental-analysis-ratios-valuations-day-5.mdx";
+  slug: "fundamental-analysis-ratios-valuations-day-5";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "how-trading-works-indian-stock-market-day-3.mdx": {
 	id: "how-trading-works-indian-stock-market-day-3.mdx";
   slug: "how-trading-works-indian-stock-market-day-3";
