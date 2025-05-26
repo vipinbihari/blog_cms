@@ -185,6 +185,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"day-6-industry-economic-analysis-investing.mdx": {
+	id: "day-6-industry-economic-analysis-investing.mdx";
+  slug: "day-6-industry-economic-analysis-investing";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "fundamental-analysis-financial-statements-day-4.mdx": {
 	id: "fundamental-analysis-financial-statements-day-4.mdx";
   slug: "fundamental-analysis-financial-statements-day-4";

@@ -3,6 +3,7 @@
   position: relative;
   overflow: hidden;
   z-index: 1;
+  background: linear-gradient(to bottom, rgba(16, 185, 129, 0.1), rgba(59, 130, 246, 0.1));
 }
 
 .hero-section::before {
@@ -12,7 +13,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('/images/optimized/stock-market-101-investing-journey-day-1/stock-investment-growth-chart-960.jpg');
+  background-image: url('/images/blog/blog-home-image-960.webp');
   background-size: cover;
   background-position: center;
   opacity: 0.1;
@@ -20,69 +21,103 @@
   animation: pulse 15s infinite alternate;
 }
 
-.hero-section .chart-line {
+/* Water ripple container */
+.water-effect {
   position: absolute;
-  height: 2px;
-  background: linear-gradient(90deg, rgba(16, 185, 129, 0) 0%, rgba(16, 185, 129, 0.7) 50%, rgba(16, 185, 129, 0) 100%);
-  width: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   z-index: -1;
-  opacity: 0.3;
-  transform: translateY(-50%);
-  animation: slide 8s infinite;
+  opacity: 0.6;
 }
 
-.hero-section .chart-line:nth-child(1) {
+/* Individual ripples */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(16, 185, 129, 0.3);
+  transform: scale(0);
+  animation: ripple-effect 6s linear infinite;
+}
+
+.ripple::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background-color: rgba(16, 185, 129, 0.4);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: drop-effect 6s linear infinite;
+}
+
+/* Position ripples at different locations */
+.ripple:nth-child(1) {
   top: 20%;
-  animation-delay: 0s;
+  left: 25%;
+  width: 150px;
+  height: 150px;
 }
 
-.hero-section .chart-line:nth-child(2) {
-  top: 40%;
+.ripple:nth-child(2) {
+  top: 50%;
+  left: 65%;
+  width: 180px;
+  height: 180px;
   animation-delay: 2s;
 }
 
-.hero-section .chart-line:nth-child(3) {
-  top: 60%;
+.ripple:nth-child(3) {
+  top: 70%;
+  left: 30%;
+  width: 120px;
+  height: 120px;
   animation-delay: 4s;
 }
 
-.hero-section .chart-line:nth-child(4) {
-  top: 80%;
-  animation-delay: 6s;
-}
-
-.hero-section .stock-ticker {
-  position: absolute;
-  white-space: nowrap;
-  font-size: 12px;
-  opacity: 0.15;
-  z-index: -1;
-  animation: ticker 30s linear infinite;
-}
-
-.hero-section .stock-ticker:nth-child(5) {
-  top: 15%;
-  animation-duration: 30s;
-}
-
-.hero-section .stock-ticker:nth-child(6) {
+.ripple:nth-child(4) {
   top: 35%;
-  animation-duration: 25s;
-  animation-direction: reverse;
+  left: 80%;
+  width: 100px;
+  height: 100px;
+  animation-delay: 1s;
 }
 
-.hero-section .stock-ticker:nth-child(7) {
-  top: 55%;
-  animation-duration: 35s;
+.ripple:nth-child(5) {
+  top: 80%;
+  left: 75%;
+  width: 130px;
+  height: 130px;
+  animation-delay: 3s;
 }
 
-.hero-section .stock-ticker:nth-child(8) {
-  top: 75%;
-  animation-duration: 28s;
-  animation-direction: reverse;
+.ripple:nth-child(6) {
+  top: 40%;
+  left: 10%;
+  width: 160px;
+  height: 160px;
+  animation-delay: 5s;
 }
 
-/* Animations */
+/* Ripple animation */
+@keyframes ripple-effect {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  40% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* Pulse animation for background */
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -95,34 +130,31 @@
   }
 }
 
-@keyframes slide {
+/* Drop animation */
+@keyframes drop-effect {
   0% {
-    transform: translateX(-100%) translateY(-50%);
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0.8;
   }
   100% {
-    transform: translateX(100%) translateY(-50%);
-  }
-}
-
-@keyframes ticker {
-  0% {
-    transform: translateX(100%);
-  }
-  100% {
-    transform: translateX(-100%);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
   }
 }
 
 /* Dark mode adjustments */
-.dark .hero-section::before {
-  opacity: 0.15;
+.dark .water-effect {
+  opacity: 0.5;
 }
 
-.dark .hero-section .chart-line {
-  background: linear-gradient(90deg, rgba(16, 185, 129, 0) 0%, rgba(16, 185, 129, 0.5) 50%, rgba(16, 185, 129, 0) 100%);
-  opacity: 0.4;
+.dark .ripple {
+  border-color: rgba(16, 185, 129, 0.4);
 }
 
-.dark .hero-section .stock-ticker {
-  opacity: 0.2;
+.dark .ripple::before {
+  background-color: rgba(16, 185, 129, 0.5);
 }
