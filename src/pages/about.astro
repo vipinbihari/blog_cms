@@ -1,0 +1,173 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const title = 'About StockSage';
+const description = 'Learn more about StockSage - your trusted source for expert stock market analysis and investment education.';
+
+const teamMembers = [
+  {
+    name: 'Vipin Bihari',
+    role: 'Founder & Chief Analyst',
+    imageUrl: 'https://placehold.co/400x400?text=VB',
+    bio: 'Vipin is a seasoned financial analyst with over a decade of experience in the stock market. He is passionate about demystifying finance for everyday investors.'
+  },
+  {
+    name: 'Priya Sharma',
+    role: 'Lead Technical Strategist',
+    imageUrl: 'https://placehold.co/400x400?text=PS',
+    bio: 'Priya specializes in technical analysis and chart patterns, helping traders identify market opportunities with precision.'
+  },
+  {
+    name: 'Rajesh Kumar',
+    role: 'Fundamental Research Head',
+    imageUrl: 'https://placehold.co/400x400?text=RK',
+    bio: 'Rajesh dives deep into company fundamentals, providing insightful reports on long-term investment prospects.'
+  }
+];
+
+const values = [
+  {
+    name: 'Accuracy',
+    description: 'We prioritize factual, well-researched information, ensuring our analysis is based on reliable data.',
+    icon: '🎯' // Example icon
+  },
+  {
+    name: 'Clarity',
+    description: 'We explain complex financial concepts in simple, accessible language for investors of all experience levels.',
+    icon: '💡' // Example icon
+  },
+  {
+    name: 'Integrity',
+    description: 'We maintain editorial independence and transparency in all our content and recommendations.',
+    icon: '⚖️' // Example icon
+  },
+  {
+    name: 'Education',
+    description: 'We believe in empowering investors through knowledge, providing resources that help build financial literacy.',
+    icon: '📚' // Example icon
+  }
+];
+--- 
+
+<BaseLayout title={title} description={description}>
+  <div class="bg-gradient-to-b from-primary-50 dark:from-gray-900 to-white dark:to-gray-800">
+    <!-- Hero Section -->
+    <section class="py-16 md:py-24 text-center">
+      <div class="container mx-auto px-6">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
+          Decoding the Market, <span class="text-primary-600 dark:text-primary-400">Empowering You.</span>
+        </h1>
+        <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-8">
+          StockSage is your trusted partner in navigating the complexities of the stock market. We provide expert analysis, educational resources, and actionable insights to help you achieve your financial goals.
+        </p>
+        <a href="/posts" class="bg-primary-600 hover:bg-primary-700 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out transform hover:scale-105">
+          Explore Our Insights
+        </a>
+      </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="py-12 md:py-20 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center md:text-left md:flex items-center gap-8">
+          <div class="md:w-1/3 mb-8 md:mb-0">
+            <img class="rounded-xl shadow-2xl mx-auto md:mx-0" src="https://placehold.co/600x400?text=Our+Mission" alt="Our Mission at StockSage" />
+          </div>
+          <div class="md:w-2/3">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Our Mission</h2>
+            <p class="text-gray-700 dark:text-gray-300 text-lg leading-relaxed">
+              To empower investors of all levels with clear, actionable market insights and comprehensive financial education. We strive to demystify the stock market, making financial literacy accessible and helping individuals make informed investment decisions with confidence.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who We Are Section -->
+    <section class="py-12 md:py-20 bg-primary-50 dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="max-w-4xl mx-auto text-center">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">Who We Are</h2>
+          <p class="text-lg text-gray-700 dark:text-gray-300 leading-relaxed mb-8">
+            Founded in 2023, StockSage is a passionate team of financial analysts, market experts, and educators dedicated to providing high-quality content on Indian and global stock markets. We believe that with the right knowledge and tools, anyone can achieve success in investing.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- What We Offer Section -->
+    <section class="py-12 md:py-20 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">What We Offer</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {[ 
+            { title: 'Technical Analysis', description: 'Detailed chart patterns, indicators, and trading strategies.', icon: '📈' },
+            { title: 'Fundamental Analysis', description: 'Company valuations, financial metrics, and industry trends.', icon: '📊' },
+            { title: 'Market News & Updates', description: 'Timely updates on market movements, economic events, and corporate actions.', icon: '📰' },
+            { title: 'Educational Content', description: 'Comprehensive guides, tutorials, and resources for all investor levels.', icon: '🎓' }
+          ].map(item => (
+            <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300">
+              <div class="text-4xl mb-4">{item.icon}</div>
+              <h3 class="text-xl font-semibold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+              <p class="text-gray-600 dark:text-gray-400">{item.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="py-12 md:py-20 bg-primary-50 dark:bg-gray-900">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Our Core Values</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {values.map(value => (
+            <div class="bg-white dark:bg-gray-800 p-8 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300">
+              <div class="text-5xl mb-6 text-primary-600 dark:text-primary-400">{value.icon}</div>
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-3">{value.name}</h3>
+              <p class="text-gray-600 dark:text-gray-400">{value.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet The Team Section -->
+    <section class="py-12 md:py-20 bg-white dark:bg-gray-800">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Meet The Team</h2>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
+          {teamMembers.map(member => (
+            <div class="bg-gray-50 dark:bg-gray-700 p-8 rounded-xl shadow-xl text-center transform hover:scale-105 transition-transform duration-300">
+              <img class="w-32 h-32 rounded-full mx-auto mb-6 object-cover shadow-md" src={member.imageUrl} alt={member.name} />
+              <h3 class="text-2xl font-semibold text-gray-900 dark:text-white mb-2">{member.name}</h3>
+              <p class="text-primary-600 dark:text-primary-400 font-medium mb-3">{member.role}</p>
+              <p class="text-gray-600 dark:text-gray-400 text-sm">{member.bio}</p>
+              <!-- Add social links here if available -->
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="py-16 md:py-24 bg-gradient-to-r from-primary-600 to-secondary-600 dark:from-primary-700 dark:to-secondary-700">
+      <div class="container mx-auto px-6 text-center">
+        <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">
+          Ready to Elevate Your Investment Journey?
+        </h2>
+        <p class="text-lg text-primary-100 dark:text-primary-200 max-w-2xl mx-auto mb-8">
+          Explore our latest analyses, sign up for our newsletter, or get in touch with our team.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+          <a href="/contact" class="bg-white hover:bg-gray-100 text-primary-600 font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg">
+            Contact Us
+          </a>
+          <a href="/posts" class="border-2 border-white hover:bg-white hover:text-primary-600 text-white font-semibold py-3 px-8 rounded-lg text-lg transition duration-300 ease-in-out shadow-md hover:shadow-lg">
+            Read Our Blog
+          </a>
+        </div>
+      </div>
+    </section>
+  </div>
+</BaseLayout>

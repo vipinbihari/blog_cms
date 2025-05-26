@@ -57,7 +57,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {categories.map(category => (
-          <a href={`/categories/${category.slug}/1`} class="block">
+          <a href={`/categories/${category.slug}/page/1`} class="block">
             <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow p-6">
               <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2">{category.name}</h2>
               <p class="text-primary-600 dark:text-primary-400">

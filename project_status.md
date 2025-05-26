@@ -93,6 +93,8 @@ For consistency, all implemented functions should be documented using the follow
 - `tags/index.astro`: Page listing all available tags with post counts
 - `tags/[tag]/[page].astro`: Paginated tag archives showing posts by tag
 - `404.astro`: Custom error page with suggested posts for better user experience
+- `about.astro`: About page with company information, team member profiles, and mission statement
+- `contact.astro`: Contact page with form, contact information, and FAQs
 - `rss.xml.js`: RSS feed generation with custom XSL styling for better readability
 
 ### CSS and Styling

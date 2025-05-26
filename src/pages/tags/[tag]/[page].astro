@@ -69,29 +69,47 @@ const formattedTag = tag
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {page.data.map(post => {
           const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
-          const displayImage = post.data.heroImage || placeholderImageUrl;
+          // Ensure heroImage path starts with /images/uploads/ for ResponsiveImage to transform it correctly
+          let displayImage = post.data.heroImage || placeholderImageUrl;
+          // If heroImage doesn't start with /images/uploads/ but is a local path, prepend it
+          if (displayImage && !displayImage.startsWith('http') && !displayImage.startsWith('/images/uploads/')) {
+            // Check if it might be a path without the /images/uploads/ prefix
+            if (displayImage.startsWith('/')) {
+              // Try to format it properly for the ResponsiveImage component
+              const parts = displayImage.split('/').filter(p => p);
+              if (parts.length > 0) {
+                // Assume the format is /[category-folder]/[image-name]
+                displayImage = `/images/uploads/${parts.join('/')}`; 
+              }
+            }
+          }
           return (
-          <article class="bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-            <a href={`/posts/${post.slug}/`}>
-              <ResponsiveImage
-                src={displayImage}
-                alt={post.data.title}
-                class="w-full h-48"
-                width={600}
-                height={300}
-                loading="lazy"
-              />
+          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-5px] overflow-hidden">
+            <a href={`/posts/${post.slug}/`} class="no-underline block">
+              <div class="overflow-hidden">
+                <ResponsiveImage
+                  src={displayImage}
+                  alt={post.data.title}
+                  class="w-full h-52 object-cover transition-transform duration-300 hover:scale-105"
+                  width={320}
+                  height={180}
+                  sizes="320px"
+                  loading="lazy"
+                />
+              </div>
               <div class="p-6">
-                <div class="text-xs text-gray-500 dark:text-gray-400 mb-2 flex flex-wrap items-center">
-                  <span class="inline-block bg-primary-100 dark:bg-primary-900 text-primary-800 dark:text-primary-200 rounded-full px-2 py-1 mr-2">
-                    {post.data.category}
-                  </span>
-                  <FormattedDate date={post.data.date} />
-                </div>
-                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-2 line-clamp-2">{post.data.title}</h2>
+                <span class="text-xs font-medium inline-block bg-primary-100 dark:bg-primary-900/50 text-primary-800 dark:text-primary-100 px-3 py-1 rounded-full mb-4">
+                  {post.data.category}
+                </span>
+                
+                <h2 class="text-xl font-bold text-gray-900 dark:text-white mb-3 line-clamp-2 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{post.data.title}</h2>
                 <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{post.data.excerpt}</p>
-                <div class="flex justify-between items-center">
-                  <span class="text-sm text-primary-600 dark:text-primary-400">Read more →</span>
+                
+                <div class="flex justify-between items-center pt-3 border-t border-gray-100 dark:border-gray-700">
+                  <span class="text-sm text-primary-600 dark:text-primary-400 font-medium">Read more →</span>
+                  <span class="text-xs text-gray-500 dark:text-gray-400">
+                    <FormattedDate date={post.data.date} />
+                  </span>
                 </div>
               </div>
             </a>
