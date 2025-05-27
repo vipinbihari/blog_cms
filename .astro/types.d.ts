@@ -220,6 +220,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues.mdx": {
+	id: "nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues.mdx";
+  slug: "nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "stock-market-101-investing-journey-day-1.mdx": {
 	id: "stock-market-101-investing-journey-day-1.mdx";
   slug: "stock-market-101-investing-journey-day-1";
