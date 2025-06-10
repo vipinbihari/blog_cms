@@ -1,24 +1,21 @@
 ---
 import { SEO } from 'astro-seo';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
+import ConfigurableHeader from '../components/layout/ConfigurableHeader.astro';
+import ConfigurableFooter from '../components/layout/ConfigurableFooter.astro';
 import '../styles/global.css';
-
-interface Props {
-  title: string;
-  description?: string;
-  image?: string;
-  canonicalURL?: URL;
-}
+import { BLOG_CONFIG } from '../config/current-config';
+import type { BaseLayoutProps } from '../types/content';
+import { generatePageTitle, generateOgImageUrl } from '../lib/seo/utils';
 
 const {
   title,
-  description = 'Expert analysis and practical lessons on Indian and global stock markets.',
-  image = 'https://placehold.co/1200x630?text=StockSage+Blog',
+  description = BLOG_CONFIG.site.description,
+  image,
   canonicalURL = new URL(Astro.url.pathname, Astro.site),
-} = Astro.props;
+} = Astro.props as BaseLayoutProps;
 
-
+const pageTitle = generatePageTitle(title || BLOG_CONFIG.site.name);
+const ogImage = generateOgImageUrl(title || BLOG_CONFIG.site.name, image);
 ---
 
 <!DOCTYPE html>
@@ -26,17 +23,20 @@ const {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={BLOG_CONFIG.branding.favicon} />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Theme initialization script (must be in head to avoid FOUC) -->
-    <script is:inline>
+    <script is:inline define:vars={{ defaultTheme: BLOG_CONFIG.theme?.defaultTheme || 'light' }}>
       // Check for saved theme preference or use the system preference
       const getThemePreference = () => {
         if (typeof localStorage !== 'undefined' && localStorage.getItem('theme')) {
           return localStorage.getItem('theme');
         }
-        return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        if (defaultTheme === 'system') {
+          return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+        }
+        return defaultTheme;
       };
       
       const theme = getThemePreference();
@@ -46,39 +46,58 @@ const {
     </script>
     
     <SEO
-      title={`${title || "StockSage"} | StockSage`}
-      description={description || "Expert analysis and practical lessons on Indian and global stock markets."}
-      canonical={canonicalURL ? canonicalURL.toString() : "https://stocksage.com"}
+      title={pageTitle}
+      description={description}
+      canonical={canonicalURL ? canonicalURL.toString() : BLOG_CONFIG.site.url}
       openGraph={{
         basic: {
-          title: title || "StockSage",
+          title: title || BLOG_CONFIG.site.name,
           type: "website",
-          image: image || "https://placehold.co/1200x630?text=StockSage+Blog"
+          image: ogImage
         },
+        optional: {
+          description: description,
+          siteName: BLOG_CONFIG.site.name,
+        }
       }}
       twitter={{
         card: 'summary_large_image',
-        title: title || "StockSage",
-        description: description || "Expert analysis and practical lessons on Indian and global stock markets.",
-        image: image || "https://placehold.co/1200x630?text=StockSage+Blog"
+        title: title || BLOG_CONFIG.site.name,
+        description: description,
+        image: ogImage,
+        creator: BLOG_CONFIG.seo.twitterHandle,
       }}
     />
   </head>
   <body class="min-h-screen flex flex-col bg-white dark:bg-gray-900">
-    <Header />
+    <ConfigurableHeader />
     
     <main class="flex-1">
       <slot />
     </main>
     
-    <Footer />
+    <ConfigurableFooter />
     
     <script>
-      // Check for dark mode preference
-      if (localStorage.getItem('theme') === 'dark' || (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-        document.documentElement.classList.add('dark');
+      // Theme toggle functionality
+      function initTheme() {
+        const themeToggle = document.querySelector('[data-theme-toggle]');
+        if (!themeToggle) return;
+        
+        themeToggle.addEventListener('click', () => {
+          const isDark = document.documentElement.classList.contains('dark');
+          const newTheme = isDark ? 'light' : 'dark';
+          
+          document.documentElement.classList.toggle('dark', newTheme === 'dark');
+          localStorage.setItem('theme', newTheme);
+        });
+      }
+      
+      // Initialize when DOM is ready
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initTheme);
       } else {
-        document.documentElement.classList.remove('dark');
+        initTheme();
       }
     </script>
   </body>

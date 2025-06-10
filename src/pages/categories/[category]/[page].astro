@@ -4,6 +4,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import FormattedDate from '../../../components/FormattedDate.astro';
 import PageNavigation from '../../../components/PageNavigation.astro';
 import ResponsiveImage from '../../../components/ResponsiveImage.astro';
+import PostCard from '../../../components/PostCard.astro';
 import { SEO } from 'astro-seo';
 
 export async function getStaticPaths({ paginate }) {
@@ -57,28 +58,9 @@ const formattedCategory = category
       </h1>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {page.data.map(post => {
-          const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
-          // Ensure heroImage path starts with /images/uploads/ for ResponsiveImage to transform it correctly
-          let displayImage = post.data.heroImage || placeholderImageUrl;
-          // If heroImage doesn't start with /images/uploads/ but is a local path, prepend it
-          if (displayImage && !displayImage.startsWith('http') && !displayImage.startsWith('/images/uploads/')) {
-            // Check if it might be a path without the /images/uploads/ prefix
-            if (displayImage.startsWith('/')) {
-              // Try to format it properly for the ResponsiveImage component
-              const parts = displayImage.split('/').filter(p => p);
-              if (parts.length > 0) {
-                // Assume the format is /[category-folder]/[image-name]
-                displayImage = `/images/uploads/${parts.join('/')}`; 
-              }
-            }
-          }
-          return (
-          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 transform hover:translate-y-[-5px] overflow-hidden">
-            <a href={`/posts/${post.slug}/`} class="no-underline block">
-              <div class="overflow-hidden">
-                <ResponsiveImage
-                  src={displayImage}
+        {page.data.map(post => (
+          <PostCard post={post} />
+        ))}
                   alt={post.data.title}
                   class="w-full h-52 object-cover transition-transform duration-300 hover:scale-105"
                   width={320}

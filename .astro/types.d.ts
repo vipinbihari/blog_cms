@@ -185,6 +185,41 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"posts": {
+"dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025.mdx": {
+	id: "dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025.mdx";
+  slug: "dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"dalal-street-rallies-ahead-rbi-policy-sensex-nifty-gain-june-5-2025.mdx": {
+	id: "dalal-street-rallies-ahead-rbi-policy-sensex-nifty-gain-june-5-2025.mdx";
+  slug: "dalal-street-rallies-ahead-rbi-policy-sensex-nifty-gain-june-5-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"dalal-street-rebound-sensex-nifty-june-4-2025.mdx": {
+	id: "dalal-street-rebound-sensex-nifty-june-4-2025.mdx";
+  slug: "dalal-street-rebound-sensex-nifty-june-4-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"dalal-street-seesaws-sensex-nifty-tumble-june-3-2025.mdx": {
+	id: "dalal-street-seesaws-sensex-nifty-tumble-june-3-2025.mdx";
+  slug: "dalal-street-seesaws-sensex-nifty-tumble-june-3-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"dalal-street-tumbles-sensex-nifty-snap-rally-may-27-2025.mdx": {
+	id: "dalal-street-tumbles-sensex-nifty-snap-rally-may-27-2025.mdx";
+  slug: "dalal-street-tumbles-sensex-nifty-snap-rally-may-27-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "day-6-industry-economic-analysis-investing.mdx": {
 	id: "day-6-industry-economic-analysis-investing.mdx";
   slug: "day-6-industry-economic-analysis-investing";
@@ -213,6 +248,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"indian-markets-rebound-us-tariff-ruling-may-29-2025.mdx": {
+	id: "indian-markets-rebound-us-tariff-ruling-may-29-2025.mdx";
+  slug: "indian-markets-rebound-us-tariff-ruling-may-29-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "indian-stock-market-structure-participants-day-2.mdx": {
 	id: "indian-stock-market-structure-participants-day-2.mdx";
   slug: "indian-stock-market-structure-participants-day-2";
@@ -220,9 +262,30 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"itc-bat-stake-sale-market-impact-may-28-2025.mdx": {
+	id: "itc-bat-stake-sale-market-impact-may-28-2025.mdx";
+  slug: "itc-bat-stake-sale-market-impact-may-28-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"metal-stocks-trump-tariff-threat-june-2-2025.mdx": {
+	id: "metal-stocks-trump-tariff-threat-june-2-2025.mdx";
+  slug: "metal-stocks-trump-tariff-threat-june-2-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues.mdx": {
 	id: "nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues.mdx";
   slug: "nifty-crosses-25000-sensex-soars-market-rallies-on-positive-cues";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx": {
+	id: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx";
+  slug: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

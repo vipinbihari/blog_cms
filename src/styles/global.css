@@ -8,24 +8,29 @@
 /* Custom base styles */
 :root {
   --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  --color-text: #0f172a;
-  --color-bg: #ffffff;
-  --color-border: #e2e8f0;
 }
 
-/* Dark mode variables */
-.dark {
-  --color-text: #f8fafc;
-  --color-bg: #111827;
-  --color-border: #334155;
-}
-
-/* Global styles */
+/* Global styles with improved contrast */
 body {
   font-family: var(--font-sans);
-  color: var(--color-text);
-  background-color: var(--color-bg);
-  transition: background-color 0.3s ease;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Ensure proper text contrast */
+html {
+  color-scheme: light dark;
+}
+
+/* Better contrast for light mode */
+html:not(.dark) {
+  --tw-text-opacity: 1;
+  color: rgb(15 23 42 / var(--tw-text-opacity)); /* slate-900 */
+}
+
+/* Better contrast for dark mode */
+html.dark {
+  --tw-text-opacity: 1;
+  color: rgb(248 250 252 / var(--tw-text-opacity)); /* slate-50 */
 }
 
 /* Utility classes */
@@ -56,24 +61,93 @@ html {
   outline-offset: 2px;
 }
 
-/* Prose overrides for dark mode */
+/* Enhanced prose styles for better readability */
+.prose {
+  max-width: none;
+}
+
+/* Light mode prose styles */
+.prose {
+  --tw-prose-body: rgb(51 65 85); /* slate-700 */
+  --tw-prose-headings: rgb(15 23 42); /* slate-900 */
+  --tw-prose-lead: rgb(71 85 105); /* slate-600 */
+  --tw-prose-links: rgb(59 130 246); /* blue-500 */
+  --tw-prose-bold: rgb(15 23 42); /* slate-900 */
+  --tw-prose-counters: rgb(100 116 139); /* slate-500 */
+  --tw-prose-bullets: rgb(148 163 184); /* slate-400 */
+  --tw-prose-hr: rgb(226 232 240); /* slate-200 */
+  --tw-prose-quotes: rgb(71 85 105); /* slate-600 */
+  --tw-prose-quote-borders: rgb(226 232 240); /* slate-200 */
+  --tw-prose-captions: rgb(100 116 139); /* slate-500 */
+  --tw-prose-code: rgb(220 38 127); /* pink-600 */
+  --tw-prose-pre-code: rgb(226 232 240); /* slate-200 */
+  --tw-prose-pre-bg: rgb(15 23 42); /* slate-900 */
+  --tw-prose-th-borders: rgb(226 232 240); /* slate-200 */
+  --tw-prose-td-borders: rgb(226 232 240); /* slate-200 */
+}
+
+/* Dark mode prose overrides with explicit selectors */
 .dark .prose {
-  --tw-prose-body: #f8fafc;
-  --tw-prose-headings: #f8fafc;
-  --tw-prose-lead: #f1f5f9;
-  --tw-prose-links: #7dd3fc;
-  --tw-prose-bold: #f8fafc;
-  --tw-prose-counters: #cbd5e1;
-  --tw-prose-bullets: #cbd5e1;
-  --tw-prose-hr: #334155;
-  --tw-prose-quotes: #f1f5f9;
-  --tw-prose-quote-borders: #475569;
-  --tw-prose-captions: #94a3b8;
-  --tw-prose-code: #f8fafc;
-  --tw-prose-pre-code: #f1f5f9;
-  --tw-prose-pre-bg: #1e293b;
-  --tw-prose-th-borders: #334155;
-  --tw-prose-td-borders: #334155;
+  --tw-prose-body: rgb(203 213 225); /* slate-300 */
+  --tw-prose-headings: rgb(248 250 252); /* slate-50 */
+  --tw-prose-lead: rgb(226 232 240); /* slate-200 */
+  --tw-prose-links: rgb(96 165 250); /* blue-400 */
+  --tw-prose-bold: rgb(248 250 252); /* slate-50 */
+  --tw-prose-counters: rgb(148 163 184); /* slate-400 */
+  --tw-prose-bullets: rgb(100 116 139); /* slate-500 */
+  --tw-prose-hr: rgb(51 65 85); /* slate-600 */
+  --tw-prose-quotes: rgb(226 232 240); /* slate-200 */
+  --tw-prose-quote-borders: rgb(71 85 105); /* slate-600 */
+  --tw-prose-captions: rgb(148 163 184); /* slate-400 */
+  --tw-prose-code: rgb(244 114 182); /* pink-400 */
+  --tw-prose-pre-code: rgb(226 232 240); /* slate-200 */
+  --tw-prose-pre-bg: rgb(15 23 42); /* slate-900 */
+  --tw-prose-th-borders: rgb(51 65 85); /* slate-600 */
+  --tw-prose-td-borders: rgb(51 65 85); /* slate-600 */
+}
+
+/* Explicit dark mode heading styles for better visibility */
+.dark .prose h1,
+.dark .prose h2,
+.dark .prose h3,
+.dark .prose h4,
+.dark .prose h5,
+.dark .prose h6 {
+  color: rgb(248 250 252) !important; /* slate-50 - force high contrast */
+}
+
+/* Explicit dark mode paragraph and text styles */
+.dark .prose p,
+.dark .prose li,
+.dark .prose div {
+  color: rgb(203 213 225) !important; /* slate-300 - good contrast */
+}
+
+/* Dark mode link styles */
+.dark .prose a {
+  color: rgb(96 165 250) !important; /* blue-400 */
+}
+
+.dark .prose a:hover {
+  color: rgb(147 197 253) !important; /* blue-300 */
+}
+
+/* Dark mode strong/bold text */
+.dark .prose strong,
+.dark .prose b {
+  color: rgb(248 250 252) !important; /* slate-50 */
+}
+
+/* Dark mode blockquotes */
+.dark .prose blockquote {
+  color: rgb(226 232 240) !important; /* slate-200 */
+  border-left-color: rgb(71 85 105); /* slate-600 */
+}
+
+/* Dark mode code blocks */
+.dark .prose code {
+  color: rgb(244 114 182) !important; /* pink-400 */
+  background-color: rgb(30 41 59); /* slate-800 */
 }
 
 /* Table responsive styles */
@@ -88,15 +162,24 @@ html {
   border-radius: 0.5rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   font-size: 0.95rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgb(226 232 240); /* slate-200 */
+}
+
+.dark .prose table {
+  border-color: rgb(51 65 85); /* slate-600 */
 }
 
 .prose table thead {
   position: sticky;
   top: 0;
-  background-color: var(--color-bg);
+  background-color: rgb(255 255 255); /* white */
   z-index: 10;
-  border-bottom: 2px solid var(--color-border);
+  border-bottom: 2px solid rgb(226 232 240); /* slate-200 */
+}
+
+.dark .prose table thead {
+  background-color: rgb(17 24 39); /* gray-900 */
+  border-bottom-color: rgb(51 65 85); /* slate-600 */
 }
 
 .prose table th {
@@ -117,7 +200,11 @@ html {
   padding: 0.75rem 1rem;
   min-width: 8rem;
   white-space: nowrap;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgb(226 232 240); /* slate-200 */
+}
+
+.dark .prose table td {
+  border-top-color: rgb(51 65 85); /* slate-600 */
 }
 
 .prose table tr:nth-child(even) {

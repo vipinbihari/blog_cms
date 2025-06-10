@@ -4,30 +4,12 @@
  * Displays a list of posts related to the current post
  */
 
-import FormattedDate from './FormattedDate.astro';
-import ResponsiveImage from './ResponsiveImage.astro';
-
-interface PostFrontmatter {
-  title: string;
-  slug: string;
-  date: Date;
-  excerpt: string;
-  tags: string[];
-  category: string;
-  author: string;
-  heroImage: string;
-}
-
-type Post = {
-  id: string;
-  slug: string;
-  body: string;
-  collection: 'posts';
-  data: PostFrontmatter;
-};
+import type { BlogPost } from '../types/content';
+import PostCard from './PostCard.astro';
+// FormattedDate and ResponsiveImage are now used within PostCard
 
 interface Props {
-  posts: Post[];
+  posts: BlogPost[];
   title?: string;
 }
 
@@ -42,32 +24,11 @@ const {
     <h2 class="text-2xl font-bold mb-8 text-center md:text-left">{title}</h2>
     
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {posts.map(post => {
-        const placeholderImageUrl = `https://placehold.co/400x200?text=${encodeURIComponent(post.data.title.replace(/\s+/g, '+'))}`;
-        const displayImage = post.data.heroImage || placeholderImageUrl;
-        return (
-        <a href={`/posts/${post.slug}/`} class="group no-underline">
-          <article class="bg-white dark:bg-gray-800 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 h-full flex flex-col transform hover:translate-y-[-5px]">
-            {/* Force 320px resolution by explicitly setting sizes and passing specific width */}
-            <div class="overflow-hidden rounded-t-xl">
-              <ResponsiveImage 
-                src={displayImage} 
-                alt={post.data.title}
-                class="w-full h-44 object-cover transition-transform duration-300 group-hover:scale-105"
-                width={320}
-                height={180}
-                sizes="320px"
-              />
-            </div>
-            <div class="p-5 flex-grow">
-              <span class="text-xs font-medium text-primary-600 dark:text-primary-400 mb-2 block">
-                <FormattedDate date={post.data.date} />
-              </span>
-              <h3 class="text-lg font-bold mb-2 text-gray-800 dark:text-gray-100 group-hover:text-primary-600 dark:group-hover:text-primary-400 transition-colors">{post.data.title}</h3>
-            </div>
-          </article>
-        </a>
-      )})}
+      {posts.map(post => (
+        <div class="not-prose h-full">
+          <PostCard post={post} />
+        </div>
+      ))}
     </div>
   </div>
 )}

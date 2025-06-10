@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { SEO } from 'astro-seo';
+import { BLOG_CONFIG } from '../../config/current-config';
 
 // Initialize empty categories
 let categories = [];
@@ -37,14 +38,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <BaseLayout>
   <SEO
     slot="seo"
-    title="Categories | StockSage"
-    description="Browse all article categories on StockSage, including technical analysis, fundamental analysis, market news, and more."
+    title={`Categories | ${BLOG_CONFIG.site.name}`}
+    description={`Browse all article categories on ${BLOG_CONFIG.site.name}, exploring various topics and themes.`}
     canonical={canonicalURL}
     openGraph={{
       basic: {
-        title: "Categories | StockSage",
+        title: `Categories | ${BLOG_CONFIG.site.name}`,
         type: 'website',
-        image: '/og-image.jpg',
+        image: BLOG_CONFIG.branding.ogImage,
       }
     }}
   />

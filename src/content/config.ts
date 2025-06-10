@@ -2,7 +2,6 @@ import { defineCollection, z } from 'astro:content';
 
 const postsCollection = defineCollection({
   type: 'content',
-  extensions: ['.md', '.mdx'],
   schema: z.object({
     title: z.string(),
     date: z.date(),
@@ -11,6 +10,7 @@ const postsCollection = defineCollection({
     category: z.string(),
     author: z.string(),
     heroImage: z.string(),
+    featured: z.boolean().optional(),
     quiz: z.array(
       z.object({
         q: z.string(),

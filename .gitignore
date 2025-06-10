@@ -6,3 +6,5 @@ node_modules/
 prd.md
 checkstatus.md
 dist/
+uploads/
+optimized/
