@@ -227,6 +227,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"day-7-technical-analysis-part-1-chart-types-trend-basics.mdx": {
+	id: "day-7-technical-analysis-part-1-chart-types-trend-basics.mdx";
+  slug: "day-7-technical-analysis-part-1-chart-types-trend-basics";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "fundamental-analysis-financial-statements-day-4.mdx": {
 	id: "fundamental-analysis-financial-statements-day-4.mdx";
   slug: "fundamental-analysis-financial-statements-day-4";
@@ -283,9 +290,23 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"nifty-sensex-rally-june-9-2025-rbi-global-cues.mdx": {
+	id: "nifty-sensex-rally-june-9-2025-rbi-global-cues.mdx";
+  slug: "nifty-sensex-rally-june-9-2025-rbi-global-cues";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx": {
 	id: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx";
   slug: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sensex-nifty-flat-volatile-trade-june-10-2025.mdx": {
+	id: "sensex-nifty-flat-volatile-trade-june-10-2025.mdx";
+  slug: "sensex-nifty-flat-volatile-trade-june-10-2025";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
