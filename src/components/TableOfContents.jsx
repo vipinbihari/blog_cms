@@ -3,19 +3,18 @@
  * Automatically generates a navigation structure for long-form blog posts
  */
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const TableOfContents = () => {
+const TableOfContents = ({ selector = 'article .content', minHeadings = 3 }) => {
   const [headings, setHeadings] = useState([]);
   const [activeId, setActiveId] = useState('');
   const [isVisible, setIsVisible] = useState(false);
-  const tocRef = useRef(null);
   
   // Generate TOC on component mount
   useEffect(() => {
     // Find all h2 and h3 elements ONLY in the main blog content
     // Using a specific selector that targets only the content div where MDX is rendered
-    const contentDiv = document.querySelector('article .content');
+    const contentDiv = document.querySelector(selector);
     if (!contentDiv) {
       console.log('Content div not found for Table of Contents');
       return;
@@ -25,7 +24,7 @@ const TableOfContents = () => {
     const headingElements = Array.from(contentDiv.querySelectorAll('h2, h3'));
     
     // Skip if there are too few headings
-    if (headingElements.length < 3) {
+    if (headingElements.length < minHeadings) {
       setIsVisible(false);
       return;
     }
@@ -45,14 +44,14 @@ const TableOfContents = () => {
     }));
     
     setHeadings(headingsData);
-    setIsVisible(headingsData.length >= 3); // Only show TOC if there are enough headings
+    setIsVisible(headingsData.length >= minHeadings); // Only show TOC if there are enough headings
   }, []);
   
   // Track active heading when scrolling
   useEffect(() => {
     // Wait for the DOM to be fully updated
     setTimeout(() => {
-      const headingElements = Array.from(document.querySelectorAll('article .content h2, article .content h3'));
+      const headingElements = Array.from(document.querySelectorAll(`${selector} h2, ${selector} h3`));
       if (headingElements.length === 0) {
         console.log('No headings found for Table of Contents');
         return;
@@ -60,16 +59,23 @@ const TableOfContents = () => {
       
       console.log('Found headings for TOC:', headingElements.length);
       
+      let ticking = false;
       const handleScroll = () => {
-        const scrollPosition = window.scrollY + 100; // 100px offset for better UX
-        
-        // Find the current heading
-        for (let i = headingElements.length - 1; i >= 0; i--) {
-          const heading = headingElements[i];
-          if (heading.offsetTop <= scrollPosition) {
-            setActiveId(heading.id);
-            break;
-          }
+        if (!ticking) {
+          window.requestAnimationFrame(() => {
+            const scrollPosition = window.scrollY + 100; // 100px offset for better UX
+            
+            // Find the current heading
+            for (let i = headingElements.length - 1; i >= 0; i--) {
+              const heading = headingElements[i];
+              if (heading.offsetTop <= scrollPosition) {
+                setActiveId(heading.id);
+                break;
+              }
+            }
+            ticking = false;
+          });
+          ticking = true;
         }
       };
       
@@ -78,7 +84,7 @@ const TableOfContents = () => {
       
       return () => window.removeEventListener('scroll', handleScroll);
     }, 500); // Small delay to ensure content has rendered
-  }, [headings]);
+  }, [headings, selector]);
   
   // Don't render if not enough headings
   if (!isVisible) {
@@ -87,7 +93,6 @@ const TableOfContents = () => {
   
   return (
     <div 
-      ref={tocRef}
       className="bg-gray-50 dark:bg-gray-800 p-4 rounded-lg sticky top-20"
       style={{ maxHeight: 'calc(100vh - 140px)', overflowY: 'auto' }}
     >

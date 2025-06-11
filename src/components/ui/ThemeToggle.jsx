@@ -5,11 +5,12 @@ import React, { useState, useEffect } from 'react';
  * Uses localStorage to persist user preference
  * @returns {JSX.Element} - Theme toggle button component
  */
-const ThemeToggle = () => {
+const ThemeToggle = ({ enabled = true }) => {
   const [isDark, setIsDark] = useState(false);
 
-  // Initialize theme based on localStorage or user preference
+  // Initialize theme based on localStorage or user preference once
   useEffect(() => {
+    if (!enabled) return;
     // Check if theme is stored in localStorage
     const storedTheme = localStorage.getItem('theme');
     
@@ -23,7 +24,7 @@ const ThemeToggle = () => {
       setIsDark(prefersDark);
       document.documentElement.classList.toggle('dark', prefersDark);
     }
-  }, []);
+  }, [enabled]);
 
   /**
    * Toggle between light and dark theme
@@ -42,6 +43,8 @@ const ThemeToggle = () => {
     // Store preference
     localStorage.setItem('theme', newTheme);
   };
+
+  if (!enabled) return null;
 
   return (
     <button

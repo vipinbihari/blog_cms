@@ -10,6 +10,7 @@ const postsCollection = defineCollection({
     category: z.string(),
     author: z.string(),
     heroImage: z.string(),
+    heroImageAlt: z.string().optional(),
     featured: z.boolean().optional(),
     quiz: z.array(
       z.object({

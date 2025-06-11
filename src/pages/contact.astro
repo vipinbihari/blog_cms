@@ -2,12 +2,8 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { CURRENT_CONFIG } from '../config/current-config';
 
-// Defensive fallback in case CURRENT_CONFIG is undefined
-const safeConfig = typeof CURRENT_CONFIG !== 'undefined' && CURRENT_CONFIG ? CURRENT_CONFIG : {};
-
-// Use contact page config from the current configuration
-// Fall back to defaults if not available
-const contactConfig = safeConfig.contactPage || {
+// Use contact page config from the current configuration, with fallbacks
+const contactConfig = CURRENT_CONFIG?.contactPage || {
 
   title: 'Contact Us',
   description: 'Get in touch with our team. We welcome your questions, feedback, and inquiries.',
@@ -57,10 +53,10 @@ const contactMethods = [
     <section class="py-16 md:py-24 text-center">
       <div class="container mx-auto px-6">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 dark:text-white mb-6">
-          Get In Touch
+          {title}
         </h1>
         <p class="text-lg md:text-xl text-gray-700 dark:text-gray-300 max-w-3xl mx-auto">
-          We're here to help and answer any question you might have. We look forward to hearing from you!
+          {description}
         </p>
       </div>
     </section>
@@ -176,27 +172,21 @@ const contactMethods = [
 </BaseLayout>
 
 <script>
-  const form = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
+  if (typeof window !== 'undefined') {
+    const form = document.getElementById('contactForm') as HTMLFormElement;
+    const formStatus = document.getElementById('formStatus');
 
-  form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    formStatus.textContent = 'Sending...';
-    formStatus.className = 'mt-4 text-center text-blue-600 dark:text-blue-400';
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      formStatus.textContent = 'Sending...';
+      formStatus.className = 'mt-4 text-center text-blue-600 dark:text-blue-400';
 
-    // Simulate form submission
-    // In a real application, you would send data to a server here
-    // For example: const response = await fetch('/api/contact', { method: 'POST', body: new FormData(form) });
-    
-    setTimeout(() => {
-      // Simulate success
-      formStatus.textContent = 'Message sent successfully! We will get back to you soon.';
-      formStatus.className = 'mt-4 text-center text-green-600 dark:text-green-400';
-      form.reset();
-      
-      // Simulate error (uncomment to test error state)
-      // formStatus.textContent = 'An error occurred. Please try again.';
-      // formStatus.className = 'mt-4 text-center text-red-600 dark:text-red-400';
-    }, 2000);
-  });
+      // Simulate form submission (replace with real API call if needed)
+      setTimeout(() => {
+        formStatus.textContent = 'Message sent successfully! We will get back to you soon.';
+        formStatus.className = 'mt-4 text-center text-green-600 dark:text-green-400';
+        form.reset();
+      }, 2000);
+    });
+  }
 </script>

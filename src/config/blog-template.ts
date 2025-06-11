@@ -82,6 +82,10 @@ export interface BlogConfig {
       lg: string;
       xl: string;
     };
+    /**
+     * The default theme for the site (e.g., 'light', 'dark', or 'system').
+     */
+    defaultTheme?: 'light' | 'dark' | 'system';
   };
   
   // Layout & Navigation
@@ -132,6 +136,7 @@ export interface BlogConfig {
       locale: string;
       [key: string]: any;
     };
+    twitterHandle?: string;
   };
   
   // Niche-specific configuration

@@ -3,18 +3,15 @@
  * Provides social media sharing functionality for blog posts
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
   const [copySuccess, setCopySuccess] = useState(false);
-  const [currentUrl, setCurrentUrl] = useState(propsUrl);
-  
-  // Use the browser's current URL if available
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setCurrentUrl(window.location.href);
-    }
-  }, []);
+  const [currentUrl] = useState(() => {
+    if (propsUrl) return propsUrl;
+    if (typeof window !== 'undefined') return window.location.href;
+    return '';
+  });
   
   // Generate hashtags for Twitter from post tags
   const hashtags = tags.map(tag => tag.replace(/-/g, '')).join(',');

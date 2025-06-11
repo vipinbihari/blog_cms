@@ -14,6 +14,7 @@ interface Props {
   width?: number;
   height?: number;
   quality?: number;
+  densities?: number[];
 }
 
 const {
@@ -24,7 +25,8 @@ const {
   loading = 'lazy',
   width = 800, // Default width if not specified
   height,
-  quality = 80
+  quality = 80,
+  densities = [1] // Default to [1] if not specified
 } = Astro.props;
 
 // Determine if image is external (from a URL) or local

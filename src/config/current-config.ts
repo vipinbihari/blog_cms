@@ -13,9 +13,9 @@ const NICHE_PRESETS = {
   finance: {
     navigation: [
       { label: 'Home', href: '/' },
-      { label: 'Market News', href: '/categories/market-news' },
-      { label: 'Technical Analysis', href: '/categories/technical-analysis' },
-      { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis' },
+      { label: 'Market News', href: '/categories/market-news/page/1' },
+      { label: 'Technical Analysis', href: '/categories/technical-analysis/page/1' },
+      { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis/page/1' },
       { label: 'About', href: '/about' },
     ]
   }
@@ -97,9 +97,9 @@ export const BLOG_CONFIG: BlogConfig = {
       {
         title: 'Categories',
         links: [
-          { label: 'Technical Analysis', href: '/categories/technical-analysis' },
-          { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis' },
-          { label: 'Market News', href: '/categories/market-news' }
+          { label: 'Technical Analysis', href: '/categories/technical-analysis/page/1' },
+          { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis/page/1' },
+          { label: 'Market News', href: '/categories/market-news/page/1' }
         ],
       },
       {
@@ -148,7 +148,7 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Footer Configuration
   footer: {
-    copyright: '© 2025 StockSage. All rights reserved.'
+    copyright: ' 2025 StockSage. All rights reserved.'
   },
   
 
@@ -206,6 +206,7 @@ export const BLOG_CONFIG: BlogConfig = {
     defaultTitle: 'StockSage',
     titleTemplate: '%s | StockSage',
     robotsDirectives: ['index,follow'],
+    twitterHandle: '@stocksage',
   },
   
   // Niche-specific configuration is defined further down
@@ -298,7 +299,8 @@ export const BLOG_CONFIG: BlogConfig = {
     analytics: {
       provider: 'Google Analytics'
     },
-    darkMode: true
+    darkMode: true,
+    sitemap: true // Added sitemap feature
   },
 
   // Social Media Links
@@ -430,6 +432,36 @@ export const BLOG_CONFIG: BlogConfig = {
           title: 'Updates to Disclaimer',
           content: 'We reserve the right to update or modify this disclaimer at any time without prior notice. By continuing to use our website, you accept and agree to be bound by the current version of this disclaimer.'
         }
+      ]
+    }
+  },
+
+  // Contact Page Configuration
+  contactPage: {
+    title: 'Contact Us',
+    description: 'Get in touch with our team. We welcome your questions, feedback, and inquiries.',
+    faqs: [
+      {
+        question: 'How can I contact StockSage?',
+        answer: 'You can reach us via email, phone, or our contact form. All details are listed on this page.'
+      },
+      {
+        question: 'What is your response time?',
+        answer: 'We aim to respond to all inquiries within 1-2 business days.'
+      },
+      {
+        question: 'Can I schedule a call?',
+        answer: 'Yes, please mention your preferred time in the message and we will get back to you to confirm.'
+      }
+    ],
+    email: { name: 'Email Us', address: 'admin@apanaresult.com' },
+    phone: { name: 'Call Us', number: '+91 8127411373', formattedNumber: '+91 8127411373' },
+    address: { name: 'Our Office', location: '168, Kandhi, Kanpur Dehat, Uttar Pradesh, India' },
+    businessHours: {
+      title: 'Business Hours',
+      hours: [
+        { days: 'Monday - Friday', hours: '9:00 AM - 6:00 PM IST' },
+        { days: 'Saturday - Sunday', hours: 'Closed' },
       ]
     }
   }

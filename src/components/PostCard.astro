@@ -41,8 +41,8 @@ function formatDate(date: Date): string {
   <div class="p-5 sm:p-6 flex flex-col flex-grow">
     <div class="mb-3">
       <a 
-        href={`/categories/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/`} 
-        class="inline-block bg-primary-100 dark:bg-primary-700 text-primary-700 dark:text-primary-100 text-xs font-semibold px-3 py-1 rounded-full hover:bg-primary-200 dark:hover:bg-primary-600 transition-colors duration-300"
+        href={`/categories/${post.data.category.toLowerCase().replace(/\s+/g, '-')}/page/1`} 
+        class="inline-block bg-primary-50 dark:bg-primary-800 text-primary-800 dark:text-primary-50 text-xs font-semibold px-3 py-1 rounded-full hover:bg-primary-100 dark:hover:bg-primary-700 transition-colors duration-300"
       >
         {post.data.category}
       </a>

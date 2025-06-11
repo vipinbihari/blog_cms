@@ -1,7 +1,7 @@
 // Content utilities
 export * from './content/queries';
+export { getSuggestedPosts, getPostsFromSameCategory, getPostsWithSimilarTags } from './content/related';
 export * from './content/search';
-export * from './content/related';
 
 // SEO utilities
 export * from './seo/utils';
