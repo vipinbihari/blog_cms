@@ -22,16 +22,18 @@ const NICHE_PRESETS = {
 };
 
 // Current active configuration
+const siteName = 'StockSage';
+
 export const BLOG_CONFIG: BlogConfig = {
 
   // Site Identity
   site: {
-    name: 'StockSage',
+    name: siteName,
     tagline: 'Expert Analysis & Investment Education',
     description: 'Expert analysis and practical lessons on Indian and global stock markets.',
-    url: 'https://stocksage.apanaresult.com/',
+    url: `https://${siteName.toLowerCase().replace(/\s+/g, '')}.apanaresult.com`,
     author: 'Vipin Bihari',
-    email: 'contact@stocksage.com',
+    email: `contact@${siteName.toLowerCase().replace(/\s+/g, '')}.com`,
     language: 'en',
     locale: 'en-US',
   },
@@ -41,7 +43,7 @@ export const BLOG_CONFIG: BlogConfig = {
     // logo: {
     //   light: '/images/logo-light.svg',
     //   dark: '/images/logo-dark.svg', 
-    //   alt: 'StockSage Logo',
+    //   alt: `${siteName} Logo`,
     //   width: 180,
     //   height: 40,
     // },
@@ -86,6 +88,19 @@ export const BLOG_CONFIG: BlogConfig = {
     comments: true,
     commentsProvider: 'disqus',
     latestPostsOnHomepage: 3, // Number of latest posts to show on the homepage
+    heroConfig: {
+      title: `Welcome to ${siteName}`,
+      subtitle: 'Discover insightful articles, tutorials, and resources. Explore the latest trends and expert opinions.',
+      ctaButton1: { text: 'Explore Articles', url: '/posts/page/1' },
+      ctaButton2: { text: 'About Us', url: '/about' },
+      // Optional: Add image configuration if needed
+      // image: { 
+      //   src: '/images/default-hero.jpg', 
+      //   alt: 'Hero background image',
+      //   width: 1920,
+      //   height: 1080
+      // }
+    }
   },
   
   // Navigation Configuration
@@ -125,22 +140,22 @@ export const BLOG_CONFIG: BlogConfig = {
     social: [
       {
         platform: 'twitter',
-        url: 'https://twitter.com/stocksage',
+        url: `https://twitter.com/${siteName.toLowerCase().replace(/\s+/g, '')}`,
         label: 'Follow us on Twitter',
       },
       {
         platform: 'linkedin',
-        url: 'https://linkedin.com/company/stocksage',
+        url: `https://linkedin.com/company/${siteName.toLowerCase().replace(/\s+/g, '')}`,
         label: 'Connect on LinkedIn',
       },
       {
         platform: 'facebook',
-        url: 'https://facebook.com/stocksage',
+        url: `https://facebook.com/${siteName.toLowerCase().replace(/\s+/g, '')}`,
         label: 'Like us on Facebook',
       },
       {
         platform: 'youtube',
-        url: 'https://youtube.com/c/stocksage',
+        url: `https://youtube.com/c/${siteName.toLowerCase().replace(/\s+/g, '')}`,
         label: 'Subscribe on YouTube',
       },
     ]
@@ -148,7 +163,7 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Footer Configuration
   footer: {
-    copyright: ' 2025 StockSage. All rights reserved.'
+    copyright: ` 2025 ${siteName}. All rights reserved.`
   },
   
 
@@ -203,19 +218,19 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // SEO Configuration
   seo: {
-    defaultTitle: 'StockSage',
-    titleTemplate: '%s | StockSage',
+    defaultTitle: siteName,
+    titleTemplate: `%s | ${siteName}`,
     robotsDirectives: ['index,follow'],
-    twitterHandle: '@stocksage',
+    twitterHandle: `@${siteName.toLowerCase().replace(/\s+/g, '')}`,
   },
   
   // Niche-specific configuration is defined further down
   aboutPage: {
-    title: 'About StockSage',
-    description: 'Learn more about StockSage - your trusted source for expert stock market analysis and investment education.',
+    title: `About ${siteName}`,
+    description: `Learn more about ${siteName} - your trusted source for expert stock market analysis and investment education.`,
     hero: {
       headline: "Decoding the Market, <span class='text-primary-600 dark:text-primary-400'>Empowering You.</span>",
-      subheadline: 'StockSage is your trusted partner in navigating the complexities of the stock market. We provide expert analysis, educational resources, and actionable insights to help you achieve your financial goals.',
+      subheadline: `${siteName} is your trusted partner in navigating the complexities of the stock market. We provide expert analysis, educational resources, and actionable insights to help you achieve your financial goals.`,
       ctaButton: {
         text: 'Explore Our Insights',
         href: '/posts',
@@ -226,11 +241,11 @@ export const BLOG_CONFIG: BlogConfig = {
       title: 'Our Mission',
       text: 'To empower investors of all levels with clear, actionable market insights and comprehensive financial education. We strive to demystify the stock market, making financial literacy accessible and helping individuals make informed investment decisions with confidence.',
       imageUrl: 'images/mission.png',
-      imageAlt: 'Our Mission at StockSage'
+      imageAlt: `Our Mission at ${siteName}`
     },
     whoWeAre: {
       title: 'Who We Are',
-      content: 'Founded in 2023, StockSage is a passionate team of financial analysts, market experts, and educators dedicated to providing high-quality content on Indian and global stock markets. We believe that with the right knowledge and tools, anyone can achieve success in investing.'
+      content: `Founded in 2023, ${siteName} is a passionate team of financial analysts, market experts, and educators dedicated to providing high-quality content on Indian and global stock markets. We believe that with the right knowledge and tools, anyone can achieve success in investing.`
     },
     whatWeOffer: {
       title: 'What We Offer',
@@ -314,7 +329,7 @@ export const BLOG_CONFIG: BlogConfig = {
       sections: [
         {
           title: 'Introduction',
-          content: 'Welcome to StockSage. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you visit our website or use our services.'
+          content: `Welcome to ${siteName}. We respect your privacy and are committed to protecting your personal data. This privacy policy explains how we collect, use, and protect your information when you visit our website or use our services.`
         },
         {
           title: 'Information We Collect',
@@ -346,7 +361,7 @@ export const BLOG_CONFIG: BlogConfig = {
         },
         {
           title: 'Contact Information',
-          content: 'If you have questions or concerns about our privacy policy or practices, please contact us at privacy@stocksage.com.'
+          content: `If you have questions or concerns about our privacy policy or practices, please contact us at privacy@${siteName.toLowerCase().replace(/\s+/g, '')}.com.`
         }
       ]
     },
@@ -356,15 +371,15 @@ export const BLOG_CONFIG: BlogConfig = {
       sections: [
         {
           title: 'Agreement to Terms',
-          content: 'By accessing and using StockSage, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using this site.'
+          content: `By accessing and using ${siteName}, you agree to be bound by these Terms of Service, all applicable laws and regulations, and agree that you are responsible for compliance with any applicable local laws. If you do not agree with any of these terms, you are prohibited from using this site.`
         },
         {
           title: 'Use License',
-          content: 'Permission is granted to temporarily access the materials on StockSage for personal, non-commercial viewing only. This is the grant of a license, not a transfer of title. Under this license, you may not: modify or copy the materials; use the materials for any commercial purpose; attempt to decompile or reverse engineer any software contained on the site; remove any copyright or other proprietary notations; or transfer the materials to another person or "mirror" the materials on any other server.'
+          content: `Permission is granted to temporarily access the materials on ${siteName} for personal, non-commercial viewing only. This is the grant of a license, not a transfer of title. Under this license, you may not: modify or copy the materials; use the materials for any commercial purpose; attempt to decompile or reverse engineer any software contained on the site; remove any copyright or other proprietary notations; or transfer the materials to another person or 'mirror' the materials on any other server.`
         },
         {
           title: 'Investment Disclaimer',
-          content: 'The content provided on StockSage is for informational purposes only and does not constitute financial advice, investment advice, or any other type of advice. We do not recommend that any specific security, portfolio of securities, transaction, or investment strategy is suitable for any specific person. You understand that all investments involve risk, and the past performance of a security, industry, sector, market, financial product, trading strategy, or individual\'s trading does not guarantee future results or returns.'
+          content: `The content provided on ${siteName} is for informational purposes only and does not constitute financial advice, investment advice, or any other type of advice. We do not recommend that any specific security, portfolio of securities, transaction, or investment strategy is suitable for any specific person. You understand that all investments involve risk, and the past performance of a security, industry, sector, market, financial product, trading strategy, or individual's trading does not guarantee future results or returns.`
         },
         {
           title: 'User Content',
@@ -372,15 +387,15 @@ export const BLOG_CONFIG: BlogConfig = {
         },
         {
           title: 'Accuracy of Materials',
-          content: 'The materials appearing on StockSage could include technical, typographical, or photographic errors. We do not warrant that any of the materials on the website are accurate, complete, or current. We may make changes to the materials at any time without notice, and we do not commit to updating the materials.'
+          content: `The materials appearing on ${siteName} could include technical, typographical, or photographic errors. We do not warrant that any of the materials on the website are accurate, complete, or current. We may make changes to the materials at any time without notice, and we do not commit to updating the materials.`
         },
         {
           title: 'Links to Third-Party Websites',
-          content: 'StockSage may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.'
+          content: `${siteName} may contain links to external websites that are not provided or maintained by us. We do not guarantee the accuracy, relevance, timeliness, or completeness of any information on these external websites.`
         },
         {
           title: 'Limitation of Liability',
-          content: 'In no event shall StockSage or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on the website, even if we or an authorized representative has been notified orally or in writing of the possibility of such damage.'
+          content: `In no event shall ${siteName} or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the.materials on the website, even if we or an authorized representative has been notified orally or in writing of the possibility of such damage.`
         },
         {
           title: 'Governing Law',
@@ -398,11 +413,11 @@ export const BLOG_CONFIG: BlogConfig = {
       sections: [
         {
           title: 'Financial Information Disclaimer',
-          content: 'The information provided on StockSage is for general informational purposes only and should not be considered as financial advice. We are not certified financial planners, registered investment advisors, or licensed brokers. Before making any investment decisions, we strongly recommend consulting with a qualified financial advisor who can provide personalized advice tailored to your specific financial situation, investment goals, and risk tolerance.'
+          content: `The information provided on ${siteName} is for general informational purposes only and should not be considered as financial advice. We are not certified financial planners, registered investment advisors, or licensed brokers. Before making any investment decisions, we strongly recommend consulting with a qualified financial advisor who can provide personalized advice tailored to your specific financial situation, investment goals, and risk tolerance.`
         },
         {
           title: 'No Investment Recommendations',
-          content: 'Nothing published on StockSage should be interpreted as a recommendation to buy, sell, or hold any particular security or investment product. The content we provide reflects our opinions and analyses based on publicly available information, but we make no representations or warranties about the accuracy or completeness of such information.'
+          content: `Nothing published on ${siteName} should be interpreted as a recommendation to buy, sell, or hold any particular security or investment product. The content we provide reflects our opinions and analyses based on publicly available information, but we make no representations or warranties about the accuracy or completeness of such information.`
         },
         {
           title: 'Investment Risks',
@@ -414,7 +429,7 @@ export const BLOG_CONFIG: BlogConfig = {
         },
         {
           title: 'Tax Considerations',
-          content: 'The information provided on StockSage does not address specific tax implications of any investments or strategies. Tax laws vary by jurisdiction and are subject to change. We strongly recommend consulting with a qualified tax professional regarding the tax consequences of any investment decisions.'
+          content: `The information provided on ${siteName} does not address specific tax implications of any investments or strategies. Tax laws vary by jurisdiction and are subject to change. We strongly recommend consulting with a qualified tax professional regarding the tax consequences of any investment decisions.`
         },
         {
           title: 'Educational Content',
@@ -422,11 +437,11 @@ export const BLOG_CONFIG: BlogConfig = {
         },
         {
           title: 'Affiliate Disclosure',
-          content: 'StockSage may receive compensation from affiliate partners for products or services mentioned on our website. These partnerships help support our content creation efforts, but they do not influence our opinions or evaluations. We disclose such relationships when applicable.'
+          content: `${siteName} may receive compensation from affiliate partners for products or services mentioned on our website. These partnerships help support our content creation efforts, but they do not influence our opinions or evaluations. We disclose such relationships when applicable.`
         },
         {
           title: 'No Fiduciary Relationship',
-          content: 'By using StockSage, you acknowledge that no fiduciary relationship is created between you and our company or its contributors. We are not acting as your agent or advisor, and we have no obligation to prioritize your interests over our own.'
+          content: `By using ${siteName}, you acknowledge that no fiduciary relationship is created between you and our company or its contributors. We are not acting as your agent or advisor, and we have no obligation to prioritize your interests over our own.`
         },
         {
           title: 'Updates to Disclaimer',
@@ -442,7 +457,7 @@ export const BLOG_CONFIG: BlogConfig = {
     description: 'Get in touch with our team. We welcome your questions, feedback, and inquiries.',
     faqs: [
       {
-        question: 'How can I contact StockSage?',
+        question: `How can I contact ${siteName}?`,
         answer: 'You can reach us via email, phone, or our contact form. All details are listed on this page.'
       },
       {

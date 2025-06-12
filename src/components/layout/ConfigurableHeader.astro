@@ -3,6 +3,7 @@ import { BLOG_CONFIG } from '../../config/current-config';
 import ThemeToggle from '../ui/ThemeToggle';
 import Logo from '../ui/Logo.astro';
 import Navigation from '../ui/Navigation.astro';
+import SearchBar from '../ui/SearchBar.jsx';
 
 const { site, branding, navigation, features } = BLOG_CONFIG;
 ---
@@ -97,6 +98,8 @@ const { site, branding, navigation, features } = BLOG_CONFIG;
           <ThemeToggle enabled={features.darkMode} client:load />
         )}
         
+        <!-- Search Bar (desktop) -->
+        <SearchBar client:load />
         
         <!-- Mobile Menu Button -->
         <button 

@@ -15,6 +15,25 @@ export interface FeaturesConfig {
   sitemap?: boolean;
 }
 
+export interface HeroConfigImage {
+  src: string;
+  alt: string;
+}
+
+export interface HeroCtaButton {
+  text: string;
+  url: string;
+}
+
+export interface HeroConfig {
+  title?: string;
+  subtitle?: string;
+  ctaButton1?: HeroCtaButton;
+  ctaButton2?: HeroCtaButton;
+  image?: HeroConfigImage;
+  showImage?: boolean;
+}
+
 export interface BlogConfig {
   // Site Identity
   site: {
@@ -95,6 +114,7 @@ export interface BlogConfig {
     comments?: boolean;
     commentsProvider?: 'disqus' | 'giscus' | 'hyvor' | 'none';
     latestPostsOnHomepage?: number; // Number of latest posts to show on the homepage
+    heroConfig?: HeroConfig; // Configuration for the homepage hero section
   };
   navigation: {
     header: NavigationItem[];

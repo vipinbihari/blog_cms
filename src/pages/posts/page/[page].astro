@@ -1,35 +1,37 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
+import type { Page } from 'astro';
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import PageNavigation from '../../../components/PageNavigation.astro';
 import PostCard from '../../../components/PostCard.astro';
 // FormattedDate and ResponsiveImage are now used within PostCard
 import { SEO } from 'astro-seo';
+import { BLOG_CONFIG } from '../../../config/current-config';
 
 export async function getStaticPaths({ paginate }) {
   // Get all blog posts sorted by date
-  const allPosts = await getCollection('posts');
-  const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
+  const sortedPosts = allPosts.sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
   
   // Generate pages for all posts with pagination (12 posts per page)
   return paginate(sortedPosts, { pageSize: 12 });
 }
 
-const { page } = Astro.props;
+const { page }: { page: Page<CollectionEntry<'posts'>> } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <BaseLayout>
   <SEO
   slot="seo"
-  title={`Blog Archive - Page ${(page && page.currentPage) ? page.currentPage : 1} | StockSage`}
+  title={`Blog Archive - Page ${(page && page.currentPage) ? page.currentPage : 1} | ${BLOG_CONFIG.site.name}`}
   description={`Browse all articles - Page ${(page && page.currentPage) ? page.currentPage : 1} of our investment and stock market blog`}
   canonical={canonicalURL}
   openGraph={{
     basic: {
-      title: "Blog Archive - StockSage",
+      title: `Blog Archive - ${BLOG_CONFIG.site.name}`,
       type: "website",
-      image: "https://placehold.co/1200x630?text=StockSage+Blog+Archive"
+      image: `https://placehold.co/1200x630?text=${encodeURIComponent(BLOG_CONFIG.site.name)}+Blog+Archive`
     }
   }}
 />
@@ -41,7 +43,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
       </h1>
       
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {page.data.map(post => (
+        {page.data.map((post: CollectionEntry<'posts'>) => (
           <PostCard post={post} />
         ))}
       </div>

@@ -28,7 +28,7 @@ This document tracks the implementation status of all functions in the universal
 - Added fully functional privacy policy, terms of service, and disclaimer pages
 - Implemented centralized legal content management through configuration
 - Added proper footer links to legal pages
-- All legal content tailored for finance/stock market niche
+- All legal content is now a generic template and should be customized by the user for their specific niche and legal requirements.
 
 ## Core Components
 
@@ -84,7 +84,6 @@ The core configuration system that enables the transformation of this codebase i
   - Niche-specific presets (Finance, Technology, Lifestyle, Food, Travel)
   - Support for custom themes and niches
 - `src/config/current-config.ts` - Active configuration file (165+ lines)
-  - Currently configured for StockSage (Finance niche)
   - Easy switching between different configurations
   - Helper functions for theme and configuration management
 - `src/config/templates/` - Pre-built template configurations

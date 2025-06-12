@@ -31,7 +31,7 @@ src/
 import { SITE_CONFIG } from '../config/site';
 
 // Before: Hardcoded values
-const title = "StockSage";
+const title = "YourSiteName";
 
 // After: Centralized config
 const title = SITE_CONFIG.title;
@@ -157,7 +157,7 @@ const featured = await getFeaturedPosts(3);
 1. **Replace hardcoded config values**:
    ```typescript
    // Before
-   const siteTitle = "StockSage";
+   const siteTitle = "YourSiteName";
    
    // After
    import { SITE_CONFIG } from '../config/site';

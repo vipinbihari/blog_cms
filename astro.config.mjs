@@ -5,12 +5,13 @@ import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 // Add sharp for image processing
 import { fileURLToPath } from 'url';
+import { BLOG_CONFIG } from './src/config/current-config.ts';
 
 // https://astro.build/config
 export default defineConfig({
   // Replace this with your GitHub username and repository name
   // Format: https://<username>.github.io/<repository-name>
-  site: 'https://stocksage.apanaresult.com/', // TODO: Make this configurable from BLOG_CONFIG
+  site: BLOG_CONFIG.site.url, // Dynamically set from current-config.ts
   // If you plan to deploy to a subfolder, add base with the subfolder path
   // base: '/YOUR_REPOSITORY_NAME',
   integrations: [

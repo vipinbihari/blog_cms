@@ -45,7 +45,7 @@ const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
           href={socialLinks.twitter}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#1DA1F2] to-[#0d8bd8] dark:from-sky-600 dark:to-sky-800 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
+          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#1DA1F2] to-[#0d8bd8] dark:bg-white/10 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
           aria-label="Share on Twitter"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -58,7 +58,7 @@ const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
           href={socialLinks.facebook}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#1877F2] to-[#0d5dbc] dark:from-blue-600 dark:to-blue-800 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
+          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#1877F2] to-[#0d5dbc] dark:bg-white/10 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
           aria-label="Share on Facebook"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -71,7 +71,7 @@ const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
           href={socialLinks.linkedin}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#0A66C2] to-[#064785] dark:from-blue-700 dark:to-blue-900 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
+          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#0A66C2] to-[#064785] dark:bg-white/10 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
           aria-label="Share on LinkedIn"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -84,7 +84,7 @@ const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
           href={socialLinks.reddit}
           target="_blank"
           rel="noopener noreferrer"
-          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#FF4500] to-[#d93a00] dark:from-orange-600 dark:to-orange-800 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
+          className="group flex items-center justify-center w-12 h-12 bg-gradient-to-br from-[#FF4500] to-[#d93a00] dark:bg-white/10 text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600"
           aria-label="Share on Reddit"
         >
           <svg className="w-5 h-5 group-hover:scale-110 transition-transform duration-200" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -96,7 +96,7 @@ const ShareButtons = ({ title, url: propsUrl, description, tags = [] }) => {
         {/* Copy URL Button */}
         <button 
           onClick={copyToClipboard}
-          className={`group flex items-center justify-center w-12 h-12 bg-gradient-to-br ${copySuccess ? 'from-emerald-500 to-emerald-700 dark:from-emerald-600 dark:to-emerald-800' : 'from-gray-600 to-gray-800 dark:from-slate-500 dark:to-slate-700'} text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600`}
+          className={`group flex items-center justify-center w-12 h-12 bg-gradient-to-br ${copySuccess ? 'from-emerald-500 to-emerald-700 dark:bg-white/10' : 'from-gray-600 to-gray-800 dark:bg-white/10'} text-white rounded-xl hover:scale-105 shadow-md hover:shadow-lg transform transition-all duration-200 dark:border dark:border-gray-600`}
           aria-label="Copy link to clipboard"
           title="Copy link"
         >

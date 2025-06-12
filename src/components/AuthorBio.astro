@@ -4,6 +4,7 @@
  * Displays information about a post author
  */
 import ResponsiveImage from './ResponsiveImage.astro';
+import { BLOG_CONFIG } from '../config/current-config';
 
 interface Props {
   name: string;
@@ -27,7 +28,7 @@ const authorData = {
 
 const { name } = Astro.props;
 const author = authorData[name] || {
-  bio: `${name} is a contributor to StockSage.`,
+    bio: `${name} is a contributor to ${BLOG_CONFIG.site.name}.`,
   avatar: 'https://placehold.co/100x100?text=Author',
   twitter: '',
   linkedin: ''
@@ -64,7 +65,7 @@ const author = authorData[name] || {
               href={`https://twitter.com/${author.twitter}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center w-9 h-9 bg-[#1DA1F2] dark:bg-sky-700 text-white rounded-full hover:opacity-80 transition-opacity dark:border dark:border-gray-600"
+              class="flex items-center justify-center w-9 h-9 bg-[#1DA1F2] text-white rounded-full hover:opacity-80 transition-opacity"
               aria-label="Twitter Profile"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -78,7 +79,7 @@ const author = authorData[name] || {
               href={`https://linkedin.com/in/${author.linkedin}`}
               target="_blank"
               rel="noopener noreferrer"
-              class="flex items-center justify-center w-9 h-9 bg-[#0A66C2] dark:bg-blue-800 text-white rounded-full hover:opacity-80 transition-opacity dark:border dark:border-gray-600"
+              class="flex items-center justify-center w-9 h-9 bg-[#0A66C2] text-white rounded-full hover:opacity-80 transition-opacity"
               aria-label="LinkedIn Profile"
             >
               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
