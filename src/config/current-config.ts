@@ -225,7 +225,7 @@ export const BLOG_CONFIG: BlogConfig = {
     mission: {
       title: 'Our Mission',
       text: 'To empower investors of all levels with clear, actionable market insights and comprehensive financial education. We strive to demystify the stock market, making financial literacy accessible and helping individuals make informed investment decisions with confidence.',
-      imageUrl: 'https://placehold.co/600x400?text=Our+Mission',
+      imageUrl: 'images/mission.png',
       imageAlt: 'Our Mission at StockSage'
     },
     whoWeAre: {

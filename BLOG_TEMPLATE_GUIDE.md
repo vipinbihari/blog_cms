@@ -364,8 +364,6 @@ content: {
 features: {
   darkMode: true,             // Enable dark mode toggle
   search: true,               // Enable search functionality
-  rss: true,                  // Generate RSS feed
-  sitemap: true,              // Generate sitemap
   analytics: {                // Analytics configuration
     provider: 'google',       // 'google' | 'plausible' | 'custom'
     id: 'G-XXXXXXXXXX',
