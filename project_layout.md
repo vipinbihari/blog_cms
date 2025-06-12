@@ -54,6 +54,8 @@ This is the heart of the Astro application, containing all the source code that 
     -   `ResponsiveImage.astro`: Astro component for handling responsive images, likely integrating with Astro's image optimization or custom image solutions to serve appropriately sized images.
     -   `ShareButtons.jsx`: React component providing social media sharing buttons for posts.
     -   `TableOfContents.jsx`: React component to automatically generate and display a table of contents for a page, typically for long articles.
+    -   `ThemeToggle.jsx`: React component to allow users to switch between light and dark themes.
+    -   `SearchBar.jsx`: React component that renders the responsive site-wide search bar (full input on large screens, magnifier icon with overlay input on smaller screens). It fetches the static JSON index and filters results client-side.
     -   `layout/`: Subdirectory for components that are part of the main page layouts.
         -   `ConfigurableFooter.astro`: Astro component for the site footer, likely pulling data from the blog configuration (e.g., copyright, social links).
         -   `ConfigurableHeader.astro`: Astro component for the site header, including navigation, logo, and possibly theme toggle, configured via blog settings.
@@ -61,7 +63,6 @@ This is the heart of the Astro application, containing all the source code that 
         -   `Logo.astro`: Astro component to display the site logo, potentially with configurable text or image source.
         -   `Navigation.astro`: Astro component to render the main site navigation links, configured via `BLOG_CONFIG`.
         -   `SocialLinks.astro`: Astro component to display social media icons/links, configured via `BLOG_CONFIG`.
-        -   `ThemeToggle.jsx`: React component to allow users to switch between light and dark themes.
 -   `config/`: Holds configuration files for the blog template, defining its structure, appearance, and behavior.
     -   `blog-template.ts`: Defines the TypeScript interfaces and types for the overall blog configuration (`BlogConfig`, `SiteConfig`, `LayoutConfig`, `NavigationConfig`, etc.). This file acts as a schema for the configuration, ensuring type safety and providing autocompletion when editing `current-config.ts`.
     -   `current-config.ts`: The active configuration file for the blog. It exports the `BLOG_CONFIG` object, which implements the interfaces defined in `blog-template.ts`. This is where the site name, URLs, navigation links, social media handles, layout settings (like hero section), and other customizable aspects of the blog are set.
@@ -107,6 +108,7 @@ This is the heart of the Astro application, containing all the source code that 
         -   `page/`: Directory for paginated blog post listing pages.
             -   `[page].astro`: Dynamic route for displaying a specific page of blog posts (e.g., `/posts/page/2`).
     -   `privacy.astro`: The 'Privacy Policy' page, outlining how user data is handled.
+    -   `search-index.json.ts`: Build-time endpoint that generates a static `/search-index.json` file used by the `SearchBar` for instant, totally static search.
     -   `tags/`: Directory for tag-specific listing pages.
         -   `index.astro`: Lists all available tags, likely with links to their respective pages.
         -   `[tag]/`: Dynamic route directory for paginated tag views (e.g., `/tags/my-tag/page/2`).

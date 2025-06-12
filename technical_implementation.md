@@ -101,9 +101,15 @@ Below tables list **exported functions**, their **signatures** and **return type
 | `getTagStats()` | `(): Promise<TagStats[]>` | Count + post list for each tag |
 | `getRelatedPosts(currentPost, limit?)` | `(currentPost:BlogPost, limit:number=3): Promise<BlogPost[]>` | Heuristic relevance (category>tags>slug) |
 
-### 5.2 Search – `content/search.ts`
+### 5.2 Search – Static JSON Index
 
-Implements simple text search scoring _(file omitted for brevity)_.  Exports `searchPosts(query): Promise<SearchResult[]>`.
+| Part | File | Purpose |
+|------|------|---------|
+| Backend helper | `lib/content/search.ts` | Pure functions `searchPosts` / `searchPostsWithScore` used for text-matching and scoring. |
+| Build-time endpoint | `pages/search-index.json.ts` | Runs **once at build** to emit `/search-index.json` – a lightweight array of `{slug,title,excerpt,tags,category,date}`. Completely static, no server needed. |
+| Front-end island | `components/ui/SearchBar.jsx` | Fetches the JSON index on first interaction, filters client-side and shows dropdown/overlay. Responsive: full input ≥ lg breakpoint, magnifier icon + modal below. |
+
+Algorithm: simple contains-matching; for large blogs swap in Fuse.js without touching the endpoint.
 
 ### 5.3 Related Content – `content/related.ts`
 
@@ -164,6 +170,7 @@ Provides helper wrappers for `getSuggestedPosts` and similar (see file).
 | `ReadingProgress.jsx` | React Island | Scroll progress bar |
 | `ShareButtons.jsx` | React Island | Social share pop-ups |
 | `TableOfContents.jsx` | React Island | Dynamic heading tracker |
+| `SearchBar.jsx` | React Island | Responsive header search (uses static index) |
 
 > **Astro Island pattern** – `.jsx` files are only hydrated client-side where needed, ensuring minimal JS payload.
 
