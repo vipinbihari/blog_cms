@@ -138,9 +138,9 @@ export const BLOG_CONFIG: BlogConfig = {
     
     // Social media links
     social: [
-      {
+    /*  {
         platform: 'twitter',
-        url: `https://twitter.com/${siteName.toLowerCase().replace(/\s+/g, '')}`,
+        url: `https://twitter.com/`,
         label: 'Follow us on Twitter',
       },
       {
@@ -152,10 +152,10 @@ export const BLOG_CONFIG: BlogConfig = {
         platform: 'facebook',
         url: `https://facebook.com/${siteName.toLowerCase().replace(/\s+/g, '')}`,
         label: 'Like us on Facebook',
-      },
+      },*/
       {
         platform: 'youtube',
-        url: `https://youtube.com/c/${siteName.toLowerCase().replace(/\s+/g, '')}`,
+        url: `https://youtube.com/@tradetonicindia`,
         label: 'Subscribe on YouTube',
       },
     ]
@@ -240,7 +240,7 @@ export const BLOG_CONFIG: BlogConfig = {
     mission: {
       title: 'Our Mission',
       text: 'To empower investors of all levels with clear, actionable market insights and comprehensive financial education. We strive to demystify the stock market, making financial literacy accessible and helping individuals make informed investment decisions with confidence.',
-      imageUrl: 'images/mission.png',
+      imageUrl: 'images/blog/mission_blog_320.webp',
       imageAlt: `Our Mission at ${siteName}`
     },
     whoWeAre: {
@@ -287,8 +287,8 @@ export const BLOG_CONFIG: BlogConfig = {
         {
           name: 'Vipin Bihari',
           role: 'Founder & Chief Analyst',
-          imageUrl: 'https://placehold.co/400x400?text=VB',
-          bio: 'Vipin is a seasoned financial analyst with over a decade of experience in the stock market. He is passionate about demystifying finance for everyday investors.'
+          imageUrl: 'images/authors/vipin-bihari.webp',
+          bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
         },
         {
           name: 'Praveen Yadav',
@@ -318,8 +318,6 @@ export const BLOG_CONFIG: BlogConfig = {
     sitemap: true // Added sitemap feature
   },
 
-  // Social Media Links
-  social: [],
   
   // Legal Pages Configuration
   legalPages: {

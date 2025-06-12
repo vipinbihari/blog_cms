@@ -276,6 +276,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"market-meltdown-sensex-nifty-june-12-2025.mdx": {
+	id: "market-meltdown-sensex-nifty-june-12-2025.mdx";
+  slug: "market-meltdown-sensex-nifty-june-12-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "metal-stocks-trump-tariff-threat-june-2-2025.mdx": {
 	id: "metal-stocks-trump-tariff-threat-june-2-2025.mdx";
   slug: "metal-stocks-trump-tariff-threat-june-2-2025";

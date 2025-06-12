@@ -3,22 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { CURRENT_CONFIG } from '../config/current-config';
 
 // Use contact page config from the current configuration, with fallbacks
-const contactConfig = CURRENT_CONFIG?.contactPage || {
-
-  title: 'Contact Us',
-  description: 'Get in touch with our team. We welcome your questions, feedback, and inquiries.',
-  faqs: [],
-  email: { name: 'Email Us', address: 'contact@example.com' },
-  phone: { name: 'Call Us', number: '+1234567890', formattedNumber: '+1 (234) 567-890' },
-  address: { name: 'Our Office', location: '123 Main St, City, Country' },
-  businessHours: { 
-    title: 'Business Hours',
-    hours: [
-      { days: 'Monday - Friday', hours: '9:00 AM - 5:00 PM' },
-      { days: 'Saturday - Sunday', hours: 'Closed' }
-    ]
-  }
-};
+const contactConfig = CURRENT_CONFIG?.contactPage;
 
 const title = contactConfig.title;
 const description = contactConfig.description;
