@@ -27,7 +27,7 @@ export async function getStaticPaths({ paginate }) {
     
     return paginate(filteredPosts, {
       params: { tag },
-      pageSize: 9,
+      pageSize: BLOG_CONFIG.layout.postPerPage,
       props: { tag }
     });
   });

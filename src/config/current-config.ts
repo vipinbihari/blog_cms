@@ -83,11 +83,13 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Layout Configuration
   layout: {
-    postPerPage: 6,
+    postPerPage: 10, // Primary posts per page for pagination
+    featuredPostsCount: 10, // Number of featured posts to fetch for carousels/listings
+    relatedPostsCount: 3, // Number of related posts to show on a post page
+    latestPostsOnHomepage: 10, // Number of latest posts to show on the homepage carousel
     breadcrumbSeparator: '›',
     comments: true,
     commentsProvider: 'disqus',
-    latestPostsOnHomepage: 3, // Number of latest posts to show on the homepage
     heroConfig: {
       title: `Welcome to ${siteName}`,
       subtitle: 'Discover insightful articles, tutorials, and resources. Explore the latest trends and expert opinions.',
@@ -136,29 +138,7 @@ export const BLOG_CONFIG: BlogConfig = {
       },
     ],
     
-    // Social media links
-    social: [
-    /*  {
-        platform: 'twitter',
-        url: `https://twitter.com/`,
-        label: 'Follow us on Twitter',
-      },
-      {
-        platform: 'linkedin',
-        url: `https://linkedin.com/company/${siteName.toLowerCase().replace(/\s+/g, '')}`,
-        label: 'Connect on LinkedIn',
-      },
-      {
-        platform: 'facebook',
-        url: `https://facebook.com/${siteName.toLowerCase().replace(/\s+/g, '')}`,
-        label: 'Like us on Facebook',
-      },*/
-      {
-        platform: 'youtube',
-        url: `https://youtube.com/@tradetonicindia`,
-        label: 'Subscribe on YouTube',
-      },
-    ]
+    // Social media links for navigation are now sourced from the top-level BLOG_CONFIG.social
   },
   
   // Footer Configuration
@@ -166,7 +146,35 @@ export const BLOG_CONFIG: BlogConfig = {
     copyright: ` 2025 ${siteName}. All rights reserved.`
   },
   
-
+  // Social Media Links
+  social: [
+    {
+      platform: 'twitter',
+      url: `https://twitter.com/YourTwitterHandle`, // Replace YourTwitterHandle
+      label: 'Follow us on Twitter',
+    },
+    {
+      platform: 'linkedin',
+      url: `https://linkedin.com/company/YourLinkedInPage`, // Replace YourLinkedInPage
+      label: 'Connect on LinkedIn',
+    },
+    {
+      platform: 'facebook',
+      url: `https://facebook.com/YourFacebookPage`, // Replace YourFacebookPage
+      label: 'Like us on Facebook',
+    },
+    {
+      platform: 'youtube',
+      url: `https://youtube.com/@tradetonicindia`,
+      label: 'Subscribe on YouTube',
+    },
+    // Add other platforms like Instagram, GitHub, etc. as needed
+    // {
+    //   platform: 'instagram',
+    //   url: `https://instagram.com/YourInstagramHandle`,
+    //   label: 'Follow us on Instagram',
+    // },
+  ],
   
   // Content Categories
   categories: [
@@ -207,9 +215,6 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Content Configuration
   content: {
-    postsPerPage: 10,
-    featuredPostsCount: 3,
-    relatedPostsCount: 4,
     showReadingTime: true,
     showTableOfContents: true,
     enableComments: false,
@@ -240,7 +245,7 @@ export const BLOG_CONFIG: BlogConfig = {
     mission: {
       title: 'Our Mission',
       text: 'To empower investors of all levels with clear, actionable market insights and comprehensive financial education. We strive to demystify the stock market, making financial literacy accessible and helping individuals make informed investment decisions with confidence.',
-      imageUrl: 'images/blog/mission_blog_320.webp',
+      imageUrl: '/images/blog/mission_blog_320.webp',
       imageAlt: `Our Mission at ${siteName}`
     },
     whoWeAre: {
@@ -289,13 +294,13 @@ export const BLOG_CONFIG: BlogConfig = {
           role: 'Founder & Chief Analyst',
           imageUrl: 'images/authors/vipin-bihari.webp',
           bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
-        },
+        },/*
         {
           name: 'Praveen Yadav',
           role: 'Lead Technical Strategist',
           imageUrl: 'https://placehold.co/400x400?text=PY',
           bio: 'Praveen specializes in technical analysis and chart patterns, helping traders identify market opportunities with precision.'
-        }
+        }*/
       ]
     },
     callToAction: {

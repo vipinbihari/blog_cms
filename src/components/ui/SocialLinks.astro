@@ -12,7 +12,7 @@ interface Props {
   size?: 'sm' | 'md' | 'lg';
 }
 
-const { links, class: className = '', size = 'md' } = Astro.props;
+const { links = [], class: className = '', size = 'md' } = Astro.props;
 
 // Icon mappings for social platforms
 const socialIcons: Record<string, string> = {

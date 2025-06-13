@@ -158,7 +158,7 @@ Provides helper wrappers for `getSuggestedPosts` and similar (see file).
 | `layout/ConfigurableFooter.astro` | Astro | Renders footer sections & legal links |
 | `ui/Logo.astro` | Astro | Brand logo; auto-switches light/dark images |
 | `ui/Navigation.astro` | Astro | Recursive nav tree |
-| `ui/SocialLinks.astro` | Astro | Icon list from `BLOG_CONFIG.navigation.social` |
+| `ui/SocialLinks.astro` | Astro | Icon list from `BLOG_CONFIG.social` (top-level array) |
 | `AuthorBio.astro` | Astro | Post author card (uses `BlogPostData.author`) |
 | `FormattedDate.astro` | Astro | `<time>` wrapper with locale formatting |
 | `NewsletterSignup.astro` | Astro | Integrates with Mailchimp (configurable URL) |

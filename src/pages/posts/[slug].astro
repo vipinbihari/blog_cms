@@ -1,18 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, type CollectionEntry } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
 import RelatedPosts from '../../components/RelatedPosts.astro';
 import NewsletterSignup from '../../components/NewsletterSignup.astro';
 import { getRelatedPosts } from '../../lib/content/queries';
 import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import { BLOG_CONFIG } from '../../config/current-config';
 
 // Generate static paths for all blog posts
 export async function getStaticPaths() {
-  const allPosts = await getCollection('posts');
+  const allPosts: CollectionEntry<'posts'>[] = await getCollection('posts');
   
-  return await Promise.all(allPosts.map(async entry => {
+  return await Promise.all(allPosts.map(async (entry: CollectionEntry<'posts'>) => {
     // Get related posts for this entry
-    const relatedPosts = await getRelatedPosts(entry, 3);
+    const relatedPosts = await getRelatedPosts(entry, BLOG_CONFIG.layout.relatedPostsCount);
     
     return {
       params: { slug: entry.slug },
@@ -21,7 +22,7 @@ export async function getStaticPaths() {
   }));
 }
 
-const { entry, relatedPosts } = Astro.props;
+const { entry, relatedPosts }: { entry: CollectionEntry<'posts'>, relatedPosts: any[] } = Astro.props;
 const { Content } = await entry.render();
 ---
 

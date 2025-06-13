@@ -22,7 +22,7 @@ Your blog CMS has been successfully transformed from a hardcoded stock market bl
 
 #### 2. **Modular Component Architecture**
 - ✅ **ConfigurableHeader**: Dynamic header with logo, navigation, and feature toggles
-- ✅ **ConfigurableFooter**: Dynamic footer with social links and newsletter
+- ✅ **ConfigurableFooter**: Dynamic footer with social links (from top-level `BLOG_CONFIG.social`) and newsletter
 - ✅ **Logo Component**: Supports both image and text logos with dark mode
 - ✅ **Navigation Component**: Horizontal and mobile layouts with external link support
 - ✅ **SocialLinks Component**: 8 social platforms with custom icon support

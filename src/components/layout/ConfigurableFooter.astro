@@ -4,7 +4,7 @@ import SocialLinks from '../ui/SocialLinks.astro';
 import Logo from '../ui/Logo.astro';
 import NewsletterSignup from '../NewsletterSignup.astro';
 
-const { site, branding, navigation, content, features } = BLOG_CONFIG;
+const { site, branding, navigation, content, features, social } = BLOG_CONFIG;
 const currentYear = new Date().getFullYear();
 ---
 
@@ -23,7 +23,7 @@ const currentYear = new Date().getFullYear();
           {site.description}
         </p>
         <SocialLinks 
-          links={navigation.social}
+          links={social}
           class="flex space-x-4"
         />
       </div>

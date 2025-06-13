@@ -110,16 +110,18 @@ export interface BlogConfig {
   // Layout & Navigation
   layout: {
     postPerPage: number;
+    featuredPostsCount?: number; // Number of featured posts to fetch
+    relatedPostsCount?: number; // Number of related posts to show on a post page
+    latestPostsOnHomepage?: number; // Number of latest posts to show on the homepage
     breadcrumbSeparator?: string;
     comments?: boolean;
     commentsProvider?: 'disqus' | 'giscus' | 'hyvor' | 'none';
-    latestPostsOnHomepage?: number; // Number of latest posts to show on the homepage
     heroConfig?: HeroConfig; // Configuration for the homepage hero section
   };
   navigation: {
     header: NavigationItem[];
     footer: FooterSection[];
-    social: SocialLink[];
+    // Social links are now managed globally via the top-level BLOG_CONFIG.social array
   };
   footer: {
     sections?: FooterSection[];
@@ -168,9 +170,6 @@ export interface BlogConfig {
   
   // Content Configuration
   content?: {
-    postsPerPage?: number;
-    featuredPostsCount?: number;
-    relatedPostsCount?: number;
     showReadingTime?: boolean;
     showTableOfContents?: boolean;
     enableComments?: boolean;

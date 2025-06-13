@@ -26,7 +26,7 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 /**
  * Get featured posts (newest posts)
  */
-export async function getFeaturedPosts(limit: number = BLOG_CONFIG.content.featuredPostsCount ?? 3): Promise<BlogPost[]> {
+export async function getFeaturedPosts(limit: number = BLOG_CONFIG.layout.featuredPostsCount ?? 3): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
 
   const manuallyFeaturedPosts = allPosts
@@ -152,7 +152,7 @@ function getSlugKeywords(slug: string): string[] {
  */
 export async function getRelatedPosts(
   currentPost: BlogPost,
-  limit: number = BLOG_CONFIG.content.relatedPostsCount ?? 3
+  limit: number = BLOG_CONFIG.layout.relatedPostsCount ?? 3
 ): Promise<BlogPost[]> {
   const allPosts = await getAllPosts();
   const currentSlugKeywords = getSlugKeywords(currentPost.slug);

@@ -14,7 +14,7 @@ export async function getStaticPaths({ paginate }) {
   const sortedPosts = allPosts.sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
   
   // Generate pages for all posts with pagination (12 posts per page)
-  return paginate(sortedPosts, { pageSize: 12 });
+  return paginate(sortedPosts, { pageSize: BLOG_CONFIG.layout.postPerPage });
 }
 
 const { page }: { page: Page<CollectionEntry<'posts'>> } = Astro.props;

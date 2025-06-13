@@ -57,7 +57,7 @@ This is the heart of the Astro application, containing all the source code that 
     -   `ThemeToggle.jsx`: React component to allow users to switch between light and dark themes.
     -   `SearchBar.jsx`: React component that renders the responsive site-wide search bar (full input on large screens, magnifier icon with overlay input on smaller screens). It fetches the static JSON index and filters results client-side.
     -   `layout/`: Subdirectory for components that are part of the main page layouts.
-        -   `ConfigurableFooter.astro`: Astro component for the site footer, likely pulling data from the blog configuration (e.g., copyright, social links).
+        -   `ConfigurableFooter.astro`: Astro component for the site footer, pulls social links from the top-level `BLOG_CONFIG.social` array (not from `navigation.social`).
         -   `ConfigurableHeader.astro`: Astro component for the site header, including navigation, logo, and possibly theme toggle, configured via blog settings.
     -   `ui/`: Subdirectory for general-purpose, often smaller, UI primitive components.
         -   `Logo.astro`: Astro component to display the site logo, potentially with configurable text or image source.

@@ -168,7 +168,7 @@ The component system has been completely reorganized into a modular, configurabl
 
 #### Layout Components (src/components/layout/)
 - `ConfigurableHeader.astro`: Dynamic header using BLOG_CONFIG for site name, navigation, and branding
-- `ConfigurableFooter.astro`: Dynamic footer with configurable sections, social links, and newsletter signup
+- `ConfigurableFooter.astro`: Dynamic footer with configurable sections, social links (from top-level `BLOG_CONFIG.social`), and newsletter signup
 - Migration: Replaced hardcoded `Header.astro` and `Footer.astro` with configurable versions
 
 #### UI Components (src/components/ui/)
@@ -186,7 +186,7 @@ The component system has been completely reorganized into a modular, configurabl
 - `PageNavigation.astro`: Reusable pagination control component for all paginated pages
 - `RelatedPosts.astro`: Component that displays related post suggestions based on tags and categories
 - `ShareButtons.jsx`: React component that provides social media sharing functionality for blog posts
-- `AuthorBio.astro`: Component that displays information about the post author with social links and robust fallback for missing images (uses placehold.co if avatar is missing)
+- `AuthorBio.astro`: Component that displays information about the post author with social links (from top-level `BLOG_CONFIG.social`) and robust fallback for missing images (uses placehold.co if avatar is missing)
 - `TableOfContents.jsx`: React component that automatically generates navigation for long-form articles, scopes only to blog post content headings, and highlights active sections while scrolling
 - `ReadingProgress.jsx`: React component that shows a progress bar indicating reading position in articles
 - `ResponsiveImage.astro`: Component that optimizes images for different screen sizes and improves loading performance
@@ -851,7 +851,7 @@ This project has undergone a **complete architectural transformation** from a ha
 #### 🎯 Key Capabilities
 1. **Multi-Niche Support**: 5 pre-built niches + custom niche creation
 2. **Dynamic Theming**: 4 color presets + custom theme support
-3. **Configurable Branding**: Logo, navigation, social links, metadata
+3. **Configurable Branding**: Logo, navigation, social links (from top-level `BLOG_CONFIG.social`), metadata
 4. **Type-Safe Configuration**: Comprehensive TypeScript interfaces prevent errors
 5. **Developer Experience**: Easy setup, clear documentation, modular architecture
 

@@ -57,7 +57,8 @@ Deploy the generated **`dist/`** directory to Vercel, Netlify, Cloudflare Pages,
 ## 5  Customising Your Blog
 
 1. **Choose a niche** – copy a preset from `src/config/templates/` to `src/config/current-config.ts`.
-2. **Edit branding** – update site title, description, logos & theme colours inside `src/config/current-config.ts`.
+2. **Edit branding and social links** – update site title, description, logos, theme colours, and all social media links inside `src/config/current-config.ts`.
+   - **Social links are now managed exclusively via the top-level `BLOG_CONFIG.social` array**. Add, remove, or modify your social profiles there. Do not use `navigation.social` or any other location for social links.
 3. **Write posts** – place markdown/MDX files in `src/content/posts/`.  
    Front-matter controls category, tags, `featured` flag, hero images, etc.
 
