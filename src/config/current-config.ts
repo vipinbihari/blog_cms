@@ -29,7 +29,7 @@ export const BLOG_CONFIG: BlogConfig = {
   // Site Identity
   site: {
     name: siteName,
-    tagline: 'Expert Analysis & Investment Education',
+    tagline: 'Investment Education',
     description: 'Expert analysis and practical lessons on Indian and global stock markets.',
     url: `https://${siteName.toLowerCase().replace(/\s+/g, '')}.apanaresult.com`,
     author: 'Vipin Bihari',
@@ -48,7 +48,7 @@ export const BLOG_CONFIG: BlogConfig = {
          height: 40,
      },
     favicon: '/images/blog/logo.svg',
-    ogImage: '/images/og-image.jpg',
+    ogImage: '/images/blog/logo.svg',
     appleTouchIcon: '/images/apple-touch-icon.png',
     placeholderImageService: 'https://placehold.co',
   },

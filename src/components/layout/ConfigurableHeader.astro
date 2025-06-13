@@ -19,6 +19,7 @@ const { site, branding, navigation, features } = BLOG_CONFIG;
       
       if (mobileMenuButton && mobileMenu) {
         mobileMenuButton.addEventListener('click', () => {
+          document.body.classList.toggle('mobile-menu-open');
           const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
           mobileMenuButton.setAttribute('aria-expanded', String(!expanded));
           
@@ -55,6 +56,9 @@ const { site, branding, navigation, features } = BLOG_CONFIG;
   </script>
 
   <style>
+  body.mobile-menu-open {
+    overflow-x: hidden;
+  }
     @keyframes slideIn {
       from { transform: translateY(-10px); opacity: 0; }
       to { transform: translateY(0); opacity: 1; }
