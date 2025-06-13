@@ -7,9 +7,10 @@ import { BLOG_CONFIG } from '../config/current-config';
 export interface Props {
   post: BlogPost;
   lazyLoadImage?: boolean;
+  class?: string;
 }
 
-const { post, lazyLoadImage = true } = Astro.props;
+const { post, lazyLoadImage = true, class: className = '' } = Astro.props;
 
 const postUrl = `/posts/${post.slug}/`;
 
@@ -22,7 +23,7 @@ function formatDate(date: Date): string {
   }).format(date);
 }
 ---
-<article class="group bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-[0_8px_40px_0_rgba(0,0,0,0.18)] dark:hover:shadow-[0_8px_40px_0_rgba(0,0,0,0.45),0_0_40px_0_rgba(255,255,255,0.12)] transition-shadow duration-300 flex flex-col h-full">
+<article class={`group bg-white dark:bg-slate-800 rounded-lg shadow-md hover:shadow-[0_8px_40px_0_rgba(0,0,0,0.18)] dark:hover:shadow-[0_8px_40px_0_rgba(0,0,0,0.45),0_0_40px_0_rgba(255,255,255,0.12)] transition-shadow duration-300 flex flex-col h-full ${className}`}>
   <a href={postUrl} class="block">
     {post.data.heroImage && (
       <div class="aspect-video overflow-hidden bg-slate-200 dark:bg-slate-700">

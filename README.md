@@ -59,6 +59,7 @@ Deploy the generated **`dist/`** directory to Vercel, Netlify, Cloudflare Pages,
 1. **Choose a niche** – copy a preset from `src/config/templates/` to `src/config/current-config.ts`.
 2. **Edit branding and social links** – update site title, description, logos, theme colours, and all social media links inside `src/config/current-config.ts`.
    - **Social links are now managed exclusively via the top-level `BLOG_CONFIG.social` array**. Add, remove, or modify your social profiles there. Do not use `navigation.social` or any other location for social links.
+   - **Dark mode link styling:** In dark mode, all links inside `.prose` content are light blue/white for readability. Social media icon links are now excluded from this forced color to preserve their brand colors.
 3. **Write posts** – place markdown/MDX files in `src/content/posts/`.  
    Front-matter controls category, tags, `featured` flag, hero images, etc.
 
@@ -81,6 +82,16 @@ Hot-reload means you will see changes instantly.
 ```
 
 A deeper technical breakdown lives in **`technical_implementation.md`**.
+
+---
+
+## 6.1 Carousel & Card Interactivity
+
+- The homepage carousels (featured/latest posts) support smooth drag scrolling and clickable post cards.
+- **Clicking a post card** navigates to the post as expected. Dragging (with mouse or touch) will not interfere with click events.
+- **Navigation dots** below each carousel match the number of posts and show post numbers for clarity.
+- **Dark mode accessibility:** All carousel controls and dots have high-contrast colors in dark mode.
+- **Known issue:** If you add custom wrappers around `PostCard`, ensure they do not block pointer events.
 
 ---
 

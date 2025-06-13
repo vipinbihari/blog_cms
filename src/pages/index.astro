@@ -4,6 +4,7 @@ import PostCard from '../components/PostCard.astro';
 // FormattedDate is now used within PostCard
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 import '../styles/hero-animation.css';
+import '../styles/carousel-animations.css';
 import { BLOG_CONFIG } from '../config/current-config';
 import { getFeaturedPosts, getLatestPosts, getCategoryStats } from '../lib/content/queries';
 import type { BlogPost } from '../lib/content/queries';
@@ -77,24 +78,39 @@ try {
     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
       <h2 class="inline-block text-3xl font-bold text-gray-900 dark:text-white mb-10 pb-2 border-b-2 border-primary-500 dark:border-primary-400 text-center md:text-left">Featured Articles</h2>
       
-      <div class="relative group">
-        <button aria-label="Scroll left" class="carousel-prev absolute top-1/2 -left-3 sm:-left-4 md:-left-5 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block transform -translate-y-1/2 hover:bg-gray-100 dark:hover:bg-gray-700">
+      <div class="carousel-container relative group">
+        <!-- Scroll indicators -->
+        <div class="scroll-indicator left" aria-hidden="true"></div>
+        <div class="scroll-indicator right" aria-hidden="true"></div>
+        
+        <!-- Navigation buttons -->
+        <button aria-label="Scroll left" class="carousel-nav-button prev carousel-prev">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300">
             <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
           </svg>
         </button>
-        <div class="featured-carousel flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 scrollbar-hide -mx-4 px-4">
-          {featuredPosts.map((post: BlogPost) => (
-            <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4 min-w-[280px] sm:min-w-[300px]">
-              <PostCard post={post} />
+        
+        <!-- Main carousel -->
+        <div class="featured-carousel carousel flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 -mx-4 px-4">
+          {featuredPosts.map((post: BlogPost, index: number) => (
+            <div class="carousel-card-container flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4 min-w-[280px] sm:min-w-[300px]" data-index={index}>
+              <PostCard post={post} class="carousel-card" />
             </div>
           ))}
         </div>
-        <button aria-label="Scroll right" class="carousel-next absolute top-1/2 -right-3 sm:-right-4 md:-right-5 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block transform -translate-y-1/2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        
+        <button aria-label="Scroll right" class="carousel-nav-button next carousel-next">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300">
             <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
           </svg>
         </button>
+        
+        <!-- Scroll position indicators - one per post -->
+        <div class="scroll-dots featured-dots mt-4">
+          {featuredPosts.map((_, i) => (
+            <div class={`scroll-dot ${i === 0 ? 'active' : ''}`} data-index={i}>{i + 1}</div>
+          ))}
+        </div>
       </div>
       
     </div>
@@ -105,24 +121,39 @@ try {
     <section id="latest-posts" class="pt-6">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <h2 class="inline-block text-3xl font-bold text-gray-900 dark:text-white mb-10 pb-2 border-b-2 border-primary-500 dark:border-primary-400 text-center md:text-left">Latest Posts</h2>
-        <div class="relative group">
-          <button aria-label="Scroll left" class="carousel-prev absolute top-1/2 -left-3 sm:-left-4 md:-left-5 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block transform -translate-y-1/2 hover:bg-gray-100 dark:hover:bg-gray-700">
+        <div class="carousel-container relative group">
+          <!-- Scroll indicators -->
+          <div class="scroll-indicator left" aria-hidden="true"></div>
+          <div class="scroll-indicator right" aria-hidden="true"></div>
+          
+          <!-- Navigation buttons -->
+          <button aria-label="Scroll left" class="carousel-nav-button prev carousel-prev">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300">
               <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
             </svg>
           </button>
-          <div class="latest-carousel flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 scrollbar-hide -mx-4 px-4">
-            {latestPosts.map((post: BlogPost) => (
-              <div class="flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4 min-w-[280px] sm:min-w-[300px]">
-                <PostCard post={post} />
+          
+          <!-- Main carousel -->
+          <div class="latest-carousel carousel flex overflow-x-auto space-x-4 sm:space-x-6 pb-4 -mx-4 px-4">
+            {latestPosts.map((post: BlogPost, index: number) => (
+              <div class="carousel-card-container flex-none w-4/5 sm:w-1/2 md:w-1/3 lg:w-1/4 min-w-[280px] sm:min-w-[300px]" data-index={index}>
+                <PostCard post={post} class="carousel-card" />
               </div>
             ))}
           </div>
-          <button aria-label="Scroll right" class="carousel-next absolute top-1/2 -right-3 sm:-right-4 md:-right-5 z-10 p-2 bg-white dark:bg-gray-800 rounded-full shadow-md opacity-0 group-hover:opacity-100 transition-opacity duration-300 hidden md:block transform -translate-y-1/2 hover:bg-gray-100 dark:hover:bg-gray-700">
+          
+          <button aria-label="Scroll right" class="carousel-nav-button next carousel-next">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-5 h-5 sm:w-6 sm:h-6 text-gray-700 dark:text-gray-300">
               <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
             </svg>
           </button>
+          
+          <!-- Scroll position indicators - one per post -->
+          <div class="scroll-dots latest-dots mt-4">
+            {latestPosts.map((_, i) => (
+              <div class={`scroll-dot ${i === 0 ? 'active' : ''}`} data-index={i}>{i + 1}</div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -157,51 +188,239 @@ try {
     </div>
   </section>
 <style>
-  /* Hide scrollbar for Chrome, Safari and Opera */
-  .scrollbar-hide::-webkit-scrollbar {
-    display: none;
+  /* Add CSS variables for theme colors */
+  :root {
+    --scroll-indicator-color: rgba(255, 255, 255, 0.15);
+    --dot-active-color: #4B5563; /* gray-600 */
   }
-  /* Hide scrollbar for IE, Edge and Firefox */
-  .scrollbar-hide {
-    -ms-overflow-style: none;  /* IE and Edge */
-    scrollbar-width: none;  /* Firefox */
+  
+  .dark {
+    --scroll-indicator-color: rgba(0, 0, 0, 0.15);
+    --dot-active-color: #E5E7EB; /* gray-200 */
   }
+  
+  /* Default carousel styles moved to carousel-animations.css */
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const setupCarouselControls = (carouselSelector) => {
+    // Function to set up carousel controls and interactions
+    const setupCarousel = (carouselSelector) => {
       const carouselElement = document.querySelector(carouselSelector);
       if (!carouselElement) return;
 
-      const parentGroup = carouselElement.closest('.relative.group');
-      if (!parentGroup) return;
+      const carouselContainer = carouselElement.closest('.carousel-container');
+      if (!carouselContainer) return;
 
-      const prevButton = parentGroup.querySelector('.carousel-prev');
-      const nextButton = parentGroup.querySelector('.carousel-next');
+      const prevButton = carouselContainer.querySelector('.carousel-prev');
+      const nextButton = carouselContainer.querySelector('.carousel-next');
+      const scrollDots = carouselContainer.querySelector('.scroll-dots');
+      const cards = carouselElement.querySelectorAll('article.carousel-card');
 
       if (!prevButton || !nextButton) return;
 
-      const scrollAmount = () => {
-        const firstCard = carouselElement.querySelector(':scope > div');
-        if (!firstCard) return 300; // Default scroll amount
-        const cardStyle = window.getComputedStyle(firstCard);
-        const cardMarginRight = parseFloat(cardStyle.marginRight) || 0;
-        // Use clientWidth for elements with box-sizing: border-box if offsetWidth includes padding/border not desired
-        return firstCard.offsetWidth + cardMarginRight; 
+      // Calculate card width for scrolling
+      const getCardWidth = () => {
+        const firstCardContainer = carouselElement.querySelector('.carousel-card-container');
+        if (!firstCardContainer) return 300; // Default scroll amount
+        const style = window.getComputedStyle(firstCardContainer);
+        const marginRight = parseFloat(style.marginRight) || 0;
+        return firstCardContainer.offsetWidth + marginRight;
       };
 
+      // Button handlers
       prevButton.addEventListener('click', () => {
-        carouselElement.scrollBy({ left: -scrollAmount(), behavior: 'smooth' });
+        carouselElement.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
+        updateScrollIndicators();
       });
 
       nextButton.addEventListener('click', () => {
-        carouselElement.scrollBy({ left: scrollAmount(), behavior: 'smooth' });
+        carouselElement.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+        updateScrollIndicators();
       });
+
+      // Touch/drag scroll handling with click detection
+      let isDragging = false;
+      let startPositionX;
+      let startScrollLeft;
+      let dragDistance = 0;
+      let startTime = 0;
+      
+      // Prevent drag from interfering with clicks
+      const handleMouseDown = (e) => {
+        // Skip if clicked on a link or a button
+        if (e.target.closest('a') || e.target.closest('button')) {
+          return;
+        }
+        
+        isDragging = true;
+        startPositionX = e.pageX;
+        startScrollLeft = carouselElement.scrollLeft;
+        dragDistance = 0;
+        startTime = Date.now();
+      };
+      
+      const handleMouseMove = (e) => {
+        if (!isDragging) return;
+        
+        // Add dragging class only when actual movement occurs
+        carouselElement.classList.add('is-dragging');
+        
+        // Calculate distance moved
+        dragDistance = e.pageX - startPositionX;
+        carouselElement.scrollLeft = startScrollLeft - dragDistance;
+        
+        // Explicitly prevent default only during actual drag
+        if (Math.abs(dragDistance) > 5) {
+          e.preventDefault();
+        }
+      };
+      
+      const handleMouseUp = (e) => {
+        if (!isDragging) return;
+        
+        // Check if this was a click or a drag
+        const isClick = Math.abs(dragDistance) < 5 && (Date.now() - startTime) < 300;
+        
+        isDragging = false;
+        carouselElement.classList.remove('is-dragging');
+        updateScrollIndicators();
+        
+        // Don't interfere with clicks
+        if (isClick) {
+          // This was a click, not a drag - do nothing to allow normal click behavior
+        }
+      };
+      
+      carouselElement.addEventListener('mousedown', handleMouseDown);
+      window.addEventListener('mousemove', handleMouseMove);
+      window.addEventListener('mouseup', handleMouseUp);
+      
+      carouselElement.addEventListener('mouseleave', () => {
+        if (isDragging) {
+          isDragging = false;
+          carouselElement.classList.remove('is-dragging');
+          updateScrollIndicators();
+        }
+      });
+
+      // Update scroll dot indicators based on which post is most visible
+      const updateScrollIndicators = () => {
+        if (!scrollDots) return;
+        
+        // Get all card containers
+        const cardContainers = carouselElement.querySelectorAll('.carousel-card-container');
+        if (!cardContainers.length) return;
+        
+        // Find which card is most in view - with better calculation
+        let mostVisibleCard = null;
+        let highestVisiblePercentage = 0;
+        let mostCenteredCard = null;
+        let lowestCenterDistance = Infinity;
+        
+        // Calculate carousel center point
+        const carouselRect = carouselElement.getBoundingClientRect();
+        const carouselCenterX = carouselRect.left + (carouselRect.width / 2);
+        
+        cardContainers.forEach(card => {
+          const rect = card.getBoundingClientRect();
+          
+          // Calculate both visibility and centeredness
+          const cardCenterX = rect.left + (rect.width / 2);
+          const centerDistance = Math.abs(cardCenterX - carouselCenterX);
+          
+          // Calculate how much of the card is in the carousel viewport
+          const visibleLeft = Math.max(rect.left, carouselRect.left);
+          const visibleRight = Math.min(rect.right, carouselRect.right);
+          const visibleWidth = Math.max(0, visibleRight - visibleLeft);
+          
+          // Calculate percentage of card visible
+          const visiblePercentage = visibleWidth / rect.width;
+          
+          // If card is largely visible (at least 30%) and is more centered than others
+          if (visiblePercentage > 0.3 && centerDistance < lowestCenterDistance) {
+            lowestCenterDistance = centerDistance;
+            mostCenteredCard = card;
+          }
+          
+          // Also track the most visible card as fallback
+          if (visiblePercentage > highestVisiblePercentage) {
+            highestVisiblePercentage = visiblePercentage;
+            mostVisibleCard = card;
+          }
+        });
+        
+        // Prefer the most centered visible card, fall back to most visible
+        const selectedCard = mostCenteredCard || mostVisibleCard;
+        
+        if (selectedCard) {
+          // Get the index of the selected card
+          const activeIndex = parseInt(selectedCard.getAttribute('data-index'), 10);
+          
+          // Update active dot
+          const dots = scrollDots.querySelectorAll('.scroll-dot');
+          dots.forEach((dot, i) => {
+            dot.classList.toggle('active', i === activeIndex);
+          });
+          
+          // Log for debugging (can be removed in production)
+          // console.log(`Active card: ${activeIndex + 1} of ${dots.length}`);
+        }
+      };
+
+      // Scroll on dot click - to specific post
+      if (scrollDots) {
+        scrollDots.querySelectorAll('.scroll-dot').forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            // Find the card container at that index
+            const cardContainer = carouselElement.querySelector(`.carousel-card-container[data-index="${index}"]`);
+            if (cardContainer) {
+              // Scroll to this specific card
+              const containerLeft = cardContainer.offsetLeft;
+              const scrollOffset = containerLeft - (carouselElement.offsetWidth - cardContainer.offsetWidth) / 2;
+              carouselElement.scrollTo({ left: scrollOffset, behavior: 'smooth' });
+            }
+          });
+        });
+      }
+
+      // Set up intersection observer for focus effect (mobile only)
+      const setupIntersectionObserver = () => {
+        // Only set up on mobile devices
+        if (window.innerWidth > 768) return;
+        
+        const options = {
+          root: null, // Use viewport
+          rootMargin: '0px',
+          threshold: 0.7 // 70% visibility required
+        };
+
+        const intersectionCallback = (entries) => {
+          entries.forEach(entry => {
+            // Add/remove focus class based on intersection
+            entry.target.classList.toggle('in-focus', entry.isIntersecting);
+          });
+        };
+
+        const observer = new IntersectionObserver(intersectionCallback, options);
+        
+        // Observe all cards
+        cards.forEach(card => observer.observe(card));
+      };
+
+      // Listen for scroll events to update indicators
+      carouselElement.addEventListener('scroll', () => {
+        updateScrollIndicators();
+      });
+
+      // Initialize
+      setupIntersectionObserver();
+      updateScrollIndicators();
     };
 
-    setupCarouselControls('.featured-carousel');
-    setupCarouselControls('.latest-carousel');
+    // Set up both carousels
+    setupCarousel('.featured-carousel');
+    setupCarousel('.latest-carousel');
   });
 </script>
 </BaseLayout>

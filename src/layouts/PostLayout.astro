@@ -8,7 +8,6 @@ import AuthorBio from '../components/AuthorBio.astro';
 import TableOfContents from '../components/TableOfContents';
 import ReadingProgress from '../components/ReadingProgress';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
-import NewsletterSignup from '../components/NewsletterSignup.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 
 type Props = {
@@ -113,10 +112,8 @@ const components = {
       <AuthorBio name={author} />
       
       <!-- Related Posts -->
-      {relatedPosts && relatedPosts.length > 0 && (
-        <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
+      {relatedPosts && relatedPosts.length > 0 && (  
           <RelatedPosts posts={relatedPosts} />
-        </div>
       )}
         </article>
       </div>

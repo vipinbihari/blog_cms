@@ -4,6 +4,33 @@ This document is a **deep-dive reference** to the codebase.  It complements the 
 
 ---
 
+## Recent UI & CSS Changes (2025)
+
+### Carousel (Featured & Latest Posts)
+- Carousels on the homepage use a flexbox horizontal scroll layout.
+- **Cards are fully clickable**: The `PostCard` component is passed a `class="carousel-card"` prop and is not wrapped in an extra div that could block pointer events.
+- **Drag vs. Click**: Dragging the carousel (mouse/touch) is detected and disables pointer events on cards only during drag. Clicks on cards always work unless the user is actively dragging.
+- **Navigation dots**: Each post has a corresponding dot, numbered for clarity. Dots are styled for accessibility in both light and dark mode.
+- **CSS pointer-events**: `.carousel-card-container` uses `pointer-events: none;` and `.carousel-card` uses `pointer-events: auto;` to ensure only the card is interactive.
+
+### Dark Mode Link Styling
+- All links in `.prose` content are styled to be light blue or white in dark mode for readability.
+- Social media icon links are NOT forcibly colored in dark mode, so their brand/icon colors remain visible.
+- The current CSS for dark mode links is:
+  ```css
+  .dark .prose a {
+    color: rgb(248, 254, 255) !important;
+  }
+  .dark .prose a:hover {
+    color: rgb(255, 255, 255) !important;
+  }
+  ```
+  If you need to exclude specific links from this, add a unique class and override as needed.
+
+---
+
+---
+
 ## 1  Tech-Stack Overview
 
 | Layer | Library / Tool | Notes |
