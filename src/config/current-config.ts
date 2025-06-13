@@ -37,17 +37,17 @@ export const BLOG_CONFIG: BlogConfig = {
     language: 'en',
     locale: 'en-US',
   },
-  
+
   // Branding & Visual Identity
   branding: {
-    // logo: {
-    //   light: '/images/logo-light.svg',
-    //   dark: '/images/logo-dark.svg', 
-    //   alt: `${siteName} Logo`,
-    //   width: 180,
-    //   height: 40,
-    // },
-    favicon: '/favicon.svg',
+     logo: {
+         light: '/images/blog/logo.svg',
+         dark: '/images/blog/logo.svg', 
+         alt: `${siteName} Logo`,
+         width: 180,
+         height: 40,
+     },
+    favicon: '/images/blog/logo.svg',
     ogImage: '/images/og-image.jpg',
     appleTouchIcon: '/images/apple-touch-icon.png',
     placeholderImageService: 'https://placehold.co',
@@ -292,7 +292,7 @@ export const BLOG_CONFIG: BlogConfig = {
         {
           name: 'Vipin Bihari',
           role: 'Founder & Chief Analyst',
-          imageUrl: 'images/authors/vipin-bihari.webp',
+          imageUrl: '/images/authors/vipin-bihari.webp',
           bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
         },/*
         {
