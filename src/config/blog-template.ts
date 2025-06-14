@@ -114,8 +114,6 @@ export interface BlogConfig {
     relatedPostsCount?: number; // Number of related posts to show on a post page
     latestPostsOnHomepage?: number; // Number of latest posts to show on the homepage
     breadcrumbSeparator?: string;
-    comments?: boolean;
-    commentsProvider?: 'disqus' | 'giscus' | 'hyvor' | 'none';
     heroConfig?: HeroConfig; // Configuration for the homepage hero section
   };
   navigation: {
@@ -145,7 +143,6 @@ export interface BlogConfig {
     googleAnalytics?: string;
     googleTagManager?: string;
     mailchimpSubscribeUrl?: string;
-    disqusShortname?: string;
   };
   
   // SEO & Advanced
@@ -168,14 +165,7 @@ export interface BlogConfig {
     defaultTags: string[];
   };
   
-  // Content Configuration
-  content?: {
-    showReadingTime?: boolean;
-    showTableOfContents?: boolean;
-    enableComments?: boolean;
-    enableNewsletter?: boolean;
-  };
-  
+
   // Features Configuration
   features?: FeaturesConfig;
   

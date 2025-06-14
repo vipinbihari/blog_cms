@@ -5,21 +5,9 @@
  * Modify this file to customize your blog's appearance and behavior.
  */
 
+
 import type { BlogConfig } from './blog-template';
 import { THEME_PRESETS } from './blog-template';
-
-// Custom niche presets for the finance niche
-const NICHE_PRESETS = {
-  finance: {
-    navigation: [
-      { label: 'Home', href: '/' },
-      { label: 'Market News', href: '/categories/market-news/page/1' },
-      { label: 'Technical Analysis', href: '/categories/technical-analysis/page/1' },
-      { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis/page/1' },
-      { label: 'About', href: '/about' },
-    ]
-  }
-};
 
 // Current active configuration
 const siteName = 'StockSage';
@@ -88,8 +76,6 @@ export const BLOG_CONFIG: BlogConfig = {
     relatedPostsCount: 3, // Number of related posts to show on a post page
     latestPostsOnHomepage: 10, // Number of latest posts to show on the homepage carousel
     breadcrumbSeparator: '›',
-    comments: true,
-    commentsProvider: 'disqus',
     heroConfig: {
       title: `Welcome to ${siteName}`,
       subtitle: 'Discover insightful articles, tutorials, and resources. Explore the latest trends and expert opinions.',
@@ -107,7 +93,14 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Navigation Configuration
   navigation: {
-    header: [...NICHE_PRESETS.finance.navigation],
+    header: [
+      { label: 'Home', href: '/' },
+      { label: 'Market News', href: '/categories/market-news/page/1' },
+      { label: 'Technical Analysis', href: '/categories/technical-analysis/page/1' },
+      { label: 'Fundamental Analysis', href: '/categories/fundamental-analysis/page/1' },
+    //  { label: 'About', href: '/about' },
+    //  { label: 'Contact', href: '/contact' },
+    ],
     
     // Footer navigation sections
     footer: [
@@ -213,14 +206,7 @@ export const BLOG_CONFIG: BlogConfig = {
     ],
   },
   
-  // Content Configuration
-  content: {
-    showReadingTime: true,
-    showTableOfContents: true,
-    enableComments: false,
-    enableNewsletter: true,
-  },
-  
+
   // SEO Configuration
   seo: {
     defaultTitle: siteName,

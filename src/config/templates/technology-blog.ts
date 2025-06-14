@@ -9,6 +9,28 @@ import type { BlogConfig } from '../blog-template';
 import { THEME_PRESETS, NICHE_PRESETS } from '../blog-template';
 
 export const TECHNOLOGY_BLOG_CONFIG: BlogConfig = {
+  social: [
+    {
+      platform: 'twitter',
+      url: 'https://twitter.com/techinsight',
+      label: 'Follow us on Twitter',
+    },
+    {
+      platform: 'github',
+      url: 'https://github.com/techinsight',
+      label: 'Check our GitHub',
+    },
+    {
+      platform: 'linkedin',
+      url: 'https://linkedin.com/company/techinsight',
+      label: 'Connect on LinkedIn',
+    },
+    {
+      platform: 'discord',
+      url: 'https://discord.gg/techinsight',
+      label: 'Join our Discord',
+    },
+  ],
   // Site Identity
   site: {
     name: 'TechInsight',
@@ -38,8 +60,6 @@ export const TECHNOLOGY_BLOG_CONFIG: BlogConfig = {
   layout: {
     postPerPage: 10,
     breadcrumbSeparator: '/',
-    comments: false,
-    commentsProvider: 'none',
     latestPostsOnHomepage: 6
   },
   footer: {
@@ -111,40 +131,9 @@ export const TECHNOLOGY_BLOG_CONFIG: BlogConfig = {
         ],
       },
     ],
-    social: [
-      {
-        platform: 'twitter',
-        url: 'https://twitter.com/techinsight',
-        label: 'Follow us on Twitter',
-      },
-      {
-        platform: 'github',
-        url: 'https://github.com/techinsight',
-        label: 'Check our GitHub',
-      },
-      {
-        platform: 'linkedin',
-        url: 'https://linkedin.com/company/techinsight',
-        label: 'Connect on LinkedIn',
-      },
-      {
-        platform: 'discord',
-        url: 'https://discord.gg/techinsight',
-        label: 'Join our Discord',
-      },
-    ],
   },
   
-  // Content Configuration
-  content: {
-    postsPerPage: 12,
-    featuredPostsCount: 4,
-    relatedPostsCount: 3,
-    showReadingTime: true,
-    showTableOfContents: true,
-    enableComments: true,
-    enableNewsletter: true,
-  },
+
   
   // Feature Toggles
   features: {
@@ -166,25 +155,7 @@ export const TECHNOLOGY_BLOG_CONFIG: BlogConfig = {
     },
   },
   
-  // Social Media Links
-  social: [
-    {
-      platform: 'twitter',
-      url: 'https://twitter.com/techinsight',
-      label: 'Follow us on Twitter',
-    },
-    {
-      platform: 'github',
-      url: 'https://github.com/techinsight',
-      label: 'Check our GitHub',
-    },
-    {
-      platform: 'linkedin',
-      url: 'https://linkedin.com/company/techinsight',
-      label: 'Connect on LinkedIn',
-    },
-  ],
-  
+
   // Legal Pages
   legalPages: {
     privacy: {
@@ -278,6 +249,24 @@ export const TECHNOLOGY_BLOG_CONFIG: BlogConfig = {
     ]
   },
   
+  // About Page Configuration (Placeholder)
+  aboutPage: {
+    title: 'About TechInsight',
+    description: 'Discover the mission and vision behind TechInsight, your go-to source for technology and development knowledge.',
+    hero: {
+      headline: 'Empowering Developers, Advancing Technology',
+      subheadline: 'We are dedicated to providing high-quality articles, tutorials, and insights for the tech community.',
+      ctaButton: { text: 'Learn More', href: '/about#mission' } // Example link to a section
+    },
+    mission: {
+        title: 'Our Mission',
+        text: 'To deliver clear, concise, and practical knowledge that empowers developers and tech enthusiasts to build the future.',
+        imageUrl: '/images/placeholder-mission-tech.jpg', // Placeholder
+        imageAlt: 'TechInsight Mission'
+    }
+    // Add other sections like whoWeAre, whatWeOffer, values, team, callToAction as needed
+  },
+
   // Niche-specific configuration
   niche: {
     type: 'technology',

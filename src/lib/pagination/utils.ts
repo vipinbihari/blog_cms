@@ -7,7 +7,7 @@ import { BLOG_CONFIG } from '../../config/current-config';
 export function paginate<T>(
   items: T[], 
   currentPage: number = 1, 
-  itemsPerPage: number = BLOG_CONFIG.content.postsPerPage
+  itemsPerPage: number = BLOG_CONFIG.layout.postPerPage
 ): PaginationResult<T> {
   const totalPages = Math.ceil(items.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -27,7 +27,7 @@ export function paginate<T>(
  */
 export function generatePaginationPaths<T>(
   items: T[],
-  itemsPerPage: number = BLOG_CONFIG.content.postsPerPage,
+  itemsPerPage: number = BLOG_CONFIG.layout.postPerPage,
   basePath: string = '/posts/page'
 ) {
   const totalPages = Math.ceil(items.length / itemsPerPage);

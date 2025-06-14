@@ -11,7 +11,7 @@ import { BLOG_CONFIG } from '../../config/current-config';
 export async function getRelatedPosts(
   currentPost: BlogPost,
   allPosts: BlogPost[],
-  limit: number = BLOG_CONFIG.content.relatedPostsCount
+  limit: number = BLOG_CONFIG.layout.relatedPostsCount
 ): Promise<BlogPost[]> {
   const currentPostTags = currentPost.data.tags;
   const currentPostCategory = currentPost.data.category;

@@ -8,7 +8,21 @@ export function generateOgImageUrl(
   title: string, 
   image?: string
 ): string {
-  if (image) return image;
+  if (image) {
+    // Check if the image URL is already absolute
+    if (image.startsWith('http://') || image.startsWith('https://')) {
+      return image;
+    }
+    // If relative (starts with '/'), prepend the site URL. Otherwise, assume it's a full URL or handle as error/default.
+    if (image.startsWith('/')) {
+      return `${BLOG_CONFIG.site.url.replace(/\/$/, '')}${image}`;
+    }
+    // Fallback for unexpected image format, or could return a default site OG image
+    // For now, let's return the image as is if it's not starting with / and not absolute, 
+    // or consider returning the placeholder.
+    // However, the primary case from PostLayout will be a relative path starting with / or an absolute one.
+  }
+
   
   const encodedTitle = encodeURIComponent(title.replace(/\s+/g, '+'));
   return `https://placehold.co/1200x630?text=${encodedTitle}`;
