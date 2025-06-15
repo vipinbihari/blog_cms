@@ -1,0 +1,34 @@
+---
+// LightboxInit.astro - Client component to initialize FSLightbox
+---
+
+<script>
+  // Import FSLightbox
+  import 'fslightbox';
+
+  // Function to initialize or refresh lightboxes
+  function refreshLightboxes() {
+    // FSLightbox has a global refreshFsLightbox function
+    if (typeof window.refreshFsLightbox === 'function') {
+      window.refreshFsLightbox();
+    } else {
+      // If the function doesn't exist yet, try again after a short delay
+      setTimeout(() => {
+        if (typeof window.refreshFsLightbox === 'function') {
+          window.refreshFsLightbox();
+        }
+      }, 500);
+    }
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', refreshLightboxes);
+  
+  // Also refresh on Astro view transitions
+  document.addEventListener('astro:after-swap', refreshLightboxes);
+  
+  // Call immediately in case DOM is already loaded
+  if (document.readyState === 'complete' || document.readyState === 'interactive') {
+    refreshLightboxes();
+  }
+</script>
