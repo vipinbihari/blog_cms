@@ -192,6 +192,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"dalal-street-defiance-nifty-soars-past-24900.mdx": {
+	id: "dalal-street-defiance-nifty-soars-past-24900.mdx";
+  slug: "dalal-street-defiance-nifty-soars-past-24900";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025.mdx": {
 	id: "dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025.mdx";
   slug: "dalal-street-ends-week-lower-sensex-slips-182-points-nifty-below-24800-gdp-jitters-global-cues-may-30-2025";
@@ -237,6 +244,20 @@ declare module 'astro:content' {
 "day-7-technical-analysis-part-1-chart-types-trend-basics.mdx": {
 	id: "day-7-technical-analysis-part-1-chart-types-trend-basics.mdx";
   slug: "day-7-technical-analysis-part-1-chart-types-trend-basics";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"day-9-technical-chart-patterns.mdx": {
+	id: "day-9-technical-chart-patterns.mdx";
+  slug: "day-9-technical-chart-patterns";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"derivatives-explained-beginners-guide-futures-options.mdx": {
+	id: "derivatives-explained-beginners-guide-futures-options.mdx";
+  slug: "derivatives-explained-beginners-guide-futures-options";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -311,9 +332,23 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"options-strategies-guide-indian-investors.mdx": {
+	id: "options-strategies-guide-indian-investors.mdx";
+  slug: "options-strategies-guide-indian-investors";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx": {
 	id: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx";
   slug: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sebis-t0-settlement-what-it-means-for-indian-investors.mdx": {
+	id: "sebis-t0-settlement-what-it-means-for-indian-investors.mdx";
+  slug: "sebis-t0-settlement-what-it-means-for-indian-investors";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -332,9 +367,30 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"stock-market-basics-day-10-risk-portfolio-management.mdx": {
+	id: "stock-market-basics-day-10-risk-portfolio-management.mdx";
+  slug: "stock-market-basics-day-10-risk-portfolio-management";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "what-is-pe-ratio-a-beginners-guide-to-valuing-stocks.mdx": {
 	id: "what-is-pe-ratio-a-beginners-guide-to-valuing-stocks.mdx";
   slug: "what-is-pe-ratio-a-beginners-guide-to-valuing-stocks";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"what-is-short-selling-a-complete-guide-for-indian-investors.mdx": {
+	id: "what-is-short-selling-a-complete-guide-for-indian-investors.mdx";
+  slug: "what-is-short-selling-a-complete-guide-for-indian-investors";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"zee-promoters-inject-2237-crore-boost-stake-post-sony-fallout.mdx": {
+	id: "zee-promoters-inject-2237-crore-boost-stake-post-sony-fallout.mdx";
+  slug: "zee-promoters-inject-2237-crore-boost-stake-post-sony-fallout";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

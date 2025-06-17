@@ -324,11 +324,16 @@ legalPages: {
 
 ### Managing Featured Content
 
+#### Upstox Account Opening CTA
+- The blog includes a modern, glassmorphic Upstox Demat Account Opening card, shown in every post.
+- To customize, edit `src/components/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
+- The CTA features gradients, responsive layout, and a visually appealing design for higher conversion and professionalism.
+
 To highlight specific articles on your homepage, you can mark them as "featured" directly in their Markdown frontmatter. This gives you precise control over which posts get top billing.
 
 **How to use it:**
 
-Add the `featured` flag to the frontmatter of any post you want to feature:
+Add the `featured` flag to the frontmatter of any post you want to feature. Only posts with `featured: true` will appear in the featured section. If you do not set `featured: true`, your post will not be shown as featured, even if there are fewer featured posts than the configured limit:
 
 ```yaml
 ---
@@ -350,7 +355,7 @@ featured: true  # Add this line to mark the post as featured
 - Posts with `featured: true` will be prioritized in the "Featured Articles" section on your homepage.
 - They will be sorted by date among other featured posts (newest first).
 - If there are more manually featured posts than the configured display limit for this section, only the newest ones up to the limit will be shown.
-- If there are fewer manually featured posts than the limit, the section will be filled with the latest non-featured posts.
+- The featured section now displays **only** posts with `featured: true`. There is no fallback to regular posts.
 
 Additionally, the homepage now includes a separate "Latest Posts" section, which displays recent articles that are not currently featured, ensuring fresh content is always visible and distinct from your curated featured selections.
 

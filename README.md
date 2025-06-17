@@ -62,12 +62,20 @@ Deploy the generated **`dist/`** directory to Vercel, Netlify, Cloudflare Pages,
    - **Dark mode link styling:** In dark mode, all links inside `.prose` content are light blue/white for readability. Social media icon links are now excluded from this forced color to preserve their brand colors.
 2. **Write posts** – place markdown/MDX files in `src/content/posts/`.  
    Front-matter controls category, tags, `featured` flag, hero images, etc.
+   - **Featured Posts:** Only posts with `featured: true` in their front-matter will appear in the homepage featured section. If you do not set `featured: true`, your post will not be shown as featured, even if there are fewer featured posts than the configured limit.
 
 Hot-reload means you will see changes instantly.
 
 ---
 
-## 5a  Image Handling & Zoom Feature
+## 5a  Upstox Account Opening CTA
+
+- The homepage and post layout now include a modern, visually appealing Upstox Demat Account Opening card.
+- The card uses glassmorphism, gradients, and a responsive layout for a professional look.
+- To update or customize the CTA, edit `src/components/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
+- The CTA is automatically included in every post (see `PostLayout.astro`).
+
+## 5b  Image Handling & Zoom Feature
 
 - **Responsive Image Sizing**:
   - **320px** - Home page post cards use smaller 320px images for faster loading
@@ -125,6 +133,7 @@ This separation allows:
 ## 6.1 Carousel & Card Interactivity
 
 - The homepage carousels (featured/latest posts) support smooth drag scrolling and clickable post cards.
+- **Featured posts carousel only shows posts with `featured: true`.** There is no fallback to regular posts if there are not enough featured posts.
 - **Clicking a post card** navigates to the post as expected. Dragging (with mouse or touch) will not interfere with click events.
 - **Navigation dots** below each carousel match the number of posts and show post numbers for clarity.
 - **Dark mode accessibility:** All carousel controls and dots have high-contrast colors in dark mode.

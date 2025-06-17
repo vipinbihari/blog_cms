@@ -9,6 +9,7 @@ import TableOfContents from '../components/TableOfContents';
 import ReadingProgress from '../components/ReadingProgress';
 import ResponsiveImage from '../components/ResponsiveImage.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
+import UpstoxCTA from '../components/UpstoxCTA.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -282,7 +283,8 @@ const components = {
           <Quiz client:only="react" quiz={quiz} />
         </div>
       )}
-      
+      <!-- Upstox CTA -->
+      <UpstoxCTA />
       <!-- Share buttons -->
       <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
         <ShareButtons client:only="react" title={title} url={currentUrl} description={excerpt} tags={tags} />
