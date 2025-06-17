@@ -36,9 +36,9 @@ interface BlogConfig {
 ## 🗑️ **Files and Directories Removed**
 
 ### Lightbox & Image Handling
-- Removed old `src/scripts/lightbox.js` (now handled via client-side script directly in PostLayout.astro).
-- Updated TypeScript declarations for FSLightbox to match the actual API.
-- All image lightbox logic is now handled via `ResponsiveImage` and a client-side script for MDX content images.
+- Removed old `src/scripts/lightbox.js` in favour of a simple client-side zoom modal in `PostLayout.astro`.
+- Dropped the FSLightbox dependency entirely.
+- All image zoom logic is now handled via `ResponsiveImage` and a client-side script for MDX content images.
 
 ### Niche Presets
 - Removed all niche preset files and references from the configuration system for a cleaner, more maintainable setup.

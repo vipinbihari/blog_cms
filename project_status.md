@@ -642,7 +642,6 @@ The old `src/utils/` directory has been removed and replaced with a modular libr
 
 **Key Functions**:
 - `getRelatedPosts()`: Gets related posts based on tags and categories
-- `getSuggestedPosts()`: Gets suggested posts for 404 pages
 - `calculatePostSimilarity()`: Calculates content similarity scores
 
 **Implementation Status**: Completed - Migrated from getRelatedPosts.ts

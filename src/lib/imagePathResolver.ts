@@ -41,29 +41,4 @@ export function resolveContentImagePath(path: string): string {
   return `/images/uploads/${path}`;
 }
 
-/**
- * Resolves the optimized image path given a source path and target width
- * 
- * @param src Source path of the image
- * @param width Target width of the optimized image
- * @returns The optimized image path
- */
-export function getOptimizedImagePath(src: string, width: number) {
-  // If the src is already optimized, return as is
-  if (src.includes('/images/optimized/')) {
-    return src;
-  }
-
-  // Remove leading slash if present
-  let cleanSrc = src.startsWith('/') ? src.slice(1) : src;
-
-  // Remove leading 'images/' if present to avoid double /images/
-  if (cleanSrc.startsWith('images/')) {
-    cleanSrc = cleanSrc.slice('images/'.length);
-  }
-
-  // Now cleanSrc should be e.g. 'authors/vipin-bihari.webp' or 'uploads/foo.jpg'
-  // Build the optimized path
-  return `/images/optimized/${cleanSrc.replace(/\.[^.]+$/, '')}-${width}.webp`;
-}
 

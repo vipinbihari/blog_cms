@@ -171,9 +171,9 @@ Below tables list **exported functions**, their **signatures** and **return type
 
 Algorithm: simple contains-matching; for large blogs swap in Fuse.js without touching the endpoint.
 
-### 5.3 Related Content – `content/related.ts`
+### 5.3 Related Content
 
-Provides helper wrappers for `getSuggestedPosts` and similar (see file).
+Related post suggestions are handled in `content/queries.ts` via `getRelatedPosts`. Previous helper wrappers were removed.
 
 ### 5.4 Pagination – `pagination/utils.ts`
 
