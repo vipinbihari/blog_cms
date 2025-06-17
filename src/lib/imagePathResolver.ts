@@ -10,10 +10,12 @@
  */
 
 /**
- * Resolves a content image path to the correct public URL
- * 
- * @param path Path to an image in the content repository 
- * @returns The public URL path for the image
+ * Converts a content repository image path to the corresponding public URL path.
+ *
+ * Resolves various content image path formats to the standardized public URL used in the application. Handles legacy and current path structures, as well as absolute URLs.
+ *
+ * @param path - The image path from the content repository.
+ * @returns The resolved public URL path for the image.
  */
 export function resolveContentImagePath(path: string): string {
   // Convert paths like "content/uploads/image-name/file.jpg" to "/images/uploads/image-name/file.jpg"

@@ -24,7 +24,12 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 }
 
 /**
- * Get featured posts (newest posts)
+ * Returns up to the specified number of featured blog posts, prioritizing those explicitly marked as featured.
+ *
+ * If there are fewer featured posts than the limit, the result is filled with the newest non-featured posts to reach the limit.
+ *
+ * @param limit - Maximum number of posts to return.
+ * @returns An array of featured and, if necessary, additional recent posts, ordered by recency.
  */
 export async function getFeaturedPosts(
   limit: number = BLOG_CONFIG.layout.featuredPostsCount ?? 3
