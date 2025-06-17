@@ -40,9 +40,9 @@ const title = SITE_CONFIG.title;
 ### 2. Feature-Based Utilities (`src/lib/`)
 
 #### Image Handling & Lightbox
-- All hero images and in-post images support a lightbox/zoom feature via FSLightbox.
-- Lightbox is enabled via the `enableLightbox` prop on `ResponsiveImage` or automatically for MDX images.
-- Homepage post card images do not have the lightbox effect.
+- All hero images and in-post images use a custom zoom modal (FSLightbox has been removed).
+- Zoom is enabled via the `enableLightbox` prop on `ResponsiveImage` or automatically for MDX images.
+- Homepage post card images do not have the zoom effect.
 
 
 #### Content Queries (`src/lib/content/queries.ts`)

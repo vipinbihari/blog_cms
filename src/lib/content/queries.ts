@@ -26,32 +26,18 @@ export async function getAllPosts(): Promise<BlogPost[]> {
 /**
  * Get featured posts (newest posts)
  */
-export async function getFeaturedPosts(limit: number = BLOG_CONFIG.layout.featuredPostsCount ?? 3): Promise<BlogPost[]> {
-  const allPosts = await getAllPosts();
+export async function getFeaturedPosts(
+  limit: number = BLOG_CONFIG.layout.featuredPostsCount ?? 3
+): Promise<BlogPost[]> {
+  const posts = await getAllPosts();
 
-  const manuallyFeaturedPosts = allPosts
-    .filter(post => post.data.featured === true)
-    .sort((a, b) => compareDesc(a.data.date, b.data.date)); // Ensure sorted by date
-
-  const otherPosts = allPosts
-    .filter(post => post.data.featured !== true)
-    .sort((a, b) => compareDesc(a.data.date, b.data.date)); // Already sorted by getAllPosts, but re-sorting for clarity
-
-  let featuredPosts: BlogPost[] = [];
-
-  // Add manually featured posts first
-  featuredPosts = featuredPosts.concat(manuallyFeaturedPosts);
-
-  // If we still need more posts to reach the limit, add from other latest posts
-  if (featuredPosts.length < limit) {
-    const remainingLimit = limit - featuredPosts.length;
-    // Ensure we don't add posts that are already in manuallyFeaturedPosts (though filter should prevent this)
-    const postsToAdd = otherPosts.filter(p => !featuredPosts.find(fp => fp.id === p.id)).slice(0, remainingLimit);
-    featuredPosts = featuredPosts.concat(postsToAdd);
+  const featured = posts.filter(p => p.data.featured);
+  if (featured.length >= limit) {
+    return featured.slice(0, limit);
   }
 
-  // Finally, ensure we don't exceed the limit if many were manually featured
-  return featuredPosts.slice(0, limit);
+  const others = posts.filter(p => !p.data.featured);
+  return [...featured, ...others].slice(0, limit);
 }
 
 /**
