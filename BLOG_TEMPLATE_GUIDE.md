@@ -66,12 +66,12 @@ site: {
 
 ---
 
-### Image Handling & Lightbox
+### Image Handling & Zoom
 
-- **Hero images** and **in-post images** support a lightbox/zoom effect using FSLightbox.
-- To enable lightbox on a custom image, use the `enableLightbox={true}` prop on `ResponsiveImage`.
-- All images in blog post content (MDX/Markdown) are automatically wrapped for lightbox via a client-side script.
-- Homepage post card images do **not** have the lightbox for clarity.
+- **Hero images** and **in-post images** open in a lightweight custom zoom modal.
+- To opt into zoom on a custom image, use the `enableLightbox={true}` prop on `ResponsiveImage`.
+- All images in blog post content (MDX/Markdown) are automatically wrapped for zoom via a small client-side script.
+- Homepage post card images do **not** use the zoom effect for clarity.
 
 
 ### Branding & Visual Identity

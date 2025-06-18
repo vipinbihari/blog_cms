@@ -6,7 +6,7 @@
 - Introduced reusable PostCard component for all post previews.
 - Refactored homepage and related posts for consistency and maintainability.
 - Enhanced dark mode and social icon accessibility.
-- Integrated a modern lightbox feature for hero and in-post images using FSLightbox (excluding homepage post cards).
+- Integrated a lightweight custom zoom modal for hero and in-post images (excluding homepage post cards).
 
 ## 📊 Transformation Summary
 
