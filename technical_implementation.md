@@ -177,7 +177,7 @@ This module previously exposed extra helpers for suggested content.
 The current codebase only keeps the main `getRelatedPosts` function;
 other helpers were removed during cleanup.
 
-### 5.4 Pagination – `pagination/utils.ts`
+### 5.4 Pagination – `pagination/index.ts`
 
 | Function | Signature | Returns |
 |----------|-----------|---------|
@@ -185,7 +185,7 @@ other helpers were removed during cleanup.
 | `generatePaginationPaths<T>(items, itemsPerPage?, basePath?)` | `(items:T[], itemsPerPage:number, basePath:string): {params, props}[]` | Astro static paths |
 | `generatePageNumbers(current, total, maxVisible?)` | `(current:number, total:number, maxVisible:number=5): number[]` | Sequence for UI pager |
 
-### 5.5 SEO – `seo/utils.ts`
+### 5.5 SEO – `seo/index.ts`
 
 | Function | Signature | Purpose |
 |----------|-----------|---------|
@@ -198,7 +198,7 @@ other helpers were removed during cleanup.
 | `generatePageTitle(title, includeSiteName?)` | `(title:string, includesSiteName:boolean=true): string` |
 | `extractKeywords(post)` | `(post:BlogPost): string[]` | Simple keyword extraction |
 
-### 5.6 Images – `images/utils.ts`
+### 5.6 Images – `images/index.ts`
 
 | Function | Signature |
 |----------|-----------|
@@ -227,7 +227,7 @@ other helpers were removed during cleanup.
 | `PageNavigation.astro` | Astro | Prev/Next post links |
 | `PostCard.astro` | Astro | Summary card for grids |
 | `RelatedPosts.astro` | Astro | Calls `getRelatedPosts` utility |
-| `ResponsiveImage.astro` | Astro | `<picture>` wrapper around `images/utils` |
+| `ResponsiveImage.astro` | Astro | `<picture>` wrapper around `images/index` |
 | `Quiz.jsx` | React Island | Interactive multiple-choice quiz (uses local state) |
 | `ReadingProgress.jsx` | React Island | Scroll progress bar |
 | `ShareButtons.jsx` | React Island | Social share pop-ups |
@@ -262,7 +262,7 @@ Key pages:
 ## 9  Extensibility Notes
 
 * Add a new niche by exporting a `BlogConfig` object in `src/config/templates/`.
-* Use `lib/content/queries.ts` as reference for writing further data helpers.
+* Use `lib/content/index.ts` as reference for writing further data helpers.
 * UI components intentionally avoid framework-specific code – they accept plain props and are easily replaced.
 * Strong typing means most breaking changes will surface at compile-time.
 

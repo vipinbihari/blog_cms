@@ -1,15 +1,15 @@
 ---
 import { type CollectionEntry } from 'astro:content';
 import BaseLayout from './BaseLayout.astro';
-import FormattedDate from '../components/FormattedDate.astro';
-import Quiz from '../components/Quiz';
-import ShareButtons from '../components/ShareButtons';
-import AuthorBio from '../components/AuthorBio.astro';
-import TableOfContents from '../components/TableOfContents';
-import ReadingProgress from '../components/ReadingProgress';
-import ResponsiveImage from '../components/ResponsiveImage.astro';
-import RelatedPosts from '../components/RelatedPosts.astro';
-import UpstoxCTA from '../components/UpstoxCTA.astro';
+import FormattedDate from '../components/ui/FormattedDate.astro';
+import Quiz from '../components/features/Quiz';
+import ShareButtons from '../components/features/ShareButtons';
+import AuthorBio from '../components/features/AuthorBio.astro';
+import TableOfContents from '../components/features/TableOfContents';
+import ReadingProgress from '../components/features/ReadingProgress';
+import ResponsiveImage from '../components/ui/ResponsiveImage.astro';
+import RelatedPosts from '../components/features/RelatedPosts.astro';
+import UpstoxCTA from '../components/features/UpstoxCTA.astro';
 
 type Props = {
   post: CollectionEntry<'posts'>;

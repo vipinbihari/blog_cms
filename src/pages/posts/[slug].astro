@@ -1,8 +1,8 @@
 ---
 import { getCollection, type CollectionEntry } from 'astro:content';
 import PostLayout from '../../layouts/PostLayout.astro';
-import { getRelatedPosts } from '../../lib/content/queries';
-import ResponsiveImage from '../../components/ResponsiveImage.astro';
+import { getRelatedPosts } from '../../lib/content';
+import ResponsiveImage from '../../components/ui/ResponsiveImage.astro';
 import { BLOG_CONFIG } from '../../config/current-config';
 
 // Generate static paths for all blog posts

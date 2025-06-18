@@ -72,7 +72,7 @@ Hot-reload means you will see changes instantly.
 
 - The homepage and post layout now include a modern, visually appealing Upstox Demat Account Opening card.
 - The card uses glassmorphism, gradients, and a responsive layout for a professional look.
-- To update or customize the CTA, edit `src/components/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
+- To update or customize the CTA, edit `src/components/features/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
 - The CTA is automatically included in every post (see `PostLayout.astro`).
 
 ## 5b  Image Handling & Zoom Feature

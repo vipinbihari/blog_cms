@@ -45,9 +45,9 @@ const title = SITE_CONFIG.title;
 - Homepage post card images do not use the zoom effect.
 
 
-#### Content Queries (`src/lib/content/queries.ts`)
+#### Content Queries (`src/lib/content/index.ts`)
 ```typescript
-import { getAllPosts, getFeaturedPosts, getPostsByCategory } from '../lib/content/queries';
+import { getAllPosts, getFeaturedPosts, getPostsByCategory } from '../lib/content';
 
 // Get all posts
 const posts = await getAllPosts();
@@ -73,9 +73,9 @@ const scoredResults = await searchPostsWithScore('stock market');
 const suggestions = await getSearchSuggestions('inv', 5);
 ```
 
-#### SEO Utilities (`src/lib/seo/utils.ts`)
+#### SEO Utilities (`src/lib/seo/index.ts`)
 ```typescript
-import { generateOgImageUrl, generatePostStructuredData } from '../lib/seo/utils';
+import { generateOgImageUrl, generatePostStructuredData } from '../lib/seo';
 
 // Generate OG image
 const ogImage = generateOgImageUrl(post.title, post.heroImage);
@@ -84,9 +84,9 @@ const ogImage = generateOgImageUrl(post.title, post.heroImage);
 const structuredData = generatePostStructuredData(post, postUrl);
 ```
 
-#### Image Utilities (`src/lib/images/utils.ts`)
+#### Image Utilities (`src/lib/images/index.ts`)
 ```typescript
-import { generatePlaceholderImage, getImageLoadingStrategy } from '../lib/images/utils';
+import { generatePlaceholderImage, getImageLoadingStrategy } from '../lib/images';
 
 // Generate placeholder
 const placeholder = generatePlaceholderImage(title, 800, 400);
@@ -95,9 +95,9 @@ const placeholder = generatePlaceholderImage(title, 800, 400);
 const loading = getImageLoadingStrategy(true, false); // 'eager' or 'lazy'
 ```
 
-#### Pagination (`src/lib/pagination/utils.ts`)
+#### Pagination (`src/lib/pagination/index.ts`)
 ```typescript
-import { paginate, generatePaginationPaths } from '../lib/pagination/utils';
+import { paginate, generatePaginationPaths } from '../lib/pagination';
 
 // Paginate data
 const paginatedPosts = paginate(posts, currentPage, 10);
@@ -251,7 +251,7 @@ This refactoring ensures better maintainability, type safety, and developer expe
 ## Refactoring Steps
 
 ### Unified PostCard Component
-- Created `src/components/PostCard.astro` for all post previews.
+- Created `src/components/ui/PostCard.astro` for all post previews.
 - Removed duplicate markup from homepage, related posts, and archive pages.
 
 ### Homepage Refactor
