@@ -253,13 +253,13 @@ export const BLOG_CONFIG: BlogConfig = {
           role: 'Founder & Chief Analyst',
           imageUrl: '/images/authors/vipin-bihari.webp',
           bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
-        },/*
+        },
         {
           name: 'Praveen Yadav',
           role: 'Lead Technical Strategist',
           imageUrl: 'https://placehold.co/400x400?text=PY',
           bio: 'Praveen specializes in technical analysis and chart patterns, helping traders identify market opportunities with precision.'
-        }*/
+        }
       ]
     },
     callToAction: {
