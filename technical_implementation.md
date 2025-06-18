@@ -173,7 +173,9 @@ Algorithm: simple contains-matching; for large blogs swap in Fuse.js without tou
 
 ### 5.3 Related Content – `content/related.ts`
 
-Provides helper wrappers for `getSuggestedPosts` and similar (see file).
+This module previously exposed extra helpers for suggested content.
+The current codebase only keeps the main `getRelatedPosts` function;
+other helpers were removed during cleanup.
 
 ### 5.4 Pagination – `pagination/utils.ts`
 
@@ -267,3 +269,4 @@ Key pages:
 ---
 
 _© 2025 Blog CMS_
+
