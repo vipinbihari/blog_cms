@@ -1,15 +1,14 @@
 // Content utilities
-export * from './content/queries';
-export * from './content/search';
+export * from './content';
 
 // SEO utilities
-export * from './seo/utils';
+export * from './seo';
 
 // Image utilities
-export * from './images/utils';
+export * from './images';
 
 // Pagination utilities
-export * from './pagination/utils';
+export * from './pagination';
 
 // Re-export commonly used types
 export type {

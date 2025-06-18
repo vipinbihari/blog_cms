@@ -8,7 +8,7 @@ import { BLOG_CONFIG } from '../../config/current-config';
 /**
  * Get related posts based on post tags and category
  */
-export async function getRelatedPosts(
+export async function getRelatedPostsLegacy(
   currentPost: BlogPost,
   allPosts: BlogPost[],
   limit: number = BLOG_CONFIG.layout.relatedPostsCount

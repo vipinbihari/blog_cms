@@ -1,13 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
+import PostCard from '../components/ui/PostCard.astro';
 // FormattedDate is now used within PostCard
-import ResponsiveImage from '../components/ResponsiveImage.astro';
+import ResponsiveImage from '../components/ui/ResponsiveImage.astro';
 import '../styles/hero-animation.css';
 import '../styles/carousel-animations.css';
 import { BLOG_CONFIG } from '../config/current-config';
-import { getFeaturedPosts, getLatestPosts, getCategoryStats } from '../lib/content/queries';
-import type { BlogPost } from '../lib/content/queries';
+import { getFeaturedPosts, getLatestPosts, getCategoryStats } from '../lib/content';
+import type { BlogPost } from '../lib/content';
 
 // Initialize with empty arrays to handle case where collection doesn't exist yet
 let featuredPosts = [];

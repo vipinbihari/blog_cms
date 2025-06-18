@@ -326,7 +326,7 @@ legalPages: {
 
 #### Upstox Account Opening CTA
 - The blog includes a modern, glassmorphic Upstox Demat Account Opening card, shown in every post.
-- To customize, edit `src/components/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
+ - To customize, edit `src/components/features/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
 - The CTA features gradients, responsive layout, and a visually appealing design for higher conversion and professionalism.
 
 To highlight specific articles on your homepage, you can mark them as "featured" directly in their Markdown frontmatter. This gives you precise control over which posts get top billing.

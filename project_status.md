@@ -100,7 +100,7 @@ Complete migration from hardcoded `SITE_CONFIG` to dynamic `BLOG_CONFIG`:
 - Removed legacy `src/config/site.ts` (53 lines removed)
 - Updated all imports from `SITE_CONFIG` to `BLOG_CONFIG`
 - Migrated `src/pages/index.astro` to use new configuration
-- Updated `src/lib/images/utils.ts` with configuration-driven placeholder service
+- Updated `src/lib/images/index.ts` with configuration-driven placeholder service
 - Updated `src/lib/index.ts` exports to use new configuration system
 - Fixed all component imports and references
 - Maintained backward compatibility for existing content
