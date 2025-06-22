@@ -434,7 +434,7 @@ export const BLOG_CONFIG: BlogConfig = {
   // Authors Configuration
   authors: {
     'Vipin Bihari': {
-      bio: 'Vipin Bihari is a seasoned financial analyst with over 15 years of experience in investment banking and portfolio management.',
+      bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.',
       avatar: '/images/authors/vipin-bihari.webp',
       twitter: 'bihari_web',
       linkedin: 'bihari_web'
