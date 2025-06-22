@@ -31,7 +31,7 @@ export const BLOG_CONFIG: BlogConfig = {
     description: 'Expert analysis and practical lessons on Indian and global stock markets.',
     url: siteUrl,
     author: 'Vipin Bihari', 
-    email: `contact@${siteName.toLowerCase().replace(/\s+/g, '')}.com`,
+    email: `contact@${siteName.toLowerCase().replace(/\s+/g, '')}apanaresult.com`,
     language: 'en',
     locale: 'en-US',
   },
@@ -401,6 +401,49 @@ export const BLOG_CONFIG: BlogConfig = {
           content: 'We reserve the right to update or modify this disclaimer at any time without prior notice. By continuing to use our website, you accept and agree to be bound by the current version of this disclaimer.'
         }
       ]
+    }
+  },
+
+  // UpstoxCTA Component Configuration
+  upstoxCTA: {
+    enabled: true, // Set to false to disable the component globally
+    title: 'Open a Demat Account',
+    logo: {
+      src: '/images/blog/upstox.jpeg',
+      alt: 'Upstox Logo'
+    },
+    badge: {
+      text: 'Recommended',
+      showBadge: true
+    },
+    description: 'Looking to start your investment journey? Open a demat account with Upstox, one of India\'s leading discount brokers with powerful tools, low brokerage, and seamless trading experience.',
+    features: [
+      '₹0 Account Maintenance Charges*',
+      '₹20 Brokerage*',
+      'Quick Account Opening',
+      'Advanced Charts'
+    ],
+    ctaSection: {
+      title: 'Open Your Account Today',
+      buttonText: 'Open an Account',
+      buttonUrl: 'https://upstox.com/open-demat-account/?f=4EA75T',
+      disclaimer: 'Disclaimer: I am an authorized person with Upstox.'
+    }
+  },
+
+  // Authors Configuration
+  authors: {
+    'Vipin Bihari': {
+      bio: 'Vipin Bihari is a seasoned financial analyst with over 15 years of experience in investment banking and portfolio management.',
+      avatar: '/images/authors/vipin-bihari.webp',
+      twitter: 'bihari_web',
+      linkedin: 'bihari_web'
+    },
+    'Praveen': {
+      bio: 'Praveen is a seasoned financial analyst with over 15 years of experience in investment banking and portfolio management.',
+      avatar: '/images/authors/praveen.jpg',
+      twitter: 'praveen',
+      linkedin: 'praveen'
     }
   },
 

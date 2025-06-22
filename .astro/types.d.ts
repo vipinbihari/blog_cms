@@ -255,6 +255,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"decoding-the-rally-sensex-surge-nifty-conquers-25k.mdx": {
+	id: "decoding-the-rally-sensex-surge-nifty-conquers-25k.mdx";
+  slug: "decoding-the-rally-sensex-surge-nifty-conquers-25k";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "derivatives-explained-beginners-guide-futures-options.mdx": {
 	id: "derivatives-explained-beginners-guide-futures-options.mdx";
   slug: "derivatives-explained-beginners-guide-futures-options";
@@ -272,6 +279,13 @@ declare module 'astro:content' {
 "fundamental-analysis-ratios-valuations-day-5.mdx": {
 	id: "fundamental-analysis-ratios-valuations-day-5.mdx";
   slug: "fundamental-analysis-ratios-valuations-day-5";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"how-to-analyze-a-stock-before-investing-indian-market.mdx": {
+	id: "how-to-analyze-a-stock-before-investing-indian-market.mdx";
+  slug: "how-to-analyze-a-stock-before-investing-indian-market";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -346,6 +360,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"sebi-approves-fno-expiry-swap-nse-tuesday-bse-thursday.mdx": {
+	id: "sebi-approves-fno-expiry-swap-nse-tuesday-bse-thursday.mdx";
+  slug: "sebi-approves-fno-expiry-swap-nse-tuesday-bse-thursday";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "sebis-t0-settlement-what-it-means-for-indian-investors.mdx": {
 	id: "sebis-t0-settlement-what-it-means-for-indian-investors.mdx";
   slug: "sebis-t0-settlement-what-it-means-for-indian-investors";
@@ -356,6 +377,13 @@ declare module 'astro:content' {
 "sensex-nifty-flat-volatile-trade-june-10-2025.mdx": {
 	id: "sensex-nifty-flat-volatile-trade-june-10-2025.mdx";
   slug: "sensex-nifty-flat-volatile-trade-june-10-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"siemens-energy-dalal-street-debut-volatile-start-power-titan.mdx": {
+	id: "siemens-energy-dalal-street-debut-volatile-start-power-titan.mdx";
+  slug: "siemens-energy-dalal-street-debut-volatile-start-power-titan";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

@@ -112,6 +112,10 @@ export interface BlogConfig {
   // Social Media & Integrations
   social: SocialLink[];
   
+  // Component Configurations
+  upstoxCTA?: UpstoxCTAConfig; // Configuration for the UpstoxCTA component
+  authors?: Record<string, AuthorData>; // Configuration for author information
+  
   // SEO & Advanced
   seo?: {
     defaultTitle: string;
@@ -264,6 +268,40 @@ export interface AboutPageConfig {
     subheadline: string;
     buttons: AboutPageCtaButton[];
   };
+}
+
+// UpstoxCTA Component Configuration
+export interface UpstoxCTAConfig {
+  enabled: boolean; // Whether to show the component
+  title: string;
+  logo: {
+    src: string;
+    alt: string;
+  };
+  badge?: {
+    text: string;
+    showBadge: boolean;
+  };
+  description: string;
+  features: string[];
+  ctaSection: {
+    title: string;
+    buttonText: string;
+    buttonUrl: string;
+    disclaimer?: string;
+  };
+}
+
+// Author Configuration
+export interface AuthorData {
+  bio: string;
+  avatar: string;
+  twitter?: string;
+  linkedin?: string;
+  instagram?: string;
+  facebook?: string;
+  github?: string;
+  website?: string;
 }
 
 // Legal Pages Configuration
