@@ -283,6 +283,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"geopolitical-shockwave-sensex-nifty-tumble-us-iran.mdx": {
+	id: "geopolitical-shockwave-sensex-nifty-tumble-us-iran.mdx";
+  slug: "geopolitical-shockwave-sensex-nifty-tumble-us-iran";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "how-to-analyze-a-stock-before-investing-indian-market.mdx": {
 	id: "how-to-analyze-a-stock-before-investing-indian-market.mdx";
   slug: "how-to-analyze-a-stock-before-investing-indian-market";

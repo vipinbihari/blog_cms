@@ -31,7 +31,7 @@ export const BLOG_CONFIG: BlogConfig = {
     description: 'Expert analysis and practical lessons on Indian and global stock markets.',
     url: siteUrl,
     author: 'Vipin Bihari', 
-    email: `contact@${siteName.toLowerCase().replace(/\s+/g, '')}apanaresult.com`,
+    email: `vipinbiharitiwari25@gmail.com`,
     language: 'en',
     locale: 'en-US',
   },
@@ -427,7 +427,7 @@ export const BLOG_CONFIG: BlogConfig = {
       title: 'Open Your Account Today',
       buttonText: 'Open an Account',
       buttonUrl: 'https://upstox.com/open-demat-account/?f=4EA75T',
-      disclaimer: 'Disclaimer: I am an authorized person with Upstox.'
+      disclaimer: 'Disclaimer: I am an authorized person (AP2513032321) with Upstox.'
     }
   },
 
