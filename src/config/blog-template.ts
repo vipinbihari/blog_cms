@@ -24,6 +24,13 @@ export interface HeroCtaButton {
   url: string;
 }
 
+export interface HeroBackgroundImage {
+  src: string;
+  alt?: string;
+  width?: number;
+  height?: number;
+}
+
 export interface HeroConfig {
   title?: string;
   subtitle?: string;
@@ -31,6 +38,7 @@ export interface HeroConfig {
   ctaButton2?: HeroCtaButton;
   image?: HeroConfigImage;
   showImage?: boolean;
+  heroBackgroundImage?: string | HeroBackgroundImage;
 }
 
 export interface BlogConfig {

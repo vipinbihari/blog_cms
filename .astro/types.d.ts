@@ -220,6 +220,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"dalal-street-roars-sensex-nifty-surge-global-relief-oil-plunge.mdx": {
+	id: "dalal-street-roars-sensex-nifty-surge-global-relief-oil-plunge.mdx";
+  slug: "dalal-street-roars-sensex-nifty-surge-global-relief-oil-plunge";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "dalal-street-seesaws-sensex-nifty-tumble-june-3-2025.mdx": {
 	id: "dalal-street-seesaws-sensex-nifty-tumble-june-3-2025.mdx";
   slug: "dalal-street-seesaws-sensex-nifty-tumble-june-3-2025";
@@ -286,6 +293,13 @@ declare module 'astro:content' {
 "geopolitical-shockwave-sensex-nifty-tumble-us-iran.mdx": {
 	id: "geopolitical-shockwave-sensex-nifty-tumble-us-iran.mdx";
   slug: "geopolitical-shockwave-sensex-nifty-tumble-us-iran";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"geopolitical-whiplash-sensex-swings-wildly-on-ceasefire-news.mdx": {
+	id: "geopolitical-whiplash-sensex-swings-wildly-on-ceasefire-news.mdx";
+  slug: "geopolitical-whiplash-sensex-swings-wildly-on-ceasefire-news";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

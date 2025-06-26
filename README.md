@@ -60,6 +60,7 @@ Deploy the generated **`dist/`** directory to Vercel, Netlify, Cloudflare Pages,
    - **Social links are managed exclusively via the top-level `BLOG_CONFIG.social` array**. Add, remove, or modify your social profiles there.
    - **Centralized site URL/email:** The site URL and contact email are now managed centrally in config and used throughout the project.
    - **Dark mode link styling:** In dark mode, all links inside `.prose` content are light blue/white for readability. Social media icon links are now excluded from this forced color to preserve their brand colors.
+   - **Configurable hero background:** The homepage hero section supports a custom background image via `BLOG_CONFIG.layout.heroConfig.heroBackgroundImage`. You can use either a simple string path or a comprehensive object with src, alt, width, and height properties.
 2. **Write posts** – place markdown/MDX files in `src/content/posts/`.  
    Front-matter controls category, tags, `featured` flag, hero images, etc.
    - **Featured Posts:** Only posts with `featured: true` in their front-matter will appear in the homepage featured section. If you do not set `featured: true`, your post will not be shown as featured, even if there are fewer featured posts than the configured limit.
