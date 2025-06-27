@@ -82,10 +82,10 @@ export const BLOG_CONFIG: BlogConfig = {
   
   // Layout Configuration
   layout: {
-    postPerPage: 10, // Primary posts per page for pagination
-    featuredPostsCount: 10, // Number of featured posts to fetch for carousels/listings
+    postPerPage: 15, // Primary posts per page for pagination
+    featuredPostsCount: 15, // Number of featured posts to fetch for carousels/listings
     relatedPostsCount: 3, // Number of related posts to show on a post page
-    latestPostsOnHomepage: 10, // Number of latest posts to show on the homepage carousel
+    latestPostsOnHomepage: 15, // Number of latest posts to show on the homepage carousel
     breadcrumbSeparator: '›',
     heroConfig: {
       title: `Welcome to ${siteName}`,
@@ -249,16 +249,16 @@ export const BLOG_CONFIG: BlogConfig = {
       title: 'Meet The Team',
       members: [
         {
-          name: 'Vipin Bihari',
+          name: 'Praveen Yadav',
           role: 'Founder &  Chief Analyst',
-          imageUrl: '/images/authors/vipin-bihari.webp',
-          bio: 'Vipin Bihari is the voice behind Nivesh Marg, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
+          imageUrl: '/images/authors/praveen_yadav.jpeg',
+          bio: 'Praveen Yadav is the mind behind Nivesh Marg, turning raw market data into bite-sized, practical tips. Through a mix of in-depth technical analysis and field-tested tech experiments, he helps investors make smarter moves.'
         },
         {
-          name: 'Praveen Yadav',
+          name: 'Shivam',
           role: 'Lead Technical Strategist',
-          imageUrl: '/images/authors/praveen-yadav.jpeg',
-          bio: 'Praveen specializes in technical analysis and chart patterns, helping traders identify market opportunities with precision.'
+          imageUrl: 'https://placehold.co/400x400?text=S',
+          bio: 'Shivam specializes in technical analysis and chart patterns, helping traders identify market opportunities with precision.'
         }
       ]
     },
@@ -278,7 +278,7 @@ export const BLOG_CONFIG: BlogConfig = {
   legalPages: {
     privacy: {
       title: 'Privacy Policy',
-      lastUpdated: 'June 15, 2025',
+      lastUpdated: 'June 15, 2024',
       sections: [
         {
           title: 'Introduction',
@@ -320,7 +320,7 @@ export const BLOG_CONFIG: BlogConfig = {
     },
     terms: {
       title: 'Terms of Service',
-      lastUpdated: 'June 15, 2025',
+      lastUpdated: 'June 15, 2024',
       sections: [
         {
           title: 'Agreement to Terms',
@@ -362,7 +362,7 @@ export const BLOG_CONFIG: BlogConfig = {
     },
     disclaimer: {
       title: 'Disclaimer',
-      lastUpdated: 'June 15, 2025',
+      lastUpdated: 'June 15, 2024',
       sections: [
         {
           title: 'Financial Information Disclaimer',
@@ -433,17 +433,17 @@ export const BLOG_CONFIG: BlogConfig = {
 
   // Authors Configuration
   authors: {
-    'Vipin Bihari': {
-      bio: 'Vipin Bihari is the voice behind Nivesh Marg, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.',
-      avatar: '/images/authors/vipin-bihari.webp',
-      twitter: 'bihari_web',
-      linkedin: 'bihari_web'
-    },
-    'Praveen': {
-      bio: 'Praveen is a seasoned financial analyst with over 15 years of experience in investment banking and portfolio management.',
-      avatar: '/images/authors/praveen.jpg',
+    'Praveen Yadav': {
+      bio: 'Praveen Yadav is the voice behind Nivesh Marg, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.',
+      avatar: '/images/authors/praveen_yadav.jpeg',
       twitter: '@yadav_0073',
       linkedin: 'praveen-yadav-0073'
+    },
+    'Shivam': {
+      bio: 'Shivam is a seasoned financial analyst with over 15 years of experience in investment banking and portfolio management.',
+      avatar: 'https://placehold.co/400x400?text=S',
+      twitter: 'shivam',
+      linkedin: 'shivam'
     }
   },
 
