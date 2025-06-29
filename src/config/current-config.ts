@@ -19,8 +19,8 @@ import type { BlogConfig } from './blog-template';
 import { THEME_PRESETS } from './blog-template';
 
 // Current active configuration
-const siteName = 'StockSage';
-const siteUrl = `https://stocksage.apanaresult.com`;
+const siteName = 'FinHux';
+const siteUrl = `https://finhux.com`;
 
 export const BLOG_CONFIG: BlogConfig = {
 
@@ -39,14 +39,14 @@ export const BLOG_CONFIG: BlogConfig = {
   // Branding & Visual Identity
   branding: {
      logo: {
-         light: '/images/blog/logo.svg',
-         dark: '/images/blog/logo.svg', 
+         light: '/images/blog/finhux-logo-128.png',
+         dark: '/images/blog/finhux-logo-128.png', 
          alt: `${siteName} Logo`,
          width: 180,
          height: 40,
      },
-    favicon: '/images/blog/logo.svg',
-    ogImage: '/images/blog/logo.svg',
+    favicon: '/images/blog/finhux-logo-64.png',
+    ogImage: '/images/blog/finhux-logo-512.png',
     appleTouchIcon: '/images/apple-touch-icon.png',
     placeholderImageService: 'https://placehold.co',
   },
@@ -252,7 +252,7 @@ export const BLOG_CONFIG: BlogConfig = {
           name: 'Vipin Bihari',
           role: 'Founder & Chief Analyst',
           imageUrl: '/images/authors/vipin-bihari.webp',
-          bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
+          bio: 'Vipin Bihari is the voice behind FinHux, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.'
         },
         {
           name: 'Praveen Yadav',
@@ -366,19 +366,19 @@ export const BLOG_CONFIG: BlogConfig = {
       sections: [
         {
           title: 'Financial Information Disclaimer',
-          content: `The information provided on ${siteName} is for general informational purposes only and should not be considered as financial advice. We are not certified financial planners, registered investment advisors, or licensed brokers. Before making any investment decisions, we strongly recommend consulting with a qualified financial advisor who can provide personalized advice tailored to your specific financial situation, investment goals, and risk tolerance.`
+          content: `The stock market analysis, technical charts, trading strategies, and investment education provided on ${siteName} is for general informational and educational purposes only and should not be considered as personalized financial advice. While our content is created by experienced market analysts and traders, we are not certified financial planners, registered investment advisors, or licensed brokers except where explicitly stated. Before making any investment decisions based on our market analysis or trading strategies, we strongly recommend consulting with a qualified financial advisor who can provide personalized advice tailored to your specific financial situation, investment goals, and risk tolerance.`
         },
         {
           title: 'No Investment Recommendations',
-          content: `Nothing published on ${siteName} should be interpreted as a recommendation to buy, sell, or hold any particular security or investment product. The content we provide reflects our opinions and analyses based on publicly available information, but we make no representations or warranties about the accuracy or completeness of such information.`
+          content: `While we discuss various stocks, trading patterns, and market sectors on ${siteName}, nothing published should be interpreted as a specific recommendation to buy, sell, or hold any particular security or investment product. Our technical analysis, chart patterns, and stock discussions reflect our opinions and analyses based on publicly available market data and technical indicators, but we make no representations or warranties about the accuracy or completeness of such information or the future performance of any investments.`
         },
         {
           title: 'Investment Risks',
-          content: 'Investing in securities and other financial instruments involves substantial risk, including the potential loss of principal. Stock markets are volatile and can fluctuate significantly in response to company, industry, political, regulatory, market, or economic developments. Past performance is not indicative of future results, and no representation is made that any investment will or is likely to achieve profits or losses similar to those shown.'
+          content: 'Trading and investing in securities, derivatives, and other financial instruments involves substantial risk, including the potential loss of principal. Stock markets are volatile and can fluctuate significantly in response to company earnings, industry trends, political events, regulatory changes, market sentiment, or economic developments. Technical analysis strategies and chart patterns discussed on our platform do not guarantee future performance. Past performance of trading strategies or individual securities is not indicative of future results, and no representation is made that any investment will or is likely to achieve profits or losses similar to those shown in our educational materials.'
         },
         {
           title: 'Research and Data',
-          content: 'While we strive to provide accurate and up-to-date information, we cannot guarantee that all data presented is free from errors or omissions. Our analyses may use data from third-party sources that we consider reliable, but we do not independently verify all such information and cannot vouch for its accuracy.'
+          content: 'While we strive to provide accurate and up-to-date market information, stock quotes, technical indicators, and chart analysis, we cannot guarantee that all data presented is free from errors or omissions. Our trading strategies and market analyses may use data from third-party financial data providers, stock exchanges, and research platforms that we consider reliable, but we do not independently verify all such information and cannot vouch for its complete accuracy or timeliness. Markets move rapidly and information may become outdated.'
         },
         {
           title: 'Tax Considerations',
@@ -386,15 +386,15 @@ export const BLOG_CONFIG: BlogConfig = {
         },
         {
           title: 'Educational Content',
-          content: 'Our content is provided for educational purposes only. While we aim to explain complex financial concepts and market dynamics in an accessible way, readers should verify all information and conduct their own research before making investment decisions.'
+          content: 'Our stock market analysis, trading guides, chart pattern explanations, and investment articles are provided for educational purposes only. While we aim to explain complex financial concepts, technical analysis methods, candlestick patterns, trading strategies, and market dynamics in an accessible way, readers should verify all information and conduct their own due diligence before applying these concepts to real trading or investing decisions. Our educational materials are not designed to meet individual investment objectives or financial circumstances.'
         },
         {
           title: 'Affiliate Disclosure',
-          content: `${siteName} may receive compensation from affiliate partners for products or services mentioned on our website. These partnerships help support our content creation efforts, but they do not influence our opinions or evaluations. We disclose such relationships when applicable.`
+          content: `${siteName} may receive compensation from brokerage firms, financial education providers, trading tool developers, and other affiliate partners for products or services mentioned on our website. These partnerships help support our stock market content creation efforts, but they do not influence our analysis, trading strategies, or evaluations of market conditions. We clearly disclose such affiliate relationships when applicable, particularly when discussing specific brokerages or trading platforms.`
         },
         {
           title: 'No Fiduciary Relationship',
-          content: `By using ${siteName}, you acknowledge that no fiduciary relationship is created between you and our company or its contributors. We are not acting as your agent or advisor, and we have no obligation to prioritize your interests over our own.`
+          content: `By using ${siteName} and consuming our stock market educational content, technical analysis, or trading strategies, you acknowledge that no fiduciary relationship is created between you and our company or its market analysts. We are not acting as your investment advisor, broker, or agent, and we have no obligation to prioritize your investment interests over our own. Our content provides general market information and educational resources, not personalized financial advice.`
         },
         {
           title: 'Updates to Disclaimer',
@@ -427,14 +427,14 @@ export const BLOG_CONFIG: BlogConfig = {
       title: 'Open Your Account Today',
       buttonText: 'Open an Account',
       buttonUrl: 'https://upstox.com/open-demat-account/?f=4EA75T',
-      disclaimer: 'Disclaimer: I am an authorized person (AP2513032321) with Upstox.'
+      disclaimer: 'Disclaimer: I am an authorized person (AP2513032321) with Upstox. The stock market education and analysis provided on FinHux is separate from my role with Upstox.'
     }
   },
 
   // Authors Configuration
   authors: {
     'Vipin Bihari': {
-      bio: 'Vipin Bihari is the voice behind StockSage, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.',
+      bio: 'Vipin Bihari is the voice behind FinHux, turning market charts into clear, practical tips. He blends hands-on technical analysis with real world technological experiments to help everyday investors feel confident.',
       avatar: '/images/authors/vipin-bihari.webp',
       twitter: 'bihari_web',
       linkedin: 'bihari_web'
