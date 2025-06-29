@@ -6,6 +6,7 @@ import PageNavigation from '../../../components/features/PageNavigation.astro';
 import ResponsiveImage from '../../../components/ui/ResponsiveImage.astro';
 import { SEO } from 'astro-seo';
 import { BLOG_CONFIG } from '../../../config/current-config';
+import { slugifyTag } from '../../../lib/slugify';
 
 export async function getStaticPaths({ paginate }) {
   // Get all posts to extract unique tags
@@ -25,15 +26,18 @@ export async function getStaticPaths({ paginate }) {
       .filter((post: CollectionEntry<'posts'>) => post.data.tags.includes(tag))
       .sort((a: CollectionEntry<'posts'>, b: CollectionEntry<'posts'>) => b.data.date.valueOf() - a.data.date.valueOf());
     
+    // Create a URL-safe slug for the tag
+    const tagSlug = slugifyTag(tag);
+    
     return paginate(filteredPosts, {
-      params: { tag },
+      params: { tag: tagSlug },
       pageSize: BLOG_CONFIG.layout.postPerPage,
-      props: { tag }
+      props: { tag, tagSlug } // Pass both the original tag and its slug
     });
   });
 }
 
-const { page, tag } = Astro.props;
+const { page, tag, tagSlug } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Format tag for display
@@ -53,10 +57,8 @@ function getDisplayImage(post) {
   return displayImage;
 }
 
-const formattedTag = tag
-  .split('-')
-  .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-  .join(' ');
+// No need to format based on slug - use the original tag for display
+const formattedTag = tag;
 ---
 
 <BaseLayout>
