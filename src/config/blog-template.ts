@@ -135,6 +135,9 @@ export interface BlogConfig {
   aboutPage?: AboutPageConfig; // Optional configuration for the About Us page
   contactPage?: ContactPageConfig; // Optional configuration for the Contact page
   legalPages: LegalPagesConfig; // Required configuration for legal pages
+  
+  // PWA Configuration
+  pwa?: PWAConfig; // Optional Progressive Web App configuration
 }
 
 interface ColorScale {
@@ -298,6 +301,42 @@ export interface UpstoxCTAConfig {
     buttonUrl: string;
     disclaimer?: string;
   };
+}
+
+// PWA Configuration
+export interface PWAConfig {
+  enabled: boolean;
+  name: string;
+  shortName: string;
+  description: string;
+  // Optional theme colors - if undefined, will use theme.colors.primary
+  themeColor?: string;
+  backgroundColor?: string;
+  display: 'minimal-ui' | 'standalone' | 'fullscreen' | 'browser';
+  orientation: 'any' | 'natural' | 'landscape' | 'portrait';
+  scope: string;
+  startUrl: string;
+  // Icons can be an array or 'auto' to generate from branding config
+  icons: {
+    src: string;
+    sizes: string;
+    type: string;
+    purpose?: 'any' | 'maskable' | 'monochrome';
+  }[] | 'auto';
+  categories?: string[];
+  // Shortcuts can be an array or 'auto' to generate from navigation config
+  shortcuts?: {
+    name: string;
+    url: string;
+    description?: string;
+    icon?: string;
+  }[] | 'auto';
+  screenshots?: {
+    src: string;
+    sizes: string;
+    type: string;
+    label?: string;
+  }[];
 }
 
 // Author Configuration
