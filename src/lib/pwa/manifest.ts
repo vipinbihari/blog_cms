@@ -150,25 +150,38 @@ function generateDefaultShortcuts(config: BlogConfig): WebAppManifest['shortcuts
  * Generates default PWA icons from the site logo
  */
 function generateDefaultIcons(config: BlogConfig): WebAppManifest['icons'] {
-  const logoSrc = config.branding.logo?.light || config.branding.favicon;
-  const appleTouchIcon = config.branding.appleTouchIcon || logoSrc;
+  // Use high-quality ogImage for PWA icons and splash screen
+  const highQualityLogo = config.branding.ogImage || config.branding.logo?.light || config.branding.favicon;
+  const appleTouchIcon = config.branding.appleTouchIcon || highQualityLogo;
 
   return [
     {
-      src: logoSrc,
+      src: highQualityLogo,
       sizes: '64x64',
       type: 'image/png',
       purpose: 'any'
     },
     {
-      src: logoSrc,
+      src: highQualityLogo,
       sizes: '128x128',
       type: 'image/png',
       purpose: 'any'
     },
     {
-      src: logoSrc,
+      src: highQualityLogo,
       sizes: '192x192',
+      type: 'image/png',
+      purpose: 'any'
+    },
+    {
+      src: appleTouchIcon,
+      sizes: '256x256',
+      type: 'image/png',
+      purpose: 'any'
+    },
+    {
+      src: appleTouchIcon,
+      sizes: '384x384',
       type: 'image/png',
       purpose: 'any'
     },

@@ -18,8 +18,8 @@ import { isPWAEnabled } from '../../lib/pwa/manifest';
 const pwaEnabled = isPWAEnabled(BLOG_CONFIG);
 const pwa = BLOG_CONFIG.pwa;
 
-// Extract theme colors
-const themeColor = pwa?.themeColor || BLOG_CONFIG.theme.colors.primary[500] || '#3B82F6';
+// Extract theme colors - use primary[600] for theme color to match manifest generation
+const themeColor = pwa?.themeColor || BLOG_CONFIG.theme.colors.primary[600] || '#3B82F6';
 const backgroundColor = pwa?.backgroundColor || BLOG_CONFIG.theme.colors.primary[50] || '#F8FAFC';
 ---
 
@@ -79,28 +79,7 @@ const backgroundColor = pwa?.backgroundColor || BLOG_CONFIG.theme.colors.primary
       }
     </script>
     
-    <!-- PWA Install Prompt Enhancement (Optional) -->
-    <script is:inline>
-      // Enhanced install prompt handling
-      let deferredPrompt = null;
-      
-      window.addEventListener('beforeinstallprompt', (event) => {
-        console.log('[PWA] Install prompt available');
-        event.preventDefault();
-        deferredPrompt = event;
-        
-        // You can show a custom install button here
-        // For example, dispatch a custom event that components can listen to
-        window.dispatchEvent(new CustomEvent('pwa-install-available', {
-          detail: { prompt: deferredPrompt }
-        }));
-      });
-      
-      window.addEventListener('appinstalled', () => {
-        console.log('[PWA] App successfully installed');
-        deferredPrompt = null;
-      });
-    </script>
+    <!-- Install prompt handling is now managed by InstallPrompt component -->
   </>
 )}
 
