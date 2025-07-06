@@ -45,7 +45,7 @@ export const BLOG_CONFIG: BlogConfig = {
          width: 180,
          height: 40,
      },
-    favicon: '/images/blog/finhux-logo-64.png',
+    favicon: '/images/blog/finhux-logo-128.png',
     ogImage: '/images/blog/finhux-logo-512.png',
     appleTouchIcon: '/images/apple-touch-icon.png',
     placeholderImageService: 'https://placehold.co',
@@ -154,22 +154,22 @@ export const BLOG_CONFIG: BlogConfig = {
   social: [
     {
       platform: 'twitter',
-      url: `https://twitter.com/tradetonicindia`, // Replace YourTwitterHandle
+      url: `https://x.com/finhux`, // Replace YourTwitterHandle
       label: 'Follow us on Twitter',
     },
     {
-      platform: 'linkedin',
-      url: `https://linkedin.com/company/tradetonicindia`, // Replace YourLinkedInPage
-      label: 'Connect on LinkedIn',
+      platform: 'instagram',
+      url: `https://instagram.com/finhux`, // Replace YourLinkedInPage
+      label: 'Connect on Instagram',
     },
     {
       platform: 'facebook',
-      url: `https://facebook.com/tradetonicindia`, // Replace YourFacebookPage
+      url: `https://facebook.com/profile.php?id=61578065667118`, // Replace YourFacebookPage
       label: 'Like us on Facebook',
     },
     {
       platform: 'youtube',
-      url: `https://youtube.com/@tradetonicindia`,
+      url: `https://youtube.com/@finhux`,
       label: 'Subscribe on YouTube',
     },
     // Add other platforms like Instagram, GitHub, etc. as needed
