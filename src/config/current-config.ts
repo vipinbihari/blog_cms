@@ -427,7 +427,7 @@ export const BLOG_CONFIG: BlogConfig = {
       title: 'Open Your Account Today',
       buttonText: 'Open an Account',
       buttonUrl: 'https://upstox.com/open-demat-account/?f=4EA75T',
-      disclaimer: 'Disclaimer: I am an authorized person (AP2513032321) with Upstox. The stock market education and analysis provided on FinHux is separate from my role with Upstox.'
+      disclaimer: 'Disclaimer: I am an authorized person (AP2513032321) with Upstox.'
     }
   },
 
