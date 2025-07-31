@@ -41,6 +41,55 @@ export interface HeroConfig {
   heroBackgroundImage?: string | HeroBackgroundImage;
 }
 
+/**
+ * Image Resolutions Configuration
+ * Defines standard image sizes used throughout the blog for consistency
+ */
+export interface ImageResolutionsConfig {
+  /**
+   * Width for post card thumbnails (e.g., on homepage, category listings)
+   * Default: 320px
+   */
+  card: number;
+  
+  /**
+   * Width for blog post content images
+   * Default: 640px 
+   */
+  content: number;
+  
+  /**
+   * Width for zoomed/fullscreen images
+   * Default: 960px
+   */
+  zoom: number;
+  
+  /**
+   * Additional custom resolutions (optional)
+   * Use this to add extra breakpoints beyond the standard card/content/zoom sizes
+   */
+  additional?: number[];
+  
+  /**
+   * Image formats to generate during optimization
+   * Default: ['webp', 'original'] - generates WebP versions plus keeps original format
+   * Options: 'webp', 'jpg', 'jpeg', 'png', 'original'
+   * 'original' means keep the same format as the source image
+   */
+  formats: ('webp' | 'jpg' | 'jpeg' | 'png' | 'original')[];
+  
+  /**
+   * Quality settings for each format (0-100)
+   * Default: 80 for all formats
+   */
+  quality?: {
+    webp?: number;
+    jpg?: number;
+    jpeg?: number;
+    png?: number;
+  };
+}
+
 export interface BlogConfig {
   // Site Identity
   site: {
@@ -123,6 +172,7 @@ export interface BlogConfig {
   // Component Configurations
   upstoxCTA?: UpstoxCTAConfig; // Configuration for the UpstoxCTA component
   authors?: Record<string, AuthorData>; // Configuration for author information
+  imageResolutions: ImageResolutionsConfig; // Configuration for standardized image resolutions
   
   // SEO & Advanced
   seo?: {
