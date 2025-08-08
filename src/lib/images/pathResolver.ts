@@ -133,4 +133,3 @@ export function getOptimizedImagePath(src: string, width: number): string {
     return '/images/placeholder-320.webp'; // Fallback on error
   }
 }
-

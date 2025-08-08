@@ -1,0 +1,153 @@
+---
+import { SEO } from 'astro-seo';
+import { BLOG_CONFIG } from '../../config/current-config';
+import { 
+  generateArticleStructuredData,
+  generateBreadcrumbStructuredData,
+  generateWebSiteStructuredData,
+  generateFAQStructuredData,
+  generatePersonStructuredData
+} from '../../lib/seo/structured-data';
+import type { BlogPost } from '../../types';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  canonicalURL?: string;
+  post?: BlogPost;
+  breadcrumbs?: Array<{name: string; url: string}>;
+  isHomePage?: boolean;
+  isAuthorPage?: boolean;
+  authorData?: {
+    name: string;
+    bio?: string;
+    image?: string;
+    social?: {
+      twitter?: string;
+      linkedin?: string;
+      github?: string;
+    };
+  };
+}
+
+const {
+  title,
+  description,
+  image,
+  canonicalURL,
+  post,
+  breadcrumbs,
+  isHomePage = false,
+  isAuthorPage = false,
+  authorData
+} = Astro.props;
+
+// Generate appropriate structured data based on page type
+let structuredData: any[] = [];
+
+// Add WebSite schema on homepage
+if (isHomePage) {
+  structuredData.push(generateWebSiteStructuredData());
+}
+
+// Add Article schema for blog posts
+if (post) {
+  const articleData = generateArticleStructuredData(post, canonicalURL || '');
+  structuredData.push(articleData);
+  
+  // Add FAQ schema if post has quiz
+  if (post.data.quiz && post.data.quiz.length > 0) {
+    const faqData = generateFAQStructuredData(post.data.quiz);
+    if (faqData) {
+      structuredData.push(faqData);
+    }
+  }
+}
+
+// Add Breadcrumb schema if provided
+if (breadcrumbs && breadcrumbs.length > 0) {
+  structuredData.push(generateBreadcrumbStructuredData(breadcrumbs));
+}
+
+// Add Person schema for author pages
+if (isAuthorPage && authorData) {
+  structuredData.push(generatePersonStructuredData(authorData));
+}
+
+// Enhanced meta tags for Google Discover
+const googleDiscoverMeta = {
+  'article:author': post?.data.author || BLOG_CONFIG.site.name,
+  'article:published_time': post?.data.date.toISOString(),
+  'article:modified_time': post?.data.updatedDate?.toISOString() || post?.data.date.toISOString(),
+  'article:section': post?.data.category,
+  'article:tag': post?.data.tags.join(', '),
+};
+---
+
+<!-- Standard SEO -->
+<SEO
+  title={title}
+  description={description}
+  canonical={canonicalURL}
+  openGraph={{
+    basic: {
+      title: title,
+      type: post ? "article" : "website",
+      image: image || `${BLOG_CONFIG.site.url}${BLOG_CONFIG.branding.logo.light}`
+    },
+    optional: {
+      description: description,
+      siteName: BLOG_CONFIG.site.name,
+      locale: 'en_US',
+    },
+    article: post ? {
+      publishedTime: post.data.date.toISOString(),
+      modifiedTime: post.data.updatedDate?.toISOString() || post.data.date.toISOString(),
+      author: post.data.author,
+      section: post.data.category,
+      tags: post.data.tags,
+    } : undefined,
+  }}
+  twitter={{
+    card: 'summary_large_image',
+    site: BLOG_CONFIG.seo.twitterHandle,
+    creator: BLOG_CONFIG.seo.twitterHandle,
+    title: title,
+    description: description,
+    image: image,
+  }}
+/>
+
+<!-- Enhanced meta tags for Google Discover -->
+{post && Object.entries(googleDiscoverMeta).map(([key, value]) => (
+  <meta property={key} content={value} />
+))}
+
+<!-- Additional SEO meta tags -->
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="googlebot" content="index, follow" />
+<meta name="bingbot" content="index, follow" />
+<meta name="author" content={post?.data.author || BLOG_CONFIG.site.name} />
+<meta name="publisher" content={BLOG_CONFIG.site.name} />
+
+<!-- Mobile Web App meta tags -->
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+<!-- Structured Data -->
+{structuredData.length > 0 && (
+  <script type="application/ld+json" set:html={JSON.stringify(
+    structuredData.length === 1 ? structuredData[0] : structuredData
+  )} />
+)}
+
+<!-- Preconnect to external domains for performance -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="dns-prefetch" href="https://www.google-analytics.com" />
+<link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+<!-- RSS Feed -->
+<link rel="alternate" type="application/rss+xml" title={BLOG_CONFIG.site.name} href={`${BLOG_CONFIG.site.url}rss.xml`} />

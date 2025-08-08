@@ -1,103 +1,365 @@
-# Blog CMS – Universal Astro Blog Template
+# FinHux Blog CMS
 
-A highly-configurable, multi-niche blog starter built with **Astro**, **TypeScript** and **Tailwind CSS**.  
-Use it to launch a technology, lifestyle, finance, food, travel – or completely custom – blog in minutes with **zero hard-coding**.
+A highly configurable, multi-niche blog template built with Astro, TypeScript, and Tailwind CSS. Originally created as a stock market blog, it has been transformed into a universal blog template system that supports multiple niches with zero hardcoding.
 
-🚀 **NEW**: Full **Progressive Web App (PWA)** support with native app installation, offline functionality, and dynamic configuration!
+## 🚀 Features
 
----
+### Core Features
+- **🔧 Configuration-Driven**: Everything configurable via single config file - no hardcoding
+- **📱 Multi-Niche Support**: Technology, Lifestyle, Finance, Food, Travel blogs
+- **🎨 Theme System**: 4 pre-built color schemes (Blue, Green, Purple, Orange)
+- **📈 Progressive Web App (PWA)**: Auto-generated PWA with offline support
+- **🖼️ Advanced Image System**: Custom zoom modal, WebP optimization, responsive sizing
+- **🌙 Dark Mode**: Full dark mode support with automatic switching
+- **🔍 Search System**: Advanced search with scoring and suggestions
+- **📊 SEO Optimized**: Meta tags, structured data, sitemaps
 
-## 1  Prerequisites
+### Technical Features
+- **⚡ Performance**: Static site generation with Lighthouse optimization
+- **🔒 Type Safety**: Full TypeScript with comprehensive interfaces
+- **📦 Modular Architecture**: Feature-based utilities and reusable components
+- **🛠️ Developer Experience**: Hot reload, instant preview of configuration changes
+- **🔄 Content Management**: Separated content architecture via symlinks
 
-| Tool | Version |
-|------|---------|
-| Node | 18 or newer |
-| npm  | 9 or newer |
+## 📋 Prerequisites
 
-> ⚠️ **Linux permissions** – this repository was initialised with a system-wide Node installation.  
-> When you run `npm install` you may hit `EACCES` errors. If so, simply prepend **`sudo`** to any `npm` command.
+- **Node.js**: >= 18.0.0
+- **npm**: >= 9.0.0
+- **Git**: For content repository management
 
----
+## 🚀 Quick Start
 
-## 2  Installation
-
-```bash
-# Clone the repo
-$ git clone https://github.com/your-org/blog_cms.git && cd blog_cms
-
-# Install dependencies (use sudo on Linux if you get EACCES)
-$ sudo npm install
-```
-
----
-
-## 3  Running the Development Server
+### 1. Installation
 
 ```bash
-# Start Astro in dev-watch mode
-$ npm run dev
+# Clone the repository
+git clone <repository-url>
+cd blog_cms
+
+# Install dependencies
+npm install
 ```
 
-Browse to **<http://localhost:4321>**.
-
----
-
-## 4  Building & Previewing Production
+### 2. Content Setup
 
 ```bash
-# Generate static production build
-$ npm run build
-
-# Preview the build locally
-$ npm run preview
+# Create symlink to your content repository
+# Replace with your actual content repository path
+ln -sf /path/to/your/blog_content/content ./src/content
+ln -sf /path/to/your/blog_content/public/images ./public/images
 ```
 
-Deploy the generated **`dist/`** directory to Vercel, Netlify, Cloudflare Pages, GitHub Pages or any static host.
+### 3. Configuration
 
+Edit `src/config/current-config.ts` to customize your blog:
+
+```typescript
+export const BLOG_CONFIG: BlogConfig = {
+  site: {
+    name: 'Your Blog Name',
+    tagline: 'Your Blog Tagline',
+    description: 'Your blog description',
+    url: 'https://yourblog.com',
+    // ... more config
+  },
+  // ... theme, branding, navigation, etc.
+};
+```
+
+### 4. Development
+
+```bash
+# Start development server
+npm run dev
+
+# Open http://localhost:4321 in your browser
+```
+
+### 5. Build & Deploy
+
+```bash
+# Optimize images (optional, runs automatically during build)
+npm run optimize-images
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+```
+
+## 📁 Project Structure
+
+```
+blog_cms/
+├── src/
+│   ├── config/           # Configuration system
+│   │   ├── current-config.ts    # Active blog configuration
+│   │   └── blog-template.ts     # Template interfaces & presets
+│   ├── lib/              # Utility functions
+│   │   ├── content/      # Content queries & search
+│   │   ├── seo/          # SEO utilities
+│   │   └── images/       # Image processing
+│   ├── components/       # Reusable UI components
+│   ├── layouts/          # Page layouts
+│   ├── pages/            # Route definitions
+│   └── content/          # Blog posts (symlinked)
+├── public/               # Static assets
+│   └── images/           # Images (symlinked)
+└── dist/                 # Built output
+```
+
+## ⚙️ Configuration Guide
+
+### Site Configuration
+
+```typescript
+site: {
+  name: 'Your Site Name',           // Used in title, PWA name
+  tagline: 'Your Tagline',          // Subtitle/description
+  description: 'Site description',   // Meta description
+  url: 'https://yoursite.com',      // Canonical URL
+  author: 'Author Name',            // Default post author
+  email: 'contact@yoursite.com',    // Contact email
+  language: 'en',                   // Language code
+  locale: 'en-US'                   // Locale for dates
+}
+```
+
+### Theme Configuration
+
+```typescript
+theme: {
+  colors: {
+    primary: THEME_PRESETS.green.primary,    // Choose: blue, green, purple, orange
+    secondary: THEME_PRESETS.green.secondary
+  },
+  darkMode: true    // Enable/disable dark mode
+}
+```
+
+### Navigation Configuration
+
+```typescript
+navigation: {
+  header: [
+    { label: 'Home', href: '/' },
+    { label: 'Category', href: '/categories/category-name/page/1' },
+    // ... more nav items
+  ],
+  footer: [
+    {
+      title: 'Section Title',
+      links: [
+        { label: 'Link', href: '/link' },
+        // ... more links
+      ]
+    }
+  ]
+}
+```
+
+## 🎨 Available Themes
+
+- **Blue**: Professional, corporate look
+- **Green**: Finance, eco-friendly themes
+- **Purple**: Creative, tech-focused
+- **Orange**: Energy, food, lifestyle
+
+## 📱 PWA Configuration
+
+The PWA system auto-generates based on your existing configuration:
+
+```typescript
+pwa: {
+  enabled: true,
+  name: `${siteName} - ${tagline}`,     // Auto-derived
+  themeColor: undefined,                // Uses theme.colors.primary[600]
+  backgroundColor: undefined,           // Uses theme.colors.primary[50]
+  icons: 'auto',                       // Auto-generates from branding.logo
+  shortcuts: 'auto'                    // Auto-generates from navigation
+}
+```
+
+## 🖼️ Image Management
+
+### Image Resolutions
+
+```typescript
+imageResolutions: {
+  card: 320,           // Thumbnail images
+  content: 640,        // Content images
+  zoom: 1280,          // Zoom modal images
+  additional: [1920],  // High-res displays
+  formats: ['webp', 'original'],  // Output formats
+  quality: { webp: 80, jpg: 80 }  // Quality settings
+}
+```
+
+### Optimize Images
+
+```bash
+# Optimize all images
+npm run optimize-images
+
+# Images are automatically optimized during build
+npm run build
+```
+
+## 📝 Content Management
+
+### Blog Posts
+
+Create MDX files in `src/content/posts/`:
+
+```yaml
+---
+title: "Your Post Title"
+excerpt: "Brief description"
+date: 2025-01-01
+category: "your-category"
+tags: ["tag1", "tag2"]
+featured: true
+author: "Author Name"
+heroImage: "uploads/your-image.jpg"
 ---
 
-## 5  Customising Your Blog
+Your content here...
+```
 
-1. **Edit branding and social links** – update site title, description, logos, theme colours, and all social media links inside `src/config/current-config.ts`.
-   - **Social links are managed exclusively via the top-level `BLOG_CONFIG.social` array**. Add, remove, or modify your social profiles there.
-   - **Centralized site URL/email:** The site URL and contact email are now managed centrally in config and used throughout the project.
-   - **Dark mode link styling:** In dark mode, all links inside `.prose` content are light blue/white for readability. Social media icon links are now excluded from this forced color to preserve their brand colors.
-   - **Configurable hero background:** The homepage hero section supports a custom background image via `BLOG_CONFIG.layout.heroConfig.heroBackgroundImage`. You can use either a simple string path or a comprehensive object with src, alt, width, and height properties.
-2. **Write posts** – place markdown/MDX files in `src/content/posts/`.  
-   Front-matter controls category, tags, `featured` flag, hero images, etc.
-   - **Featured Posts:** Only posts with `featured: true` in their front-matter will appear in the homepage featured section. If you do not set `featured: true`, your post will not be shown as featured, even if there are fewer featured posts than the configured limit.
+### Categories
 
-Hot-reload means you will see changes instantly.
+Configure available categories in your config:
 
+```typescript
+categories: [
+  'technical-analysis',
+  'fundamental-analysis',
+  'market-news'
+]
+```
+
+## 🔍 Search System
+
+Built-in search features:
+- **Full-text search**: Searches title, excerpt, tags, category
+- **Weighted scoring**: Title matches scored higher than tag matches
+- **Search suggestions**: Auto-complete based on tags and categories
+- **Static search index**: Generated at build time for instant search
+
+## 🚀 Deployment
+
+### Static Hosting (Recommended)
+
+```bash
+# Build the project
+npm run build
+
+# Deploy dist/ folder to:
+# - Vercel
+# - Netlify
+# - Cloudflare Pages
+# - GitHub Pages
+```
+
+### Vercel Deployment
+
+```bash
+# Install Vercel CLI
+npm i -g vercel
+
+# Deploy
+vercel --prod
+```
+
+### Netlify Deployment
+
+```bash
+# Install Netlify CLI
+npm i -g netlify-cli
+
+# Deploy
+netlify deploy --prod --dir=dist
+```
+
+## 🛠️ Available Scripts
+
+```bash
+npm run dev          # Start development server
+npm run build        # Build for production
+npm run preview      # Preview production build
+npm run optimize-images  # Optimize images
+npm run update-content   # Update content from repository
+```
+
+## 🔧 Customization
+
+### Adding New Niches
+
+1. Copy an existing config template
+2. Modify site details, theme, navigation
+3. Update categories for your niche
+4. Customize social links and branding
+
+### Custom Components
+
+Add components to `src/components/` and import in layouts:
+
+```typescript
+---
+import CustomComponent from '../components/CustomComponent.astro';
 ---
 
-## 5a  Upstox Account Opening CTA
+<CustomComponent />
+```
 
-- The homepage and post layout now include a modern, visually appealing Upstox Demat Account Opening card.
-- The card uses glassmorphism, gradients, and a responsive layout for a professional look.
-- To update or customize the CTA, edit `src/components/features/UpstoxCTA.astro` and the Upstox logo in `public/images/blog/upstox.jpeg`.
-- The CTA is automatically included in every post (see `PostLayout.astro`).
+### Custom Styling
 
-## 5b  Image Handling & Zoom Feature
+The project uses Tailwind CSS. Customize in:
+- `tailwind.config.mjs`: Theme customization
+- Theme presets in `src/config/blog-template.ts`
 
-- **Responsive Image Sizing**:
-  - **320px** - Home page post cards use smaller 320px images for faster loading
-  - **640px** - All blog post content images load at 640px resolution by default
-  - **960px** - Images switch to higher resolution when zoomed
-- **WebP Prioritization** - WebP format is prioritized when available for improved performance and quality, with fallbacks for compatibility
-- **Custom Image Zoom** - A lightweight custom zoom modal replaces the previous FSLightbox dependency
-- **Performance Optimizations**:
-  - Client-side caching to prevent duplicate requests when zooming the same image multiple times
-  - Loading indicators appear during high-resolution image transitions
-  - No additional libraries required - pure JavaScript implementation
-  - Automatic format selection uses WebP when supported
-- **Wide Coverage** - Works for both hero images and all in-post images automatically
-- **Homepage Post Cards** - Post card images use smaller 320px resolutions for faster loading
+## 🐛 Troubleshooting
 
-## 5c  Progressive Web App (PWA) Features
+### Common Issues
 
-- **🎯 Dynamic Configuration**: PWA settings auto-derive from your existing site config (zero duplication)
-- **📱 Smart Install Prompt**: Custom branded banner with your logo that appears on mobile devices
+**Build fails**: Check TypeScript errors with `npx tsc --noEmit`
+
+**Images not showing**: Verify symlinks are created correctly
+
+**PWA not working**: Ensure HTTPS in production
+
+**Search not working**: Check search index generation in build output
+
+### Development Tips
+
+- Use `npm run dev` for hot reload during development
+- Check browser console for detailed error messages
+- Verify configuration syntax in `current-config.ts`
+- Test PWA functionality with production build
+
+## 📄 Technical Documentation
+
+For detailed technical documentation about files, functions, and architecture, see `technical_spec.md`.
+
+## 📄 License
+
+MIT License - see LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## 📞 Support
+
+For issues and questions:
+- Check existing issues in the repository
+- Create a new issue with detailed description
+- Include configuration and error messages
 - **🎨 Perfect Theme Integration**: PWA colors automatically match your chosen theme preset
 - **✨ High-Quality Graphics**: Uses your high-resolution ogImage (512px) for splash screens
 - **📵 Native App Experience**: Standalone mode provides true native feel without browser UI

@@ -12,8 +12,8 @@
  * Uses optimized images created during the build process
  * Works with the separated content repository structure
  */
-import { resolveContentImagePath } from '../../lib/imagePathResolver';
-import { BLOG_CONFIG } from '../../config/current-config.ts';
+import { resolveContentImagePath } from '../../lib';
+import { BLOG_CONFIG } from '../../config/current-config';
 
 interface Props {
   src: string;
@@ -25,6 +25,9 @@ interface Props {
   height?: number;
   quality?: number;
   densities?: number[];
+  fetchpriority?: 'high' | 'low' | 'auto';
+  decoding?: 'sync' | 'async' | 'auto';
+  isHero?: boolean; // Mark hero images for priority loading
 }
 
 const {
@@ -37,8 +40,14 @@ const {
   height,
   quality = 80,
   densities = [1], // Default to [1] if not specified
-
+  fetchpriority = 'auto',
+  decoding = 'async',
+  isHero = false,
 } = Astro.props;
+
+// Hero images should load eagerly with high priority
+const actualLoading = isHero ? 'eager' : loading;
+const actualFetchPriority = isHero ? 'high' : fetchpriority;
 
 // Resolve the content image path using our helper
 const resolvedSrc = resolveContentImagePath(src);
@@ -119,7 +128,9 @@ const calculatedHeight = width && !height && aspectRatio ? Math.round(width / as
       src={resolvedSrc} 
       alt={alt}
       class={`${className} object-cover rounded-sm`}
-      loading={loading}
+      loading={actualLoading}
+      fetchpriority={actualFetchPriority}
+      decoding={decoding}
       width={width}
       height={calculatedHeight}
       style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}
@@ -139,7 +150,9 @@ const calculatedHeight = width && !height && aspectRatio ? Math.round(width / as
         src={optimizedPath}
         alt={alt}
         class={`${className} object-cover rounded-sm`}
-        loading={loading}
+        loading={actualLoading}
+        fetchpriority={actualFetchPriority}
+        decoding={decoding}
         width={width}
         height={calculatedHeight}
         style={aspectRatio ? `aspect-ratio: ${width} / ${calculatedHeight};` : ''}

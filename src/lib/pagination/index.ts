@@ -1,4 +1,4 @@
-import type { PaginationResult } from '../../types/content';
+import type { PaginationResult } from '../../types';
 import { BLOG_CONFIG } from '../../config/current-config';
 
 /**
@@ -17,8 +17,12 @@ export function paginate<T>(
     data: items.slice(startIndex, endIndex),
     currentPage,
     totalPages,
+    totalItems: items.length,
+    itemsPerPage,
     hasNext: currentPage < totalPages,
     hasPrev: currentPage > 1,
+    nextPage: currentPage < totalPages ? currentPage + 1 : undefined,
+    prevPage: currentPage > 1 ? currentPage - 1 : undefined,
   };
 }
 

@@ -3,4 +3,3 @@
  */
 export * from './queries';
 export * from './search';
-export { getRelatedPostsLegacy } from './related';

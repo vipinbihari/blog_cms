@@ -1,5 +1,5 @@
 import { getCollection } from 'astro:content';
-import type { BlogPost, PostsByYear, CategoryStats, TagStats } from '../../types/content';
+import type { BlogPost, PostsByYear, CategoryStats, TagStats } from '../../types';
 export type { BlogPost };
 import { BLOG_CONFIG } from '../../config/current-config';
 

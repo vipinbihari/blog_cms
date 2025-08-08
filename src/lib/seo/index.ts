@@ -1,4 +1,4 @@
-import type { BlogPost } from '../../types/content';
+import type { BlogPost } from '../../types';
 import { BLOG_CONFIG } from '../../config/current-config';
 
 /**

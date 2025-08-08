@@ -1,5 +1,8 @@
 import { BLOG_CONFIG } from '../../config/current-config';
 
+// Import path resolver functions
+export { resolveContentImagePath, getOptimizedImagePath } from './pathResolver';
+
 /**
  * Generate placeholder image URL
  */

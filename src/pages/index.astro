@@ -1,8 +1,8 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PostCard from '../components/ui/PostCard.astro';
+import EnhancedSEO from '../components/seo/EnhancedSEO.astro';
 // FormattedDate is now used within PostCard
-import ResponsiveImage from '../components/ui/ResponsiveImage.astro';
 import '../styles/carousel-animations.css';
 import { BLOG_CONFIG } from '../config/current-config';
 import { getFeaturedPosts, getLatestPosts, getCategoryStats } from '../lib/content';
@@ -27,6 +27,12 @@ try {
   console.error('Error fetching posts for homepage:', error);
 }
 
+// Homepage URL and breadcrumbs
+const homepageUrl = new URL(Astro.site).toString();
+const breadcrumbs = [
+  { name: 'Home', url: homepageUrl }
+];
+
 ---
 
 <BaseLayout
@@ -34,6 +40,15 @@ try {
   description={BLOG_CONFIG.site.description}
   image={BLOG_CONFIG.branding.ogImage}
 >
+  <!-- Enhanced SEO with homepage structured data -->
+  <EnhancedSEO 
+    title={BLOG_CONFIG.site.name}
+    description={BLOG_CONFIG.site.description}
+    image={BLOG_CONFIG.branding.ogImage}
+    canonicalURL={homepageUrl}
+    breadcrumbs={breadcrumbs}
+    slot="head"
+  />
   <!-- Hero section with background image -->
   <section class="hero-section bg-primary-50 dark:bg-gray-800 py-16 mb-2 relative"
     aria-label={typeof BLOG_CONFIG.layout.heroConfig.heroBackgroundImage !== 'string' 

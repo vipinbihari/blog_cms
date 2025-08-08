@@ -10,6 +10,16 @@ export * from './images';
 // Pagination utilities
 export * from './pagination';
 
+// Utility functions
+export * from './utils';
+
+// Validation and error handling utilities
+export * from './validation';
+
+// Legacy exports for backward compatibility
+export { slugifyTag } from './utils/slugify';
+export { resolveContentImagePath, getOptimizedImagePath } from './imagePathResolver';
+
 // Re-export commonly used types
 export type {
   BlogPost,
@@ -23,7 +33,7 @@ export type {
   PostLayoutProps,
   Theme,
   Author,
-} from '../types/content';
+} from '../types';
 
 // Re-export blog configuration
 export { BLOG_CONFIG, getCurrentConfig, getThemeColors } from '../config/current-config';

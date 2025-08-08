@@ -2,7 +2,7 @@
 import { getAllPosts } from '../../lib/content';
 import PostCard from '../../components/ui/PostCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { slugifyTag } from '../../lib/slugify';
+import { slugifyTag } from '../../lib';
 
 export async function getStaticPaths() {
   const posts = await getAllPosts();
@@ -13,7 +13,6 @@ export async function getStaticPaths() {
   }));
 }
 
-const { tag } = Astro.params;
 const { originalTag } = Astro.props;
 const posts = (await getAllPosts()).filter(post => (post.data.tags || []).includes(originalTag));
 ---

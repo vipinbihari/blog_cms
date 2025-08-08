@@ -22,6 +22,7 @@ const postsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.date(),
+    updatedDate: z.date().optional(),
     excerpt: z.string(),
     tags: z.array(z.string()),
     category: z.string(),

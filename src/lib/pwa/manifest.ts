@@ -10,7 +10,7 @@
  *   const manifest = generateManifest(config);
  */
 
-import type { BlogConfig, PWAConfig } from '../../config/blog-template';
+import type { BlogConfig } from '../../config/blog-template';
 
 export interface WebAppManifest {
   name: string;

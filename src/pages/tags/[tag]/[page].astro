@@ -6,7 +6,7 @@ import PageNavigation from '../../../components/features/PageNavigation.astro';
 import ResponsiveImage from '../../../components/ui/ResponsiveImage.astro';
 import { SEO } from 'astro-seo';
 import { BLOG_CONFIG } from '../../../config/current-config';
-import { slugifyTag } from '../../../lib/slugify';
+import { slugifyTag } from '../../../lib';
 
 export async function getStaticPaths({ paginate }) {
   // Get all posts to extract unique tags
@@ -37,7 +37,7 @@ export async function getStaticPaths({ paginate }) {
   });
 }
 
-const { page, tag, tagSlug } = Astro.props;
+const { page, tag } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 // Format tag for display

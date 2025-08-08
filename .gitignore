@@ -2,7 +2,6 @@
 node_modules/
 *.log
 .env
-.windsurf/
 prd.md
 checkstatus.md
 dist/

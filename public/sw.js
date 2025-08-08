@@ -85,6 +85,15 @@ self.addEventListener('fetch', (event) => {
   
   // For other requests, use network-first strategy
   else if (event.request.method === 'GET') {
+    // Only handle same-origin http(s) requests; ignore chrome-extension and other schemes
+    const url = new URL(event.request.url);
+    if (url.protocol !== 'http:' && url.protocol !== 'https:') {
+      return; // Let the request pass through without SW handling
+    }
+    if (url.origin !== self.location.origin) {
+      return; // Skip third-party requests to avoid caching cross-origin resources
+    }
+
     event.respondWith(
       fetch(event.request)
         .then((response) => {
@@ -92,8 +101,10 @@ self.addEventListener('fetch', (event) => {
           if (response.status === 200) {
             const responseClone = response.clone();
             caches.open(CACHE_NAME)
-              .then((cache) => {
-                cache.put(event.request, responseClone);
+              .then((cache) => cache.put(event.request, responseClone))
+              .catch((err) => {
+                // Some requests cannot be cached; ignore these safely
+                console.warn('[SW] Skipping cache.put for', event.request.url, err);
               });
           }
           return response;

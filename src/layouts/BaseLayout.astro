@@ -6,7 +6,7 @@ import PWAHead from '../components/seo/PWAHead.astro';
 import InstallPrompt from '../components/pwa/InstallPrompt.astro';
 import '../styles/global.css';
 import { BLOG_CONFIG } from '../config/current-config';
-import type { BaseLayoutProps } from '../types/content';
+import type { BaseLayoutProps } from '../types';
 import { generatePageTitle, generateOgImageUrl } from '../lib/seo';
 
 const {
@@ -29,6 +29,12 @@ const initialBlogTheme = BLOG_CONFIG.theme?.darkMode ? 'dark' : 'light';
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href={BLOG_CONFIG.branding.favicon} />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- Performance Resource Hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     
     <!-- Theme initialization script (must be in head to avoid FOUC) -->
     <script is:inline define:vars={{ initialConfiguredTheme: initialBlogTheme }}>

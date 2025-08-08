@@ -8,11 +8,11 @@ import AuthorBio from '../components/features/AuthorBio.astro';
 import TableOfContents from '../components/features/TableOfContents';
 import ReadingProgress from '../components/features/ReadingProgress';
 import ResponsiveImage from '../components/ui/ResponsiveImage.astro';
-import Video from '../components/ui/Video.astro';
 import RelatedPosts from '../components/features/RelatedPosts.astro';
 import UpstoxCTA from '../components/features/UpstoxCTA.astro';
+import EnhancedSEO from '../components/seo/EnhancedSEO.astro';
 import { BLOG_CONFIG } from '../config/current-config';
-import { slugifyTag } from '../lib/slugify';
+import { slugifyTag } from '../lib';
 
 type Props = {
   post: CollectionEntry<'posts'>;
@@ -20,7 +20,7 @@ type Props = {
   relatedPosts?: any[];
 };
 
-const { post, content, relatedPosts } = Astro.props;
+const { post, relatedPosts } = Astro.props;
 const { title, date, excerpt, tags, category, author, heroImage, quiz } = post.data;
 
 // Define current URL for share buttons
@@ -34,11 +34,12 @@ const displayImage = heroImage || placeholderImageUrl;
 const ogPlaceholderImageUrl = `https://placehold.co/1200x630?text=${encodeURIComponent(title.replace(/\s+/g, '+'))}`;
 const ogImage = heroImage || ogPlaceholderImageUrl; // Use placeholder if heroImage is missing
 
-// MDX Component overrides to use ResponsiveImage for all images and Video component
-const components = {
-  img: ResponsiveImage,
-  Video: Video,
-};
+// Generate breadcrumbs for structured data
+const breadcrumbs = [
+  { name: 'Home', url: BLOG_CONFIG.site.url },
+  { name: category, url: `${BLOG_CONFIG.site.url}categories/${category.toLowerCase().replace(/\s+/g, '-')}/` },
+  { name: title, url: currentUrl }
+];
 
 ---
 
@@ -47,6 +48,16 @@ const components = {
   description={excerpt}
   image={ogImage}
 >
+  <!-- Enhanced SEO with structured data -->
+  <EnhancedSEO 
+    title={title}
+    description={excerpt}
+    image={ogImage}
+    canonicalURL={currentUrl}
+    post={post}
+    breadcrumbs={breadcrumbs}
+    slot="head"
+  />
   <!-- Reading progress indicator -->
   <ReadingProgress client:only="react" />
   <!-- Current URL for share buttons -->
@@ -90,7 +101,7 @@ const components = {
             src={displayImage}
             alt={title}
             class="w-full h-auto rounded-lg shadow-lg mb-8 hero-img"
-            loading="eager"
+            isHero={true}
             width={640}
           />
         )}
@@ -102,7 +113,7 @@ const components = {
       </div>
       
       <!-- Simple image zoom functionality with resolution switching -->
-      <script define:vars={{ zoomResolution: BLOG_CONFIG.imageResolutions.zoom }}>
+      <script is:inline define:vars={{ zoomResolution: BLOG_CONFIG.imageResolutions.zoom }}>
         // Create modal elements for image zoom
         const modal = document.createElement('div');
         modal.className = 'image-modal';
@@ -327,12 +338,12 @@ const components = {
       {quiz && quiz.length > 0 && (
         <div class="mt-10 pt-8 border-t border-gray-200 dark:border-gray-700">
           <h2 class="text-2xl font-bold mb-6">Test Your Knowledge</h2>
-          <Quiz client:only="react" quiz={quiz} />
+          <Quiz client:visible quiz={quiz} />
         </div>
       )}
       <!-- Share buttons -->
       <div class="mt-8 pt-4 border-t border-gray-200 dark:border-gray-700">
-        <ShareButtons client:only="react" title={title} url={currentUrl} description={excerpt} tags={tags} />
+        <ShareButtons client:visible title={title} url={currentUrl} description={excerpt} tags={tags} />
       </div>
       
       <!-- Upstox CTA -->

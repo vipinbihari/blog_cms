@@ -206,6 +206,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"algo-trading-explained-guide-automated-trading-india.mdx": {
+	id: "algo-trading-explained-guide-automated-trading-india.mdx";
+  slug: "algo-trading-explained-guide-automated-trading-india";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "apollo-hospitals-demerger-digital-pharmacy-unlocks-value.mdx": {
 	id: "apollo-hospitals-demerger-digital-pharmacy-unlocks-value.mdx";
   slug: "apollo-hospitals-demerger-digital-pharmacy-unlocks-value";
@@ -216,6 +223,20 @@ declare module 'astro:content' {
 "art-of-salary-negotiation-first-job-india.mdx": {
 	id: "art-of-salary-negotiation-first-job-india.mdx";
   slug: "art-of-salary-negotiation-first-job-india";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"bajaj-twins-earnings-drag-market-down.mdx": {
+	id: "bajaj-twins-earnings-drag-market-down.mdx";
+  slug: "bajaj-twins-earnings-drag-market-down";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"bank-stocks-power-market-rebound-reliance-slips.mdx": {
+	id: "bank-stocks-power-market-rebound-reliance-slips.mdx";
+  slug: "bank-stocks-power-market-rebound-reliance-slips";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -258,6 +279,20 @@ declare module 'astro:content' {
 "behavioral-finance-how-emotions-affect-investing.mdx": {
 	id: "behavioral-finance-how-emotions-affect-investing.mdx";
   slug: "behavioral-finance-how-emotions-affect-investing";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"beyond-the-threshold-ai-revolution.mdx": {
+	id: "beyond-the-threshold-ai-revolution.mdx";
+  slug: "beyond-the-threshold-ai-revolution";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"brutal-truth-about-ai-and-your-job.mdx": {
+	id: "brutal-truth-about-ai-and-your-job.mdx";
+  slug: "brutal-truth-about-ai-and-your-job";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -395,6 +430,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"earnings-season-bajaj-finance-realty-spotlight-july-2025.mdx": {
+	id: "earnings-season-bajaj-finance-realty-spotlight-july-2025.mdx";
+  slug: "earnings-season-bajaj-finance-realty-spotlight-july-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "economic-indicators-and-the-stock-market.mdx": {
 	id: "economic-indicators-and-the-stock-market.mdx";
   slug: "economic-indicators-and-the-stock-market";
@@ -528,6 +570,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"infosys-q1-results-market-reaction-july-2025.mdx": {
+	id: "infosys-q1-results-market-reaction-july-2025.mdx";
+  slug: "infosys-q1-results-market-reaction-july-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "investing-in-yourself-your-best-investment-is-your-own-skills.mdx": {
 	id: "investing-in-yourself-your-best-investment-is-your-own-skills.mdx";
   slug: "investing-in-yourself-your-best-investment-is-your-own-skills";
@@ -549,6 +598,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"it-stocks-drag-sensex-nifty-down-q1-earnings-jitters.mdx": {
+	id: "it-stocks-drag-sensex-nifty-down-q1-earnings-jitters.mdx";
+  slug: "it-stocks-drag-sensex-nifty-down-q1-earnings-jitters";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "itc-bat-stake-sale-market-impact-may-28-2025.mdx": {
 	id: "itc-bat-stake-sale-market-impact-may-28-2025.mdx";
   slug: "itc-bat-stake-sale-market-impact-may-28-2025";
@@ -559,6 +615,20 @@ declare module 'astro:content' {
 "key-financial-ratios-for-investors-india.mdx": {
 	id: "key-financial-ratios-for-investors-india.mdx";
   slug: "key-financial-ratios-for-investors-india";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"kotak-q1-earnings-drag-markets-down-jul-28-2025.mdx": {
+	id: "kotak-q1-earnings-drag-markets-down-jul-28-2025.mdx";
+  slug: "kotak-q1-earnings-drag-markets-down-jul-28-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"lt-q1-results-market-rally-july-2025.mdx": {
+	id: "lt-q1-results-market-rally-july-2025.mdx";
+  slug: "lt-q1-results-market-rally-july-2025";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -577,9 +647,44 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"market-meltdown-sensex-nifty-us-tariff-fears.mdx": {
+	id: "market-meltdown-sensex-nifty-us-tariff-fears.mdx";
+  slug: "market-meltdown-sensex-nifty-us-tariff-fears";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"market-rebounds-sensex-nifty-snap-losing-streak-august-2025.mdx": {
+	id: "market-rebounds-sensex-nifty-snap-losing-streak-august-2025.mdx";
+  slug: "market-rebounds-sensex-nifty-snap-losing-streak-august-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"market-recovers-after-us-tariff-shock-august-2025.mdx": {
+	id: "market-recovers-after-us-tariff-shock-august-2025.mdx";
+  slug: "market-recovers-after-us-tariff-shock-august-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "markets-in-red-sensex-nifty-tumble-us-tariff-deadline.mdx": {
 	id: "markets-in-red-sensex-nifty-tumble-us-tariff-deadline.mdx";
   slug: "markets-in-red-sensex-nifty-tumble-us-tariff-deadline";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"markets-tumble-it-stocks-us-tariff-fears.mdx": {
+	id: "markets-tumble-it-stocks-us-tariff-fears.mdx";
+  slug: "markets-tumble-it-stocks-us-tariff-fears";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"markets-tumble-trumps-tariff-threats-spook-dalal-street.mdx": {
+	id: "markets-tumble-trumps-tariff-threats-spook-dalal-street.mdx";
+  slug: "markets-tumble-trumps-tariff-threats-spook-dalal-street";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -668,9 +773,23 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"rbi-rate-hold-market-reaction-august-2025.mdx": {
+	id: "rbi-rate-hold-market-reaction-august-2025.mdx";
+  slug: "rbi-rate-hold-market-reaction-august-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx": {
 	id: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025.mdx";
   slug: "rbi-surprise-rate-cut-fuels-market-rally-june-7-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"realty-sector-block-deals-lodha-oberoi-july-2025.mdx": {
+	id: "realty-sector-block-deals-lodha-oberoi-july-2025.mdx";
+  slug: "realty-sector-block-deals-lodha-oberoi-july-2025";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -685,6 +804,13 @@ declare module 'astro:content' {
 "risk-management-techniques-for-stock-investors-india.mdx": {
 	id: "risk-management-techniques-for-stock-investors-india.mdx";
   slug: "risk-management-techniques-for-stock-investors-india";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sbi-rs-20000-crore-bond-fundraising-plan.mdx": {
+	id: "sbi-rs-20000-crore-bond-fundraising-plan.mdx";
+  slug: "sbi-rs-20000-crore-bond-fundraising-plan";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -710,9 +836,37 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"sensex-nifty-flat-ahead-of-us-tariffs-q1-results.mdx": {
+	id: "sensex-nifty-flat-ahead-of-us-tariffs-q1-results.mdx";
+  slug: "sensex-nifty-flat-ahead-of-us-tariffs-q1-results";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "sensex-nifty-flat-volatile-trade-june-10-2025.mdx": {
 	id: "sensex-nifty-flat-volatile-trade-june-10-2025.mdx";
   slug: "sensex-nifty-flat-volatile-trade-june-10-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sensex-nifty-rebound-july-15-2025.mdx": {
+	id: "sensex-nifty-rebound-july-15-2025.mdx";
+  slug: "sensex-nifty-rebound-july-15-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sensex-nifty-rebound-july-29-2025.mdx": {
+	id: "sensex-nifty-rebound-july-29-2025.mdx";
+  slug: "sensex-nifty-rebound-july-29-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sensex-nifty-volatile-us-tariff-news-july-2025.mdx": {
+	id: "sensex-nifty-volatile-us-tariff-news-july-2025.mdx";
+  slug: "sensex-nifty-volatile-us-tariff-news-july-2025";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -727,6 +881,13 @@ declare module 'astro:content' {
 "sensex-surges-1000-points-nifty-tops-25500.mdx": {
 	id: "sensex-surges-1000-points-nifty-tops-25500.mdx";
   slug: "sensex-surges-1000-points-nifty-tops-25500";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"sensex-tumbles-500-points-banking-stocks-bleed.mdx": {
+	id: "sensex-tumbles-500-points-banking-stocks-bleed.mdx";
+  slug: "sensex-tumbles-500-points-banking-stocks-bleed";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
@@ -801,6 +962,27 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"tcs-layoffs-analysis-implications-2025.mdx": {
+	id: "tcs-layoffs-analysis-implications-2025.mdx";
+  slug: "tcs-layoffs-analysis-implications-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"tcs-q1-results-earnings-season-kickoff.mdx": {
+	id: "tcs-q1-results-earnings-season-kickoff.mdx";
+  slug: "tcs-q1-results-earnings-season-kickoff";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"tcs-q1-results-trigger-market-crash-july-2025.mdx": {
+	id: "tcs-q1-results-trigger-market-crash-july-2025.mdx";
+  slug: "tcs-q1-results-trigger-market-crash-july-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "tech-revolution-indian-trading-investing.mdx": {
 	id: "tech-revolution-indian-trading-investing.mdx";
   slug: "tech-revolution-indian-trading-investing";
@@ -811,6 +993,20 @@ declare module 'astro:content' {
 "term-life-insurance-india-guide.mdx": {
 	id: "term-life-insurance-india-guide.mdx";
   slug: "term-life-insurance-india-guide";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"titan-stock-falls-q1-fy26-update.mdx": {
+	id: "titan-stock-falls-q1-fy26-update.mdx";
+  slug: "titan-stock-falls-q1-fy26-update";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"trumps-tariff-tremors-sensex-nifty-tumble.mdx": {
+	id: "trumps-tariff-tremors-sensex-nifty-tumble.mdx";
+  slug: "trumps-tariff-tremors-sensex-nifty-tumble";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">
