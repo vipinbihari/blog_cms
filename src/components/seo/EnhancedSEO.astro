@@ -58,9 +58,20 @@ if (post) {
   
   // Add FAQ schema if post has quiz
   if (post.data.quiz && post.data.quiz.length > 0) {
-    const faqData = generateFAQStructuredData(post.data.quiz);
-    if (faqData) {
-      structuredData.push(faqData);
+    // Map content quiz shape { q, options, answer } -> FAQ shape { question, options, correctAnswer }
+    const quizForFAQ = post.data.quiz
+      .filter((q) => q && q.q && Array.isArray(q.options) && typeof q.answer === 'number')
+      .map((q) => ({
+        question: q.q,
+        options: q.options,
+        correctAnswer: q.answer,
+      }));
+
+    if (quizForFAQ.length > 0) {
+      const faqData = generateFAQStructuredData(quizForFAQ);
+      if (faqData) {
+        structuredData.push(faqData);
+      }
     }
   }
 }
@@ -104,7 +115,7 @@ const googleDiscoverMeta = {
     article: post ? {
       publishedTime: post.data.date.toISOString(),
       modifiedTime: post.data.updatedDate?.toISOString() || post.data.date.toISOString(),
-      author: post.data.author,
+      authors: [post.data.author],
       section: post.data.category,
       tags: post.data.tags,
     } : undefined,
