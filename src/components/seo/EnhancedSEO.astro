@@ -130,17 +130,30 @@ const googleDiscoverMeta = {
   }}
 />
 
-<!-- Enhanced meta tags for Google Discover -->
+<!-- Enhanced Open Graph meta tags for Google Discover -->
 {post && Object.entries(googleDiscoverMeta).map(([key, value]) => (
-  <meta property={key} content={value} />
+  value && <meta property={key} content={value} />
 ))}
 
-<!-- Additional SEO meta tags -->
+<!-- Critical SEO meta tags for Google Discover -->
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-<meta name="googlebot" content="index, follow" />
+<meta name="googlebot" content="index, follow, max-image-preview:large" />
 <meta name="bingbot" content="index, follow" />
 <meta name="author" content={post?.data.author || BLOG_CONFIG.site.name} />
 <meta name="publisher" content={BLOG_CONFIG.site.name} />
+
+<!-- Google Discover specific meta tags -->
+{post && (
+  <>
+    <meta name="news_keywords" content={post.data.tags.join(', ')} />
+    <meta name="article:publisher" content={BLOG_CONFIG.site.url} />
+    <meta name="article:author" content={post.data.author} />
+    <meta property="article:published_time" content={post.data.date.toISOString()} />
+    <meta property="article:modified_time" content={post.data.updatedDate?.toISOString() || post.data.date.toISOString()} />
+    <meta property="article:section" content={post.data.category} />
+    {post.data.tags.map(tag => <meta property="article:tag" content={tag} />)}
+  </>
+)}
 
 <!-- Mobile Web App meta tags -->
 <meta name="mobile-web-app-capable" content="yes" />

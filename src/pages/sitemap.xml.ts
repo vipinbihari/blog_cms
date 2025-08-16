@@ -1,7 +1,9 @@
 import { getCollection } from 'astro:content';
 import type { APIRoute } from 'astro';
+import { BLOG_CONFIG } from '../config/current-config';
 
-const SITE = import.meta.env.SITE || 'http://localhost:4321'; // fallback for local dev
+// Use site URL from config with fallback for local development
+const SITE = BLOG_CONFIG.site.url || import.meta.env.SITE || 'http://localhost:4321';
 
 export const GET: APIRoute = async () => {
   // Get all posts from the collection

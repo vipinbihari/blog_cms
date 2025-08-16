@@ -836,6 +836,13 @@ declare module 'astro:content' {
   collection: "posts";
   data: InferEntrySchema<"posts">
 } & { render(): Render[".mdx"] };
+"sensex-nifty-crash-us-tariff-tensions-august-2025.mdx": {
+	id: "sensex-nifty-crash-us-tariff-tensions-august-2025.mdx";
+  slug: "sensex-nifty-crash-us-tariff-tensions-august-2025";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
 "sensex-nifty-flat-ahead-of-us-tariffs-q1-results.mdx": {
 	id: "sensex-nifty-flat-ahead-of-us-tariffs-q1-results.mdx";
   slug: "sensex-nifty-flat-ahead-of-us-tariffs-q1-results";
@@ -1000,6 +1007,13 @@ declare module 'astro:content' {
 "titan-stock-falls-q1-fy26-update.mdx": {
 	id: "titan-stock-falls-q1-fy26-update.mdx";
   slug: "titan-stock-falls-q1-fy26-update";
+  body: string;
+  collection: "posts";
+  data: InferEntrySchema<"posts">
+} & { render(): Render[".mdx"] };
+"trump-policies-indian-it-innovation-crisis.mdx": {
+	id: "trump-policies-indian-it-innovation-crisis.mdx";
+  slug: "trump-policies-indian-it-innovation-crisis";
   body: string;
   collection: "posts";
   data: InferEntrySchema<"posts">

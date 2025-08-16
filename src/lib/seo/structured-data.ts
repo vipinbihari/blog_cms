@@ -3,63 +3,119 @@ import { BLOG_CONFIG } from '../../config/current-config';
 
 /**
  * Generate enhanced Article structured data for Google Discover and rich snippets
+ * Implements latest 2025 requirements including 1200px+ images and proper schema
  */
 export function generateArticleStructuredData(post: BlogPost, url: string) {
+  // Generate multiple image formats for Google Discover (16:9, 4:3, 1:1 aspect ratios)
+  const generateImageUrls = (heroImage: string) => {
+    const basePath = heroImage.replace(/\.[^.]+$/, '');
+    const baseUrl = heroImage.startsWith('http') ? heroImage : `${BLOG_CONFIG.site.url.replace(/\/$/, '')}${heroImage.startsWith('/') ? '' : '/'}${heroImage}`;
+    
+    return [
+      // High-resolution versions for Google Discover (minimum 1200px wide)
+      `${basePath}-1600.webp`, // 16:9 aspect ratio (1600x900)
+      `${basePath}-1200.webp`, // 4:3 aspect ratio (1200x900) 
+      `${basePath}-1200-square.webp`, // 1:1 aspect ratio (1200x1200)
+      baseUrl, // Original image as fallback
+    ];
+  };
+
+  const images = post.data.heroImage 
+    ? generateImageUrls(post.data.heroImage)
+    : [`https://placehold.co/1600x900/0d9488/ffffff?text=${encodeURIComponent(post.data.title)}`];
+
   const articleData = {
     '@context': 'https://schema.org',
-    '@type': 'Article', // More specific than BlogPosting for news/articles
+    '@type': 'Article', // Article type for Google Discover eligibility
     '@id': url,
     headline: post.data.title,
     alternativeHeadline: post.data.excerpt,
     description: post.data.excerpt,
     
-    // Images for Google Discover (requires 1200px wide images)
+    // High-quality images for Google Discover (minimum 1200px wide)
     image: post.data.heroImage ? [
-      post.data.heroImage,
-      post.data.heroImage.replace(/\.\w+$/, '-1200.webp'), // High-res version
-      post.data.heroImage.replace(/\.\w+$/, '-640.webp'),  // Medium version
-    ] : `https://placehold.co/1200x630?text=${encodeURIComponent(post.data.title)}`,
+      `${BLOG_CONFIG.site.url}${post.data.heroImage.replace(/\.(jpg|jpeg|png)$/, '-1350.webp')}`,
+      `${BLOG_CONFIG.site.url}${post.data.heroImage.replace(/\.(jpg|jpeg|png)$/, '-750.webp')}`,
+      `${BLOG_CONFIG.site.url}${post.data.heroImage.replace(/\.(jpg|jpeg|png)$/, '-350.webp')}`,
+    ] : [],
     
-    // Author information
+    // Enhanced author information
     author: {
       '@type': 'Person',
       name: post.data.author,
       url: `${BLOG_CONFIG.site.url}about/`,
+      // Add author image if available in config
+      ...(BLOG_CONFIG.branding.logo && {
+        image: {
+          '@type': 'ImageObject',
+          url: `${BLOG_CONFIG.site.url}${BLOG_CONFIG.branding.logo.light}`,
+        },
+      }),
     },
     
-    // Publisher with logo (required for Google Discover)
+    // Publisher with high-quality logo (required for Google Discover)
     publisher: {
       '@type': 'Organization',
       name: BLOG_CONFIG.site.name,
+      url: BLOG_CONFIG.site.url,
       logo: {
         '@type': 'ImageObject',
         url: `${BLOG_CONFIG.site.url}${BLOG_CONFIG.branding.logo.light}`,
         width: 600,
         height: 60,
       },
+      // Add social media profiles for E-A-T
+      sameAs: BLOG_CONFIG.social?.filter(link => link.url).map(link => link.url) || [],
     },
     
-    // Dates
+    // Required dates for Google Discover
     datePublished: post.data.date.toISOString(),
     dateModified: post.data.updatedDate?.toISOString() || post.data.date.toISOString(),
     
-    // Article specific fields
+    // Article specific fields for categorization
     articleSection: post.data.category,
+    articleBody: post.body || '',
     keywords: post.data.tags.join(', '),
     wordCount: post.body?.length || 1000,
     
-    // Main entity
+    // Main entity of the page
     mainEntityOfPage: {
       '@type': 'WebPage',
       '@id': url,
+      name: post.data.title,
+      description: post.data.excerpt,
     },
     
-    // Additional properties for rich snippets
-    inLanguage: 'en-US',
-    potentialAction: {
-      '@type': 'ReadAction',
-      target: url,
+    // Enhanced properties for rich results
+    inLanguage: BLOG_CONFIG.site.language,
+    about: {
+      '@type': 'Thing',
+      name: post.data.category,
+      sameAs: `${BLOG_CONFIG.site.url}categories/${post.data.category}/`,
     },
+    
+    // Interaction statistics (if available)
+    interactionStatistic: {
+      '@type': 'InteractionCounter',
+      interactionType: 'https://schema.org/ReadAction',
+      userInteractionCount: 0, // You can track this dynamically
+    },
+    
+    // Potential action for engagement
+    potentialAction: [
+      {
+        '@type': 'ReadAction',
+        target: [url],
+      },
+      {
+        '@type': 'ShareAction',
+        target: [url],
+        agent: {
+          '@type': 'Person',
+          name: 'Reader',
+        },
+      },
+    ],
   };
   
   return articleData;
@@ -112,7 +168,8 @@ export function generateWebSiteStructuredData() {
 }
 
 /**
- * Generate FAQ structured data from quiz questions
+ * Generate enhanced FAQ structured data from quiz questions
+ * Includes detailed answers and proper formatting for rich results
  */
 export function generateFAQStructuredData(quiz: Array<{question: string; options: string[]; correctAnswer: number}>) {
   if (!quiz || quiz.length === 0) return null;
@@ -120,14 +177,35 @@ export function generateFAQStructuredData(quiz: Array<{question: string; options
   return {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    mainEntity: quiz.map(q => ({
+    '@id': `${BLOG_CONFIG.site.url}#faq`,
+    name: 'Frequently Asked Questions',
+    description: 'Test your knowledge with these quiz questions',
+    mainEntity: quiz.map((q, index) => ({
       '@type': 'Question',
+      '@id': `${BLOG_CONFIG.site.url}#faq-${index + 1}`,
       name: q.question,
+      text: q.question,
+      answerCount: 1,
       acceptedAnswer: {
         '@type': 'Answer',
-        text: q.options[q.correctAnswer],
+        text: `<p><strong>सही उत्तर:</strong> ${q.options[q.correctAnswer]}</p><p><strong>विकल्प:</strong></p><ul>${q.options.map((option, idx) => 
+          `<li${idx === q.correctAnswer ? ' style="font-weight: bold; color: green;"' : ''}>${option}</li>`
+        ).join('')}</ul>`,
+        upvoteCount: 0,
+        dateCreated: new Date().toISOString(),
+        author: {
+          '@type': 'Organization',
+          name: BLOG_CONFIG.site.name,
+        },
       },
     })),
+    // Additional properties for better context
+    publisher: {
+      '@type': 'Organization',
+      name: BLOG_CONFIG.site.name,
+      url: BLOG_CONFIG.site.url,
+    },
+    inLanguage: BLOG_CONFIG.site.language || 'hi-IN',
   };
 }
 

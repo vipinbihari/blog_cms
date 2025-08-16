@@ -468,7 +468,7 @@ export const BLOG_CONFIG: BlogConfig = {
     shortcuts: 'auto' as const // Will auto-generate from navigation.header.links
   },
 
-  // Image Resolution Configuration
+  // Image Resolution Configuration for Google Discover compliance
   // These values define the standard image widths used throughout the blog
   imageResolutions: {
     // Width for post card thumbnails (homepage, category listings, etc.)
@@ -477,23 +477,24 @@ export const BLOG_CONFIG: BlogConfig = {
     // Width for standard blog post content images
     content: 750,
     
-    // Width for zoomed/fullscreen images
-    zoom: 1200,
+    // Width for zoomed/fullscreen images (Google Discover minimum)
+    zoom: 1350,
     
-    // Additional custom resolutions (optional)
-    // Add extra breakpoints beyond the standard sizes if needed
-    additional: [], // High-res displays
+    // Additional custom resolutions for Google Discover optimization
+    // Google Discover prefers high-resolution images (1200px+ wide)
+    //additional: [1600], // High-res displays and Google Discover
     
     // Image formats to generate during optimization
-    // 'original' keeps the same format as source, 'webp' creates WebP versions
+    // WebP for performance, original for compatibility
     formats: ['webp'],
     
     // Quality settings for each format (0-100)
+    // Higher quality for Google Discover eligibility
     quality: {
       webp: 90,
-      jpg: 80,
-      jpeg: 80,
-      png: 80
+      jpg: 85,
+      jpeg: 85,
+      png: 90
     }
   },
 
