@@ -164,7 +164,7 @@ export const BLOG_CONFIG: BlogConfig = {
     },
     {
       platform: 'facebook',
-      url: `https://facebook.com/profile.php?id=61578065667118`, // Replace YourFacebookPage
+      url: `https://facebook.com/finhux.official`, // Replace YourFacebookPage
       label: 'Like us on Facebook',
     },
     {
